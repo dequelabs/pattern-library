@@ -1,0 +1,22 @@
+{
+  "name": "pattern-library",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Harris Schneiderman <harris.schneiderman@deque.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "components-font-awesome": "^4.6.3",
+    "roboto-fontface": "^0.4.5"
+  }
+}
