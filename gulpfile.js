@@ -8,18 +8,18 @@ var DIST = './dist/';
 gulp.task('default', ['less', 'js']);
 
 gulp.task('less', () => {
-  gulp.src('./less/**/*.less')
+  gulp.src('./src/less/**/*.less')
     .pipe(less())
     .pipe(concat('alchemy.css'))
     .pipe(gulp.dest(DIST));
 });
 
 gulp.task('js', () => {
-  gulp.src('./js/**/*.js')
+  gulp.src('./src/js/**/*.js')
     .pipe(concat('alchemy.js'))
     .pipe(gulp.dest(DIST));
 });
 
 gulp.task('watch', () => {
-  gulp.watch(['./less/**/*.less', './js/**/*.js'], ['default']);
+  gulp.watch(['./src/less/**/*.less', './src/js/**/*.js'], ['default']);
 });
