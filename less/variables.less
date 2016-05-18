@@ -1,0 +1,106 @@
+
+
+// Backgrounds
+@top-bar-bg: rgba(40, 54, 64, 1);
+// @top-bar-bg-clicked: darken(@header-bg, 15%);
+@workspace-bg: rgba(253, 253, 254, 1);
+@tile-bg: rgba(255, 255, 255, 1);
+@bg-light: darken(@tile-bg, 10%);
+@scrim: lighten(#000000, 50%);
+@top-bar-divider: rgba(90, 98, 104, 1);
+
+// Text
+@text-base: lighten(#000000, 40%);
+@header-dark: lighten(#000000, 20%);
+@header: lighten(#000000, 30%);
+@disabled: lighten(#000000, 80%);
+@link: rgba(60, 122, 174, 1);
+@error: rgba(217, 50, 81, 1);
+@top-bar-text: rgba(212, 221, 224, 1);
+@text-light: rgba(255, 255, 255, 1);
+
+// Fields
+@field-bg: @tile-bg;
+@field-border: lighten(#000000, 80%);
+@field-hover-border: lighten(#000000, 70%);
+// @field-focus-border: @link-color;
+@field-error-border: @error;
+@field-error-hover-border: darken(@error, 10%);
+@field-disabled-border: darken(@tile-bg, 5%);
+
+// Buttons
+@button-primary: @link;
+@button-secondary: darken(@tile-bg, 5%);
+@button-text-dark: rgba(90, 98, 104, 1);
+// @button-text-light: @light-text;
+@button-text-disabled: @disabled;
+
+// Tables
+@table-text: @header;
+@table-header: darken(@tile-bg, 5%);
+@table-selected: @link;
+@table-hover: lighten(@link, 95%);
+@table-hover-link: @top-bar-bg;
+
+// Accents
+@focus: rgba(215, 30, 247, 1);
+@metric-accent-low: rgba(247, 132, 108, 1);
+@metric-accent-mid: rgba(139, 166, 197, 1);
+@metric-accent-full: rgba(165, 219, 117, 1);
+@top-bar-accent-primary: rgba(108, 218, 242, 1);
+@top-bar-accent-warning: rgba(255, 221, 117, 1);
+@top-bar-accent-error: rgba(254, 109, 107, 1);
+@top-bar-accent-success: rgba(98, 232, 107, 1);
+
+
+.vendor(@property, @value) {
+  -webkit-@{property}: @value;
+  -moz-@{property}: @value;
+  -ms-@{property}: @value;
+  @{property}: @value;
+}
+
+// flex
+
+.display-flex() {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.flex(@args: none) {
+  .vendor(flex, @args);
+}
+
+.flex-direction(@direction: row) {
+  .vendor(flex-direction, @direction);
+}
+
+.flex-wrap(@wrap: nowrap) {
+  .vendor(flex-wrap, @wrap);
+}
+
+.align-self(@direction: stretch) {
+  .vendor(align-self, @direction);
+	-ms-flex-item-align: @direction;
+}
+
+.align-items(@direction: stretch) {
+  .vendor(align-items, @direction);
+	-ms-flex-item-align: @direction;
+}
+
+.flex-basis(@basis: auto) {
+	.vendor(flex-basis, @basis);
+}
+
+// Utils
+.offscreen() {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  margin-top: -1px;
+}
