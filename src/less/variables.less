@@ -1,4 +1,6 @@
 
+@prefix: ~'.dqpl-';
+
 // Backgrounds
 @top-bar-bg: rgba(40, 54, 64, 1);
 // @top-bar-bg-clicked: darken(@header-bg, 15%);
@@ -91,6 +93,15 @@
 
 .flex-basis(@basis: auto) {
 	.vendor(flex-basis, @basis);
+}
+
+// box-sizing
+.box-sizing(@args: border-box) {
+  .vendor(box-sizing, @args);
+}
+
+.border-box() { // convenience mixin
+  .box-sizing(); // utilize the default value of border-box
 }
 
 // Utils

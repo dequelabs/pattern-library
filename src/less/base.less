@@ -1,6 +1,89 @@
+@import "variables.less";
+
+@text-largest: 112px;
+@text-larger: 56px;
+@text-large: 45px;
+@text-large-medium: 34px;
+@text-medium: 24px;
+@text-small-medium: 20px;
+@text-small: 15px;
+@text-smaller: 13px;
+@text-smallest: 12px;
+
+@weight-thin: 100;
+@weight-light: 300;
+@weight-normal: 400;
+@weight-medium: 500;
+@weight-bold: 700;
+@weight-ultra-bold: 900;
+
 
 body {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
+  color: @text-base;
+  font-weight: 400;
+
+  // Font sizes
+  @{prefix}text-largest {
+    font-size: @text-largest;
+  }
+
+  @{prefix}text-larger {
+    font-size: @text-larger;
+  }
+
+  @{prefix}text-large {
+    font-size: @text-large;
+  }
+
+  @{prefix}text-large-medium {
+    font-size: @text-large-medium;
+  }
+
+  @{prefix}text-medium {
+    font-size: @text-medium;
+  }
+
+  @{prefix}text-small-medium {
+    font-size: @text-small-medium;
+  }
+
+  @{prefix}text-small {
+    font-size: @text-small;
+  }
+
+  @{prefix}text-smaller {
+    font-size: @text-smaller;
+  }
+
+  @{prefix}text-smallest {
+    font-size: @text-smallest;
+  }
+
+  // Font weights
+  @{prefix}weight-thin {
+    font-weight: @weight-thin;
+  }
+
+  @{prefix}weight-light {
+    font-weight: @weight-light;
+  }
+
+  @{prefix}weight-normal {
+    font-weight: @weight-normal;
+  }
+
+  @{prefix}weight-medium {
+    font-weight: @weight-medium;
+  }
+
+  @{prefix}weight-bold {
+    font-weight: @weight-bold;
+  }
+
+  @{prefix}weight-ultra-bold {
+    font-weight: @weight-ultra-bold;
+  }
 }

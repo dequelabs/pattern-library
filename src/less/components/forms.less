@@ -1,0 +1,23 @@
+@import "../variables.less";
+@import "../base.less";
+
+@{prefix}field-wrap {
+  position: relative;
+  .border-box();
+
+  input[type="text"] {
+    width: 100%;
+  }
+}
+
+@{prefix}label {
+  display: block;
+  text-align: left;
+  font-size: @text-smaller;
+}
+
+@{prefix}text-input {
+  padding: 3px;
+  .border-box();
+  .box-sizing(border-box);
+}

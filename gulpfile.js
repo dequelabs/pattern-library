@@ -5,9 +5,14 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 var concat = require('gulp-concat');
 var open = require('gulp-open');
+var serve = require('gulp-serve');
 var DIST = './dist/';
 
 gulp.task('default', ['fonts', 'css', 'js']);
+
+/**
+ * Styles
+ */
 
 gulp.task('css', () => {
   gulp.src([
@@ -20,12 +25,19 @@ gulp.task('css', () => {
     .pipe(gulp.dest(path.join(DIST, 'css')));
 });
 
+/**
+ * Scripts
+ */
 
 gulp.task('js', () => {
   gulp.src('./src/js/**/*.js')
     .pipe(concat('alchemy.js'))
     .pipe(gulp.dest(path.join(DIST, 'js')));
 });
+
+/**
+ * Fonts
+ */
 
 gulp.task('fonts', () => {
   gulp.src([
@@ -35,11 +47,10 @@ gulp.task('fonts', () => {
     .pipe(gulp.dest(path.join(DIST, '/fonts/')));
 });
 
-gulp.task('watch', () => {
-  gulp.watch(['./src/less/**/*.less', './src/js/**/*.js'], ['default']);
-});
+/**
+ * Watcher
+ */
 
-gulp.task('open', () => {
-  gulp.src('./playground/index.html')
-    .pipe(open());
+gulp.task('watch', () => {
+  gulp.watch(['./src/less/**/*.less', './src/js/**/*.js'], ['css', 'js']);
 });
