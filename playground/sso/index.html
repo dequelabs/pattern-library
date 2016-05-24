@@ -19,7 +19,7 @@
         <form method="post">
           <div class="dqpl-field-wrap">
             <label class="dqpl-label" for="email">Email address</label>
-            <input type="text" id="email" name="email" class="dqpl-text-input" />
+            <input type="text" aria-required="true" id="email" name="email" class="dqpl-text-input" data-error-message="Please enter a valid email." />
           </div>
           <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">NEXT</span></button>
         </form>
@@ -36,16 +36,20 @@
           </div>
           <div class="dqpl-field-wrap">
             <label for="password" class="dqpl-label">Password</label>
-            <input type="text" id="password" name="password" class="dqpl-text-input" />
+            <input type="password" id="password" aria-required="true" name="password" class="dqpl-text-input" data-error-message="Please enter your password." />
           </div>
-          <div class="dqpl-field-wrap">
+          <div class="dqpl-field-wrap dqpl-half-bottom">
             <input type="checkbox" id="remember-me" />
             <label for="remember-me" class="dqpl-label-inline">Remember me</label>
           </div>
           <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">SIGN IN</span></button>
           <div class="link-wrap">
-            <button type="button" class="forgot-password dqpl-button-link">Forgot password?</button>
-            <button type="button" class="different-email dqpl-button-link">Sign in with a different email</button>
+            <div class="dqpl-button-wrapper">
+              <button type="button" class="forgot-password dqpl-button-link">Forgot password?</button>
+            </div>
+            <div class="dqpl-button-wrapper">
+              <button type="button" class="different-email dqpl-button-link">Sign in with a different email</button>
+            </div>
           </div>
         </form>
       </div>
@@ -56,7 +60,7 @@
         <form method="post">
           <div class="dqpl-field-wrap">
             <label class="dqpl-label" for="forgot-password-email">Email address</label>
-            <input type="text" id="forgot-password-email" name="forgot-password-email" class="dqpl-text-input" />
+            <input type="text" aria-required="true" id="forgot-password-email" name="forgot-password-email" class="dqpl-text-input" data-error-message="Please enter a valid email." />
           </div>
           <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">SEND PASSWORD RESET EMAIL</span></button>
           <div class="link-wrap">
@@ -76,19 +80,21 @@
 
       <!-- RESET PASSWORD FORM -->
       <div class="inner-wrapper" id="reset-password-section">
-        <p>
+        <h1 class="dqpl-small dqpl-text-small dqpl-weight-normal">
           Please fill out the fields below to reset the account password for
           <span class="bold" id="reset-password-email-text"></span>
-        </p>
-        <div class="dqpl-field-wrap">
-          <label for="reset-password" class="dqpl-label">Password</label>
-          <input type="text" id="reset-password" name="reset-password" class="dqpl-text-input" />
-        </div>
-        <div class="dqpl-field-wrap">
-          <label for="confirm-reset-password" class="dqpl-label">Retype password</label>
-          <input type="text" id="confirm-reset-password" name="confirm-reset-password" class="dqpl-text-input" />
-        </div>
-        <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">RESET PASSWORD</span></button>
+        </h1>
+        <form method="post">
+          <div class="dqpl-field-wrap">
+            <label for="reset-password" class="dqpl-label">Password</label>
+            <input type="password" aria-required="true" id="reset-password" name="reset-password" class="dqpl-text-input" data-error-message="These passwords don’t match." />
+          </div>
+          <div class="dqpl-field-wrap">
+            <label for="confirm-reset-password" class="dqpl-label">Retype password</label>
+            <input type="password" aria-required="true" id="confirm-reset-password" name="confirm-reset-password" class="dqpl-text-input" />
+          </div>
+          <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">RESET PASSWORD</span></button>
+        </form>
       </div>
 
       <!-- TWO FACTOR AUTHENTICATION -->
@@ -96,11 +102,13 @@
         <h1 class="dqpl-small dqpl-text-small dqpl-weight-normal">
           This account has two factor authentication. Please enter code
         </h1>
-        <div class="dqpl-field-wrap">
-          <label for="authentication-code" class="dqpl-label">Authentication code</label>
-          <input type="text" id="authentication-code" name="authentication-code" class="dqpl-text-input" />
-        </div>
-        <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">SIGN IN</span></button>
+        <form method="post">
+          <div class="dqpl-field-wrap">
+            <label for="authentication-code" class="dqpl-label">Authentication code</label>
+            <input type="text" id="authentication-code" name="authentication-code" class="dqpl-text-input" data-error-message="Please enter an authentication code." />
+          </div>
+          <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">SIGN IN</span></button>
+        </form>
         <div class="link-wrap">
           <a href="#" class="back-to-sign-in dqpl-link">Sign in with a different email</a>
         </div>

@@ -9,19 +9,31 @@
   var $resetPassword = jQuery('#reset-password-section');
   var $twoFactor = jQuery('#two-factor-section');
   var $email = jQuery('#email');
+  var $password = jQuery('#password');
 
   $mainLoginEmail.find('button[type="submit"]').on('click', function (e) {
     e.preventDefault(); // don't submit just yet...
-    flyIn({
-      animate: 'right',
-      $hide: $mainLoginEmail,
-      $show: $mainLoginPassword,
-      fillIn: {
-        text: $email.val(),
-        $target: jQuery('#user-email-display, #user-email')
-      },
-      $focus: jQuery('#password')
-    });
+    var isValid = validate($email, 'email');
+    if (isValid) {
+      flyIn({
+        animate: 'right',
+        $hide: $mainLoginEmail,
+        $show: $mainLoginPassword,
+        fillIn: {
+          text: $email.val(),
+          $target: jQuery('#user-email-display, #user-email')
+        },
+        $focus: $password
+      });
+    }
+  });
+
+  $mainLoginPassword.find('button[type="submit"]').on('click', function (e) {
+    e.preventDefault(); // don't submit just yet...
+    var isValid = validate($password);
+    if (isValid) {
+      jQuery(this).closest('form').submit();
+    }
   });
 
   $mainLoginPassword.find('.forgot-password').on('click', function () {
@@ -39,7 +51,6 @@
   });
 
   $mainLoginPassword.find('.different-email').on('click', function () {
-    console.log('yoep~!');
     flyIn({
       animate: 'left',
       $hide: $mainLoginPassword,
@@ -47,6 +58,7 @@
       $focus: $email
     });
   });
+
 
   $forgotPassword.find('.back-to-sign-in').on('click', function () {
     flyIn({
@@ -59,16 +71,30 @@
 
   $forgotPassword.find('button[type="submit"]').on('click', function (e) {
     e.preventDefault();
-    flyIn({
-      animate: 'fade',
-      $hide: $forgotPassword,
-      $show: $forgotPasswordSent,
-      $focus: $forgotPasswordSent,
-      fillIn: {
-        text: jQuery('#forgot-password-email').val(),
-        $target: jQuery('#email-sent-to')
-      }
-    });
+    var isValid = validate(jQuery('#forgot-password-email'), 'email');
+
+    if (isValid) {
+      flyIn({
+        animate: 'fade',
+        $hide: $forgotPassword,
+        $show: $forgotPasswordSent,
+        $focus: $forgotPasswordSent,
+        fillIn: {
+          text: jQuery('#forgot-password-email').val(),
+          $target: jQuery('#email-sent-to')
+        }
+      });
+    }
+  });
+
+  $resetPassword.find('button[type="submit"]').on('click', function (e) {
+    e.preventDefault();
+    var isValid = validate($resetPassword.find('.dqpl-text-input'), 'match');
+  });
+
+  $twoFactor.find('button[type="submit"]').on('click', function (e) {
+    e.preventDefault();
+    validate(jQuery('#authentication-code'));
   });
 
   /**
@@ -103,5 +129,42 @@
         opts.$focus.focus();
       }
     }, 10);
+  }
+
+  function validate($field, type) {
+    // clean up
+    $field.removeClass('dqpl-error');
+    jQuery('.error-message').remove();
+    var valid = true;
+    var val = $field.val();
+    if (!val) {
+      valid = false;
+    } else if (type && type === 'email') {
+      var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      valid = emailRegex.test(val);
+    } else if (type && type === 'match') {
+      var thisVal;
+      $field.each(function (_, field) {
+        var $thisField = jQuery(field);
+        if (!thisVal) {
+          thisVal = $thisField.val();
+        } else {
+          if (thisVal !== $thisField.val()) {
+            valid = false;
+          }
+        }
+      });
+    }
+
+    if (!valid) {
+      var $error = jQuery('<div class="error-message" />');
+      var errMsg = $field.first().attr('data-error-message'); // using this so the messages can be localized
+      $error.text(errMsg);
+      $error.prop('id', $field.first().prop('id') + '-error');
+      $field.addClass('dqpl-error').first().parent().append($error);
+      $field.attr('aria-describedby', $error.prop('id')).first().focus();
+    }
+
+    return valid;
   }
 }());

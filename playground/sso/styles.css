@@ -1,3 +1,94 @@
+body {
+  font-family: 'Roboto';
+  font-style: normal;
+  color: #666666;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+body :focus {
+  outline: 2px solid #d71ef7;
+  outline-offset: 2px;
+}
+body h1 {
+  margin: 0;
+  padding: 18px 0;
+}
+body button,
+body [role="button"] {
+  display: inline-block;
+  zoom: 1;
+  line-height: normal;
+  white-space: nowrap;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body a {
+  color: #3c7aae;
+  font-weight: 500;
+  padding: 8px;
+}
+body .dqpl-text-largest {
+  font-size: 112px;
+}
+body .dqpl-text-larger {
+  font-size: 56px;
+}
+body .dqpl-text-large {
+  font-size: 45px;
+}
+body .dqpl-text-large-medium {
+  font-size: 34px;
+}
+body .dqpl-text-medium {
+  font-size: 24px;
+}
+body .dqpl-text-normal {
+  font-size: 18px;
+}
+body .dqpl-text-small-medium {
+  font-size: 20px;
+}
+body .dqpl-text-small {
+  font-size: 15px;
+}
+body .dqpl-text-smaller {
+  font-size: 13px;
+}
+body .dqpl-text-smallest {
+  font-size: 12px;
+}
+body .dqpl-weight-thin {
+  font-weight: 100;
+}
+body .dqpl-weight-light {
+  font-weight: 300;
+}
+body .dqpl-weight-normal {
+  font-weight: 400;
+}
+body .dqpl-weight-medium {
+  font-weight: 500;
+}
+body .dqpl-weight-bold {
+  font-weight: 700;
+}
+body .dqpl-weight-ultra-bold {
+  font-weight: 900;
+}
+body .dqpl-hide {
+  display: none;
+}
 h1 {
   text-align: center;
   padding: 18px 0;
@@ -49,8 +140,20 @@ h1 {
   -ms-box-shadow: none;
   box-shadow: none;
 }
-.login-wrapper .dqpl-field-wrap input[type="text"] {
+.login-wrapper .dqpl-field-wrap input[type="text"],
+.login-wrapper .dqpl-field-wrap [type="password"] {
+  font-size: 16px;
   width: 100%;
+  padding: 4px 8px;
+}
+.login-wrapper .dqpl-field-wrap.dqpl-half-bottom {
+  margin-bottom: 12px;
+}
+.login-wrapper .dqpl-field-wrap .error-message {
+  position: absolute;
+  font-size: 12px;
+  color: #d93251;
+  margin-top: 2px;
 }
 .login-wrapper .link-wrap {
   margin: 10px 0 0 0;
@@ -59,19 +162,19 @@ h1 {
   display: none;
   word-wrap: break-word;
   position: relative;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  transition: all 0.25s;
 }
 .login-wrapper .inner-wrapper.active {
   display: block;
 }
 .login-wrapper .inner-wrapper.setup {
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  transition: all 0.25s;
   -webkit-transform: translate(0);
   -moz-transform: translate(0);
   -ms-transform: translate(0);

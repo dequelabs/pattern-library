@@ -28,12 +28,17 @@ body {
   margin: 0;
   padding: 0;
 
+  :focus {
+    outline: 2px solid @focus;
+    outline-offset: @space-quarter;
+  }
+
   h1 {
     margin: 0;
     padding: 18px 0;
   }
 
-  button {
+  button, [role="button"] {
     display: inline-block;
     zoom: 1;
     line-height: normal;
