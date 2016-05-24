@@ -1,4 +1,5 @@
 @import "../variables.less";
+@import "../base.less";
 
 @{prefix}button-primary {
   background-color: @button-primary;
@@ -10,4 +11,18 @@
   padding: @space-smallest;
   font-size: 14px;
   .ambient-light();
+}
+
+@{prefix}button-link {
+  background-color: transparent;
+  color: @link;
+  font-weight: @weight-medium;
+  padding: @space-smallest;
+  border: none;
+  font-size: 13px;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
 }

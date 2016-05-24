@@ -1,11 +1,6 @@
 
 @import "../../src/less/variables.less";
 
-.login-wrapper {
-  padding: 24px;
-  margin: 0 auto;
-}
-
 h1 {
   text-align: center;
   padding: 18px 0;
@@ -20,66 +15,94 @@ h1 {
   width: 100%;
 }
 
-.dqpl-button-wrap {
-  position: relative;
-  background: @link;
-  border: 3px solid @link;
-  border-radius: 18px;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  .ambient-light();
+.login-wrapper {
+  padding: 24px;
+  margin: 0 auto;
+  overflow: hidden;
 
-  &:focus {
-    outline: none;
-    background-color: #fff;
+  .dqpl-button-wrap {
+    position: relative;
+    background: @link;
+    border: 3px solid @link;
+    border-radius: 18px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    .ambient-light();
+
+    &:focus {
+      outline: none;
+      background-color: #fff;
+
+      span {
+        width: 97%;
+      }
+    }
+
+    &:hover {
+      .key-light();
+    }
 
     span {
-      width: 97%;
+      display: inline-block;
+      width: 100%;
+      border-radius: 18px;
+      .box-shadow();
     }
   }
 
-  &:hover {
-    .key-light();
+  .dqpl-field-wrap {
+    input[type="text"] {
+      width: 100%;
+    }
   }
 
-  span {
-    display: inline-block;
-    width: 100%;
-    border-radius: 18px;
-    .box-shadow();
+  .link-wrap {
+    margin: 10px 0 0 0;
   }
-}
 
-.dqpl-field-wrap {
-  input[type="text"] {
-    width: 100%;
-  }
-}
-
-.link-wrap {
-  margin: 10px 0;
-  font-size: 14px;
-}
-
-.tile-hide {
-  display: none;
-  transform: translate(200px);
-  opacity: 0;
-  .vendor(transition, all .3s);
-
-  &.tile-show {
-    display: block;
+  .inner-wrapper {
+    display: none;
+    word-wrap: break-word;
+    position: relative;
     .vendor(transition, all .3s);
+
+    &.active {
+      display: block;
+    }
+
+    &.setup {
+      .vendor(transition, all .3s);
+      .vendor(transform, translate(0));
+      opacity: 1;
+
+      &.left {
+        .vendor(transform, translate(-250px));
+      }
+
+      &.right {
+        .vendor(transform, translate(250px));
+      }
+
+      &.fade {
+        opacity: 0;
+      }
+    }
   }
 
-  &.animate {
-    transform: initial;
-    opacity: 1;
-    .vendor(transition, all .3s);
+  p {
+    text-align: center;
+    margin: 0;
+    font-size: 14px;
   }
-}
 
-p {
-  text-align: center;
+  #email-sent-to {
+    padding: 16px 0;
+  }
+
+  #forgot-password-sent-section {
+    h1 {
+      padding-bottom: 0;
+    }
+  }
 }
