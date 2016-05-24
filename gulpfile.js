@@ -4,8 +4,6 @@ var path = require('path');
 var gulp = require('gulp');
 var less = require('gulp-less');
 var concat = require('gulp-concat');
-var open = require('gulp-open');
-var serve = require('gulp-serve');
 var DIST = './dist/';
 
 gulp.task('default', ['fonts', 'css', 'js']);
@@ -48,9 +46,20 @@ gulp.task('fonts', () => {
 });
 
 /**
+ * Playground
+ */
+
+gulp.task('playground', () => {
+  gulp.src('./playground/**/*.less')
+    .pipe(less())
+    .pipe(gulp.dest('./playground/'));
+});
+
+/**
  * Watcher
  */
 
 gulp.task('watch', () => {
   gulp.watch(['./src/less/**/*.less', './src/js/**/*.js'], ['css', 'js']);
+  gulp.watch(['./playground/**/*.less'], ['playground']);
 });

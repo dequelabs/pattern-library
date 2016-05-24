@@ -1,0 +1,108 @@
+
+@import "../../src/less/variables.less";
+
+h1 {
+  text-align: center;
+  padding: 18px 0;
+}
+
+.img-wrap {
+  text-align: center;
+}
+
+.dqpl-header {
+  height: 80px;
+  width: 100%;
+}
+
+.login-wrapper {
+  padding: 24px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  .dqpl-button-wrap {
+    position: relative;
+    background: @link;
+    border: 3px solid @link;
+    border-radius: 18px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    .ambient-light();
+
+    &:focus {
+      outline: none;
+      background-color: #fff;
+
+      span {
+        width: 97%;
+      }
+    }
+
+    &:hover {
+      .key-light();
+    }
+
+    span {
+      display: inline-block;
+      width: 100%;
+      border-radius: 18px;
+      .box-shadow();
+    }
+  }
+
+  .dqpl-field-wrap {
+    input[type="text"] {
+      width: 100%;
+    }
+  }
+
+  .link-wrap {
+    margin: 10px 0 0 0;
+  }
+
+  .inner-wrapper {
+    display: none;
+    word-wrap: break-word;
+    position: relative;
+    .vendor(transition, all .3s);
+
+    &.active {
+      display: block;
+    }
+
+    &.setup {
+      .vendor(transition, all .3s);
+      .vendor(transform, translate(0));
+      opacity: 1;
+
+      &.left {
+        .vendor(transform, translate(-250px));
+      }
+
+      &.right {
+        .vendor(transform, translate(250px));
+      }
+
+      &.fade {
+        opacity: 0;
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  #email-sent-to {
+    padding: 16px 0;
+  }
+
+  #forgot-password-sent-section {
+    h1 {
+      padding-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,106 @@
+h1 {
+  text-align: center;
+  padding: 18px 0;
+}
+.img-wrap {
+  text-align: center;
+}
+.dqpl-header {
+  height: 80px;
+  width: 100%;
+}
+.login-wrapper {
+  padding: 24px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.login-wrapper .dqpl-button-wrap {
+  position: relative;
+  background: #3c7aae;
+  border: 3px solid #3c7aae;
+  border-radius: 18px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  -webkit-box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.35);
+  -ms-box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.35);
+}
+.login-wrapper .dqpl-button-wrap:focus {
+  outline: none;
+  background-color: #fff;
+}
+.login-wrapper .dqpl-button-wrap:focus span {
+  width: 97%;
+}
+.login-wrapper .dqpl-button-wrap:hover {
+  -webkit-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+  -ms-box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.4);
+}
+.login-wrapper .dqpl-button-wrap span {
+  display: inline-block;
+  width: 100%;
+  border-radius: 18px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  box-shadow: none;
+}
+.login-wrapper .dqpl-field-wrap input[type="text"] {
+  width: 100%;
+}
+.login-wrapper .link-wrap {
+  margin: 10px 0 0 0;
+}
+.login-wrapper .inner-wrapper {
+  display: none;
+  word-wrap: break-word;
+  position: relative;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.login-wrapper .inner-wrapper.active {
+  display: block;
+}
+.login-wrapper .inner-wrapper.setup {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: translate(0);
+  -moz-transform: translate(0);
+  -ms-transform: translate(0);
+  transform: translate(0);
+  opacity: 1;
+}
+.login-wrapper .inner-wrapper.setup.left {
+  -webkit-transform: translate(-250px);
+  -moz-transform: translate(-250px);
+  -ms-transform: translate(-250px);
+  transform: translate(-250px);
+}
+.login-wrapper .inner-wrapper.setup.right {
+  -webkit-transform: translate(250px);
+  -moz-transform: translate(250px);
+  -ms-transform: translate(250px);
+  transform: translate(250px);
+}
+.login-wrapper .inner-wrapper.setup.fade {
+  opacity: 0;
+}
+.login-wrapper p {
+  text-align: center;
+  margin: 0;
+  font-size: 14px;
+}
+.login-wrapper #email-sent-to {
+  padding: 16px 0;
+}
+.login-wrapper #forgot-password-sent-section h1 {
+  padding-bottom: 0;
+}

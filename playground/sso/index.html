@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SSO Demo</title>
+    <link rel="stylesheet" href="./styles.css" charset="utf-8">
+    <link rel="stylesheet" href="../../dist/css/alchemy.css" charset="utf-8">
+  </head>
+  <body>
+    <header class="dqpl-header"></header> <!-- for now this is here to take up space -->
+
+    <div class="login-wrapper dqpl-tile dqpl-small">
+      <div class="img-wrap">
+        <img src="../img/deque-logo.png" alt="Deque" />
+      </div>
+      <!-- MAIN LOGIN (EMAIL) -->
+      <div class="inner-wrapper active" id="login-email-section">
+        <h1 class="dqpl-small dqpl-text-small dqpl-weight-normal">Sign in to @product</h1>
+        <form method="post">
+          <div class="dqpl-field-wrap">
+            <label class="dqpl-label" for="email">Email address</label>
+            <input type="text" id="email" name="email" class="dqpl-text-input" />
+          </div>
+          <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">NEXT</span></button>
+        </form>
+      </div>
+
+      <!-- MAIN LOGIN (PASSWORD) -->
+      <div class="inner-wrapper" id="login-password-section">
+        <h1 class="dqpl-small dqpl-text-small dqpl-weight-normal">Sign in to @product</h1>
+        <form method="post">
+          <div class="dqpl-field-wrap">
+            <div class="dqpl-label">Email address</div>
+            <div id="user-email-display"></div>
+            <input type="hidden" name="user-email" id="user-email" />
+          </div>
+          <div class="dqpl-field-wrap">
+            <label for="password" class="dqpl-label">Password</label>
+            <input type="text" id="password" name="password" class="dqpl-text-input" />
+          </div>
+          <div class="dqpl-field-wrap">
+            <input type="checkbox" id="remember-me" />
+            <label for="remember-me" class="dqpl-label-inline">Remember me</label>
+          </div>
+          <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">SIGN IN</span></button>
+          <div class="link-wrap">
+            <button type="button" class="forgot-password dqpl-button-link">Forgot password?</button>
+            <button type="button" class="different-email dqpl-button-link">Sign in with a different email</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- FORGOT PASSWORD -->
+      <div class="inner-wrapper" id="forgot-password-section">
+        <h1 class="dqpl-small dqpl-text-small dqpl-weight-normal">Please provide the email for your Deque account</h1>
+        <form method="post">
+          <div class="dqpl-field-wrap">
+            <label class="dqpl-label" for="forgot-password-email">Email address</label>
+            <input type="text" id="forgot-password-email" name="forgot-password-email" class="dqpl-text-input" />
+          </div>
+          <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">SEND PASSWORD RESET EMAIL</span></button>
+          <div class="link-wrap">
+            <button type="button" class="back-to-sign-in dqpl-button-link">Go back to Sign in</a>
+          </div>
+        </form>
+      </div>
+
+      <!-- FORGOT PASSWORD CONFIRMATION -->
+      <div class="inner-wrapper" tabindex="-1" id="forgot-password-sent-section">
+        <h1 class="dqpl-small dqpl-text-small dqpl-weight-normal">
+          We've sent a verification email to
+          <div class="dqpl-text-normal dqpl-weight-medium" id="email-sent-to"></div>
+        </h1>
+        <p>Please check your email for instructions on resetting your password</p>
+      </div>
+
+      <!-- RESET PASSWORD FORM -->
+      <div class="inner-wrapper" id="reset-password-section">
+        <p>
+          Please fill out the fields below to reset the account password for
+          <span class="bold" id="reset-password-email-text"></span>
+        </p>
+        <div class="dqpl-field-wrap">
+          <label for="reset-password" class="dqpl-label">Password</label>
+          <input type="text" id="reset-password" name="reset-password" class="dqpl-text-input" />
+        </div>
+        <div class="dqpl-field-wrap">
+          <label for="confirm-reset-password" class="dqpl-label">Retype password</label>
+          <input type="text" id="confirm-reset-password" name="confirm-reset-password" class="dqpl-text-input" />
+        </div>
+        <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">RESET PASSWORD</span></button>
+      </div>
+
+      <!-- TWO FACTOR AUTHENTICATION -->
+      <div class="inner-wrapper" id="two-factor-section">
+        <h1 class="dqpl-small dqpl-text-small dqpl-weight-normal">
+          This account has two factor authentication. Please enter code
+        </h1>
+        <div class="dqpl-field-wrap">
+          <label for="authentication-code" class="dqpl-label">Authentication code</label>
+          <input type="text" id="authentication-code" name="authentication-code" class="dqpl-text-input" />
+        </div>
+        <button type="submit" class="dqpl-button-wrap"><span class="dqpl-button-primary">SIGN IN</span></button>
+        <div class="link-wrap">
+          <a href="#" class="back-to-sign-in dqpl-link">Sign in with a different email</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
+    <script src="login.js"></script>
+  </body>
+</html>
