@@ -1,5 +1,6 @@
 
 @import "../../src/less/variables.less";
+@import "../../src/less/base.less";
 
 h1 {
   text-align: center;
@@ -52,8 +53,21 @@ h1 {
   }
 
   .dqpl-field-wrap {
-    input[type="text"] {
+    input[type="text"], [type="password"] {
+      font-size: 16px;
       width: 100%;
+      padding: 4px 8px;
+    }
+
+    &.dqpl-half-bottom {
+      margin-bottom: 12px;
+    }
+
+    .error-message {
+      position: absolute;
+      font-size: @text-smallest;
+      color: @error;
+      margin-top: @space-quarter;
     }
   }
 
@@ -65,14 +79,14 @@ h1 {
     display: none;
     word-wrap: break-word;
     position: relative;
-    .vendor(transition, all .3s);
+    .vendor(transition, all .25s);
 
     &.active {
       display: block;
     }
 
     &.setup {
-      .vendor(transition, all .3s);
+      .vendor(transition, all .25s);
       .vendor(transform, translate(0));
       opacity: 1;
 

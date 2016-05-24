@@ -19,6 +19,18 @@ textarea,
     border: 1px solid @link;
     .field-focus();
   }
+
+  &@{prefix}error {
+    border: 1px solid @field-error-border;
+
+    &:focus {
+      .field-focus-error();
+    }
+
+    &:hover {
+      border: 1px solid @field-error-hover-border;
+    }
+  }
 }
 
 @{prefix}field-wrap {
@@ -31,7 +43,8 @@ textarea,
   display: block;
   text-align: left;
   font-size: @text-smaller;
-  margin-bottom: 4px;
+  margin-bottom: @space-three-quarters;
+  margin-left: @space-half;
 }
 
 @{prefix}label-inline {
@@ -45,4 +58,5 @@ textarea,
   .border-box();
   .box-sizing(border-box);
   font-size: @text-smallest;
+  color: @text-base;
 }
