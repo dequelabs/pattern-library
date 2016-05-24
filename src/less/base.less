@@ -24,6 +24,32 @@ body {
   font-weight: 400;
   color: @text-base;
   font-weight: 400;
+  margin: 0;
+  padding: 0;
+
+  h1 {
+    margin: 0;
+    padding: 18px 0;
+  }
+
+  button {
+    display: inline-block;
+    zoom: 1;
+    line-height: normal;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    .vendor(user-select, none);
+    -webkit-user-drag: none;
+    .box-sizing();
+  }
+
+  a {
+    color: @link;
+    font-weight: @weight-medium;
+    padding: @space-smallest;
+  }
 
   // Font sizes
   @{prefix}text-largest {
@@ -85,5 +111,9 @@ body {
 
   @{prefix}weight-ultra-bold {
     font-weight: @weight-ultra-bold;
+  }
+
+  .dqpl-hide {
+    display: none;
   }
 }

@@ -1,17 +1,41 @@
 @import "../variables.less";
 @import "../base.less";
 
+input,
+select,
+textarea,
+[role="radio"],
+[role="checkbox"],
+[role="menuitemcheckbox"],
+[role="menuitemradio"],
+[role="textbox"],
+[role="combobox"],
+[role="listbox"],
+[role="spinbutton"] {
+  border: 1px solid @field-border;
+
+  &:focus {
+    outline: 0;
+    border: 1px solid @link;
+    .field-focus();
+  }
+}
+
 @{prefix}field-wrap {
   position: relative;
   .border-box();
-
-  input[type="text"] {
-    width: 100%;
-  }
+  margin-bottom: @space-large;
 }
 
 @{prefix}label {
   display: block;
+  text-align: left;
+  font-size: @text-smaller;
+  margin-bottom: 4px;
+}
+
+@{prefix}label-inline {
+  display: inline;
   text-align: left;
   font-size: @text-smaller;
 }
@@ -20,4 +44,5 @@
   padding: 3px;
   .border-box();
   .box-sizing(border-box);
+  font-size: @text-smallest;
 }

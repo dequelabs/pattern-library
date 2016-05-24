@@ -3,7 +3,7 @@
 
 // Backgrounds
 @top-bar-bg: rgba(40, 54, 64, 1);
-// @top-bar-bg-clicked: darken(@header-bg, 15%);
+@top-bar-bg-clicked: darken(@top-bar-bg, 15%);
 @workspace-bg: rgba(253, 253, 254, 1);
 @tile-bg: rgba(255, 255, 255, 1);
 @bg-light: darken(@tile-bg, 10%);
@@ -24,7 +24,7 @@
 @field-bg: @tile-bg;
 @field-border: lighten(#000000, 80%);
 @field-hover-border: lighten(#000000, 70%);
-// @field-focus-border: @link-color;
+@field-focus-border: @link;
 @field-error-border: @error;
 @field-error-hover-border: darken(@error, 10%);
 @field-disabled-border: darken(@tile-bg, 5%);
@@ -33,7 +33,7 @@
 @button-primary: @link;
 @button-secondary: darken(@tile-bg, 5%);
 @button-text-dark: rgba(90, 98, 104, 1);
-// @button-text-light: @light-text;
+@button-text-light: @text-light;
 @button-text-disabled: @disabled;
 
 // Tables
@@ -53,12 +53,53 @@
 @top-bar-accent-error: rgba(254, 109, 107, 1);
 @top-bar-accent-success: rgba(98, 232, 107, 1);
 
+// Padding/Margin
+@space-smallest: 8px;
+@space-small: 16px;
+@space-medium: 18px;
+@space-large: 24px;
+@space-largest: 29px;
+
+
 // Vendor prefixer
 .vendor(@property, @value) {
   -webkit-@{property}: @value;
   -moz-@{property}: @value;
   -ms-@{property}: @value;
   @{property}: @value;
+}
+
+// Shortcuts
+.box-shadow(@args: none) {
+  .vendor(box-shadow, @args);
+}
+
+// Shadows/Glows
+.ambient-light() {
+  .box-shadow(0px 1px 2px 1px rgba(0,0,0,0.35))
+}
+.key-light() {
+  .box-shadow(2px 2px 2px 1px rgba(0,0,0,0.4));
+}
+
+.tile-drop() {
+  .box-shadow(0px 0px 13px 1px rgba(0,0,0,0.39));
+}
+
+.modal-drop() {
+  .box-shadow(0px 5px 18px 2px rgba(0,0,0,0.35));
+}
+
+.top-bar-drop() {
+  .box-shadow(0px 6px 20px 0px rgba(0,0,0,0.5));
+}
+
+.field-focus() {
+  .box-shadow(0px 0px 8px 1px rgba(60,122,174,1));
+}
+
+.field-focus-error() {
+  .box-shadow(0px 0px 8px 1px @error);
 }
 
 // Flex stuffs
