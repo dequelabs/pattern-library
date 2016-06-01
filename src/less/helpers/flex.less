@@ -1,4 +1,4 @@
-@import "variables.less";
+@import "../variables.less";
 
 // convenience flex classes
 .flexr {
@@ -11,4 +11,12 @@
   &.column {
     .flex-direction(column);
   }
+}
+
+.flex-1 {
+  .flex(1 0 auto);
+}
+
+.flex-none {
+  .flex(none);
 }
