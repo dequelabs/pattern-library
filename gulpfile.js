@@ -46,16 +46,6 @@ gulp.task('fonts', () => {
 });
 
 /**
- * Playground
- */
-
-gulp.task('playground', () => {
-  gulp.src('./playground/**/*.less')
-    .pipe(less())
-    .pipe(gulp.dest('./playground/'));
-});
-
-/**
  * Watcher
  */
 

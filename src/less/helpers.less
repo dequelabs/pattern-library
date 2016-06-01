@@ -1,0 +1,14 @@
+@import "variables.less";
+
+// convenience flex classes
+.flexr {
+  .display-flex();
+
+  &.row {
+    .flex-direction(row);
+  }
+
+  &.column {
+    .flex-direction(column);
+  }
+}
