@@ -28,7 +28,10 @@ gulp.task('css', () => {
  */
 
 gulp.task('js', () => {
-  gulp.src('./src/js/**/*.js')
+  gulp.src([
+    'bower_components/jquery/dist/jquery.min.js',
+    './src/js/**/*.js'
+  ])
     .pipe(concat('alchemy.js'))
     .pipe(gulp.dest(path.join(DIST, 'js')));
 });
@@ -50,6 +53,6 @@ gulp.task('fonts', () => {
  */
 
 gulp.task('watch', () => {
-  gulp.watch(['./src/less/**/*.less', './src/js/**/*.js'], ['css', 'js']);
-  gulp.watch(['./playground/**/*.less'], ['playground']);
+  gulp.watch(['./src/less/**/*.less'], ['css']);
+  gulp.watch(['./src/js/**/*.js'], ['js']);
 });

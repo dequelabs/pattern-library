@@ -36,18 +36,26 @@ textarea,
   position: relative;
   .border-box();
   margin-bottom: @space-large;
+
+  &.flexr {
+    .align-items(center);
+
+    @{prefix}label {
+      margin-bottom: 0;
+    }
+  }
 }
 
 @{prefix}label {
   display: block;
   text-align: left;
-  font-size: @text-smaller;
+  font-size: @text-small;
   margin-bottom: @space-three-quarters;
   margin-left: @space-half;
 }
 
 @{prefix}label-inline {
-  display: inline;
+  display: inline-block;
   text-align: left;
   font-size: @text-smaller;
 }
@@ -58,4 +66,32 @@ textarea,
   .box-sizing(border-box);
   font-size: @text-smallest;
   color: @text-base;
+}
+
+// custom radios
+@{prefix}custom-radio,
+@{prefix}custom-checkbox {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  .box-sizing(border-box);
+  .display-flex();
+  .justify-content(center);
+  .align-items(center);
+  cursor: pointer;
+
+  @{prefix}inner-radio,
+  @{prefix}inner-checkbox {
+    font-size: 17px;
+  }
+
+  &[aria-checked="true"] {
+    color: @link;
+  }
+
+  &:focus {
+    border: 1px solid @focus;
+    .box-shadow(none);
+  }
 }

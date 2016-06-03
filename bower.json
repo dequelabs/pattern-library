@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
+    "jquery": "~1.12.3",
     "components-font-awesome": "^4.6.3",
     "roboto-fontface": "^0.4.5"
   }
