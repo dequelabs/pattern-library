@@ -19,6 +19,14 @@ textarea,
     .field-focus();
   }
 
+  &:hover {
+    border: 1px solid @field-hover-border;
+  }
+
+  &[role="checkbox"]:hover {
+    border: 0;
+  }
+
   &@{prefix}error {
     border: 1px solid @field-error-border;
 

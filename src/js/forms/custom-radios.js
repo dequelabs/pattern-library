@@ -2,6 +2,7 @@
   'use strict';
   // custom radios must be a child of a `dqpl-radiogroup` element.
   var $radioGroups = jQuery('.dqpl-radio-group');
+
   $radioGroups.each(radioGroupHandler);
 
   function radioGroupHandler(i, group) {
@@ -84,7 +85,7 @@
   function arrowHandler($target, $radios, direction) {
     var isNext = direction === 'next';
     var currentIndex = jQuery.inArray($target[0], $radios);
-    var adjacentIndex = isNext ? currentIndex+ 1 : currentIndex - 1;
+    var adjacentIndex = isNext ? currentIndex + 1 : currentIndex - 1;
     var adjacentRadio = $radios[adjacentIndex];
 
     // first or last (circularity)
