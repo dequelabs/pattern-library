@@ -3,7 +3,7 @@
 
 // Backgrounds
 @top-bar-bg: rgba(40, 54, 64, 1);
-@top-bar-bg-clicked: darken(@top-bar-bg, 15%);
+@top-bar-bg-active: darken(@top-bar-bg, 15%);
 @workspace-bg: rgba(253, 253, 254, 1);
 @tile-bg: rgba(255, 255, 255, 1);
 @bg-light: darken(@tile-bg, 10%);
@@ -62,6 +62,7 @@
 @space-half: 4px;
 @space-three-quarters: 6px;
 @space-quarter: 2px;
+@space-large-with-underborder: 18px 24px;
 
 // text size
 @text-largest: 112px;
@@ -83,6 +84,10 @@
 @weight-bold: 700;
 @weight-ultra-bold: 900;
 
+// specfic dimensions
+@top-bar-height: 80px;
+@menu-width: 257px;
+
 // Vendor prefixer
 .vendor(@property, @value) {
   -webkit-@{property}: @value;
@@ -94,6 +99,11 @@
 // Shortcuts
 .box-shadow(@args: none) {
   .vendor(box-shadow, @args);
+}
+
+// Animation
+.animate(@args) {
+  .vendor(transition, @args)
 }
 
 // Shadows/Glows
@@ -169,6 +179,11 @@
 
 .border-box() { // convenience mixin
   .box-sizing(); // utilize the default value of border-box
+}
+
+// border-radius
+.circle() {
+  .vendor(border-radius, 50%);
 }
 
 // Utils

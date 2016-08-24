@@ -1,0 +1,207 @@
+@import "../variables.less";
+
+.underborder() {
+  .border-box();
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+
+.underborderShow() {
+  border-bottom: 8px solid @top-bar-text;
+}
+
+@{prefix}top-bar {
+  background-color: @top-bar-bg;
+  color: @top-bar-text;
+  position: fixed;
+  width: 100%;
+  height: @top-bar-height;
+  top: 0;
+  .flex();
+  .flex-direction(row);
+  .border-box();
+
+  > ul {
+    list-style-type: none;
+    .display-flex();
+    .align-items(center);
+
+    > li[role='menuitem'] {
+      .underborder();
+      cursor: pointer;
+
+      &:not(@{prefix}menu-trigger) {
+        padding: @space-medium;
+        font-size: @text-small;
+        height: @top-bar-height;
+        .display-flex();
+        .align-items(center);
+      }
+
+      &:focus, &:hover {
+        .underborderShow();
+        outline: 0;
+      }
+    }
+  }
+
+  a {
+    color: @top-bar-text;
+    text-decoration: none;
+  }
+
+  @{prefix}right-aligned {
+    margin-left: auto;
+  }
+
+  li@{prefix}active {
+    background-color: @top-bar-bg-active;
+
+    &:hover {
+      border-bottom: 8px solid transparent !important;
+    }
+  }
+
+  @{prefix}menu-trigger {
+    background-color: @top-bar-bg;
+    color: @top-bar-text;
+    font-size: @text-medium;
+    padding: @space-large-with-underborder;
+    .underborder();
+  }
+}
+
+@{prefix}dropdown {
+  display: none;
+  position: fixed;
+  top: 80px;
+  bottom: 0;
+  overflow: auto;
+  background-color: @top-bar-bg-active;
+  width: @menu-width;
+  left: -@menu-width;
+  .border-box();
+  .animate(left .3s);
+
+  &@{prefix}show {
+    display: block;
+  }
+
+  &@{prefix}active {
+    left: 0;
+    .animate(left .3s);
+  }
+
+  @{prefix}submenu {
+    display: none;
+  }
+
+  li:not([aria-controls]), @{prefix}item-text {
+    padding: @space-small;
+    border-bottom: 1px solid @top-bar-divider;
+    border-left: 8px solid transparent;
+
+    &:hover, &:focus {
+      outline: 0;
+      border-left: 8px solid @top-bar-text;
+
+      @{prefix}item-text {
+        border-left: 8px solid @top-bar-text;
+      }
+    }
+  }
+
+  @{prefix}weight-bold {
+    @{prefix}item-text {
+      font-weight: @weight-medium;
+    }
+  }
+
+  > li {
+    color: @top-bar-text;
+    font-size: @text-small;
+    font-weight: @weight-light;
+    cursor: pointer;
+
+    &:focus {
+      outline: 0;
+      @{prefix}item-text {
+        border-left: 8px solid @top-bar-text;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: @top-bar-text;
+      font-size: @text-small;
+      font-weight: @weight-light;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    > ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      > li {
+        background-color: @top-bar-bg;
+        cursor: pointer;
+
+        a {
+          margin-left: @space-small;
+        }
+      }
+    }
+  }
+
+  // for apps with authentication/users
+  @{prefix}account {
+    .display-flex();
+    .align-items(center);
+    padding: @space-large;
+
+    @{prefix}account-image {
+      img {
+        width: 62px;
+        .circle();
+      }
+    }
+
+    @{prefix}account-info {
+      padding-left: @space-half;
+
+      h2 {
+        color: @text-light;
+        font-weight: @weight-medium;
+        font-size: @text-normal;
+        padding: 0;
+        margin: 0;
+      }
+
+      @{prefix}account-title,
+      @{prefix}account-org {
+        font-size: @text-smaller;
+      }
+
+      @{prefix}account-title {
+        font-style: italic;
+      }
+    }
+  }
+
+  // for deque branding apps
+  @{prefix}branding {
+    padding: @space-large;
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: @text-light;
+      font-weight: @weight-normal;
+    }
+
+  }
+}
