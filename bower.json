@@ -1,6 +1,6 @@
 {
   "name": "pattern-library",
-  "description": "",
+  "description": "Patterns and stuffs",
   "main": "gulpfile.js",
   "authors": [
     "Harris Schneiderman <harris.schneiderman@deque.com>"
