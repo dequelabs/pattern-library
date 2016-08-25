@@ -30,6 +30,7 @@ gulp.task('css', () => {
 gulp.task('js', () => {
   gulp.src([
     'bower_components/jquery/dist/jquery.min.js',
+    './src/js/utils/**/*.js',
     './src/js/**/*.js'
   ])
     .pipe(concat('alchemy.js'))

@@ -1,0 +1,26 @@
+
+@import './variables.less';
+
+@{prefix}main-content {
+  margin-top: @top-bar-height;
+}
+
+@media (min-width: 1024px) {
+  body {
+    @{prefix}dropdown {
+      display: block;
+      left: 0;
+      .animate(left .3s);
+
+    }
+    @{prefix}top-bar {
+      @{prefix}menu-trigger {
+        display: none;
+      }
+    }
+
+    @{prefix}main-content {
+      margin-left: @menu-width;
+    }
+  }
+}

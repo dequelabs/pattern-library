@@ -1,19 +1,50 @@
 (function () {
   'use strict';
 
+  var initialState;
   var ACTIVE_CLASS = 'dqpl-active';
   var $topBar = jQuery('.dqpl-top-bar');
   var $trigger = $topBar.find('.dqpl-menu-trigger');
   var $menu = jQuery('.dqpl-main-nav');
   // top level menuitems
-  var $topBarMenuItems = findTopLevels($topBar.find('ul').first());
+  var $topBarMenuItems = findTopLevels($topBar.find('ul').first(), true);
   // top level side bar menu items
   var $sideMenuTopLevels = findTopLevels($menu);
 
   /**
+   * Listen for resize so we can configure stuff based on the locking of the menu
+   */
+  jQuery.throttle({
+    element: window,
+    event: 'resize',
+    delay: 100
+  }, onResize);
+
+  onResize();
+
+  /**
+   * Listen for clicks outside the menu (when
+   * its opened AND not locked) to close it
+   */
+  jQuery(document).on('click', function (e) {
+    var $target = jQuery(e.target);
+    var isWithin = $target.closest('.dqpl-main-nav').length;
+    var isHamburger = $target.is('.dqpl-menu-trigger') || !!$target.closest('.dqpl-menu-trigger').length;
+    if (isWithin || isHamburger || $menu.attr('data-locked') === 'locked') {
+      return;
+    }
+
+    if ($menu.attr('aria-expanded') === 'true') {
+      onTriggerClick();
+    }
+  });
+
+  /**
    * Toggle menu on hamburger clicks
    */
-  $trigger.on('click', function () {
+  $trigger.on('click', onTriggerClick);
+
+  function onTriggerClick() {
     toggleSubmenu($trigger, function (_, done) {
       $trigger.toggleClass(ACTIVE_CLASS);
 
@@ -26,7 +57,7 @@
         setTimeout(done);
       }, 100);
     });
-  });
+  }
 
   /**
    * Setup for menu items
@@ -62,10 +93,6 @@
         case 32:
           e.preventDefault();
           $target.click();
-          // var $link = $target.find('a');
-          // if ($link.length) {
-          //   $link[0].click();
-          // }
           break;
       }
     })
@@ -91,6 +118,9 @@
       switch (which) {
         case 27:
         case 37:
+          if ($menu.attr('data-locked') === 'true' && $target.parent().is($menu)) {
+            return;
+          }
           e.preventDefault();
           e.stopPropagation(); // prevent bubbling for sake of submenus
           var $thisMenu = $target.closest('[role="menu"]');
@@ -136,6 +166,30 @@
       });
     });
 
+
+  /**
+   * The menu is locked into visibility above 1024px viewport...
+   * - ensure aria-expanded is removed/readded properly
+   * - ensure the topbar menu isn't thrown off (in case the hamburger was the "active" item)
+   */
+  function onResize() {
+    var width = jQuery(window).width();
+
+    if (width >= 1024) {
+      $menu.attr('data-prev-expanded', $menu.attr('aria-expanded'));
+      $menu.removeAttr('aria-expanded');
+      if ($trigger.prop('tabIndex') === '0') {
+        // since `$trigger` gets hidden (via css) "activate" something else in the menubar
+        $topBarMenuItems = findTopLevels($topBar.find('ul').first(), true);
+        $topBarMenuItems.prop('tabIndex', -1).first().prop('tabIndex', 0);
+      }
+      $menu.attr('data-locked', 'true');
+    } else {
+      $menu.attr('aria-expanded', $menu.attr('data-prev-expanded') || 'false');
+      $topBarMenuItems = findTopLevels($topBar.find('ul').first(), true);
+      $menu.attr('data-locked', 'false');
+    }
+  }
 
   /**
    * Activates a menuitem and deactivates the previously active
@@ -199,7 +253,8 @@
   /**
    * Finds the top level menu items of a menu
    */
-  function findTopLevels($ul) {
-    return $ul.children().filter('[role="menuitem"]');
+  function findTopLevels($ul, visible) {
+    var $chiles = $ul.children().filter('[role="menuitem"]');
+    return (visible) ? $chiles.filter(':visible') : $chiles;
   }
 }());
