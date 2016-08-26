@@ -1,8 +1,9 @@
 @import "../variables.less";
 
 // convenience flex classes
-.flexr {
+.flexr, @{prefix}flexr {
   .display-flex();
+  .align-items(center);
 
   &.row {
     .flex-direction(row);

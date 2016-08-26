@@ -20,6 +20,8 @@
   .flex();
   .flex-direction(row);
   .border-box();
+  .top-bar-drop();
+  z-index: 9;
 
   > ul {
     list-style-type: none;
@@ -41,6 +43,12 @@
       &:focus, &:hover {
         .underborderShow();
         outline: 0;
+      }
+
+      a {
+        &:focus {
+          outline: 0;
+        }
       }
     }
   }
@@ -83,6 +91,7 @@
   left: -@menu-width;
   .border-box();
   .animate(left .3s);
+  z-index: 9;
 
   &@{prefix}show {
     display: block;
@@ -99,7 +108,6 @@
 
   li:not([aria-controls]), @{prefix}item-text {
     padding: @space-small;
-    border-bottom: 1px solid @top-bar-divider;
     border-left: 8px solid transparent;
 
     &:hover, &:focus {
@@ -108,6 +116,23 @@
 
       @{prefix}item-text {
         border-left: 8px solid @top-bar-text;
+      }
+    }
+
+    // for deque branding apps
+    &@{prefix}branding {
+      padding: @space-large @space-large @space-large @space-small;
+      border-bottom: 1px solid @top-bar-divider;
+
+      @{prefix}name {
+        margin-top: @space-quarter;
+      }
+
+      a {
+        display: block;
+        text-decoration: none;
+        color: @text-light;
+        font-weight: @weight-light;
       }
     }
   }
@@ -146,13 +171,16 @@
       list-style-type: none;
       padding: 0;
       margin: 0;
+      border-top: 1px solid @top-bar-divider;
 
       > li {
         background-color: @top-bar-bg;
         cursor: pointer;
+        border-bottom: 1px solid @top-bar-divider;
 
         a {
           margin-left: @space-small;
+          font-size: @text-smaller;
         }
       }
     }
@@ -191,18 +219,5 @@
         font-style: italic;
       }
     }
-  }
-
-  // for deque branding apps
-  @{prefix}branding {
-    padding: @space-large;
-
-    a {
-      display: block;
-      text-decoration: none;
-      color: @text-light;
-      font-weight: @weight-normal;
-    }
-
   }
 }
