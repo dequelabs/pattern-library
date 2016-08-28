@@ -1,6 +1,10 @@
 (function () {
   'use strict';
 
+  /**
+   * TODO: Handle submenus (other than menu) of topbar
+   */
+
   var initialState;
   var ACTIVE_CLASS = 'dqpl-active';
   var $topBar = jQuery('.dqpl-top-bar');
@@ -8,8 +12,6 @@
   var $menu = jQuery('.dqpl-main-nav');
   // top level menuitems
   var $topBarMenuItems = findTopLevels($topBar.find('ul').first(), true);
-  // top level side bar menu items
-  var $sideMenuTopLevels = findTopLevels($menu);
 
   /**
    * Listen for resize so we can configure stuff based on the locking of the menu
@@ -155,15 +157,22 @@
     /**
      * Mouse logic for expandable submenu triggers
      */
-    .on('click', '[role="menuitem"][aria-controls]', function (e) {
+    .on('click', '[role="menuitem"]', function (e) {
       e.stopPropagation();
       var $trigger = jQuery(this);
-      toggleSubmenu($trigger, function ($submenu, done) {
-        // TODO: CSS Transition?
-        $submenu.slideToggle();
-        $trigger.toggleClass('dqpl-weight-bold');
-        setTimeout(done);
-      });
+      if ($trigger.attr('aria-controls')) {
+        toggleSubmenu($trigger, function ($submenu, done) {
+          // TODO: CSS Transition?
+          $submenu.slideToggle();
+          $trigger.toggleClass('dqpl-weight-bold');
+          setTimeout(done);
+        });
+      } else {
+        var $link = $trigger.find('a');
+        if ($link.length) {
+          $link[0].click();
+        }
+      }
     });
 
 
