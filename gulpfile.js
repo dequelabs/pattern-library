@@ -7,7 +7,7 @@ const concat = require('gulp-concat');
 const open = require('gulp-open');
 const DIST = './dist/';
 
-gulp.task('default', ['fonts', 'css', 'js']);
+gulp.task('default', ['fonts', 'css', 'js', 'variables']);
 
 /**
  * Styles
@@ -22,6 +22,17 @@ gulp.task('css', () => {
     .pipe(less())
     .pipe(concat('alchemy.css'))
     .pipe(gulp.dest(path.join(DIST, 'css')));
+});
+
+
+/**
+ * Variables
+ * (to be included in the release)
+ */
+
+gulp.task('variables', () => {
+  gulp.src(['./src/less/variables.less'])
+    .pipe(gulp.dest(path.join(DIST, 'less')));
 });
 
 /**
