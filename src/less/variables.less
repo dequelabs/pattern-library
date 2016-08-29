@@ -1,9 +1,16 @@
 
 @prefix: ~'.dqpl-';
 
+// default focus ring
+.focusRing() {
+  outline: 2px solid @focus;
+  outline-offset: @space-quarter;
+}
+
 // Backgrounds
 @top-bar-bg: rgba(40, 54, 64, 1);
 @top-bar-bg-active: darken(@top-bar-bg, 15%);
+@top-bar-bg-active-scrim: rgba(11, 14, 17, .9);
 @workspace-bg: rgba(253, 253, 254, 1);
 @tile-bg: rgba(255, 255, 255, 1);
 @bg-light: darken(@tile-bg, 10%);
@@ -185,6 +192,10 @@
 // border-radius
 .circle() {
   .vendor(border-radius, 50%);
+}
+
+.border-radius(@args) {
+  .vendor(border-radius, @args);
 }
 
 // Utils

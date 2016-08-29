@@ -8,10 +8,10 @@ body {
   font-weight: 400;
   margin: 0;
   padding: 0;
+  background-color: @workspace-bg;
 
   :focus {
-    outline: 2px solid @focus;
-    outline-offset: @space-quarter;
+    .focusRing();
   }
 
   h1 {
