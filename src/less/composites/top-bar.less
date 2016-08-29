@@ -31,6 +31,7 @@
     > li[role='menuitem'] {
       .underborder();
       cursor: pointer;
+      position: static;
 
       &:not(@{prefix}menu-trigger) {
         padding: @space-medium;
@@ -78,9 +79,14 @@
     padding: @space-large-with-underborder;
     .underborder();
   }
+
+  @{prefix}dropdown {
+    position: absolute;
+    list-style-type: none;
+  }
 }
 
-@{prefix}dropdown {
+@{prefix}side-bar {
   display: none;
   position: fixed;
   top: 80px;

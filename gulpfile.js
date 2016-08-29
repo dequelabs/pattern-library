@@ -1,10 +1,11 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var less = require('gulp-less');
-var concat = require('gulp-concat');
-var DIST = './dist/';
+const path = require('path');
+const gulp = require('gulp');
+const less = require('gulp-less');
+const concat = require('gulp-concat');
+const open = require('gulp-open');
+const DIST = './dist/';
 
 gulp.task('default', ['fonts', 'css', 'js']);
 
@@ -56,4 +57,13 @@ gulp.task('fonts', () => {
 gulp.task('watch', () => {
   gulp.watch(['./src/less/**/*.less'], ['css']);
   gulp.watch(['./src/js/**/*.js'], ['js']);
+});
+
+/**
+ * Test runner
+ */
+
+gulp.task('test', () => {
+  gulp.src('./test/index.html')
+    .pipe(open());
 });

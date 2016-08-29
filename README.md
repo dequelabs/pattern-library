@@ -8,3 +8,6 @@
 ## Releases
 Orphan branch dist-only releases...
 * https://gist.github.com/schne324/6ca72fac89f35d961a0d
+
+## Notes
+* All media query stuff should go in `src/less/layout.less`
