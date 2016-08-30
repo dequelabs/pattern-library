@@ -1,15 +1,28 @@
 @import "../variables.less";
 
+@{prefix}button-primary, @{prefix}button-secondary {
+  width: 100px;
+  border-radius: 18px;
+  border: none;
+  padding: @space-smallest;
+  font-size: @text-small;
+  .border-box();
+  padding: @space-smallest;
+  .ambient-light();
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  height: 36px;
+}
+
 @{prefix}button-primary {
   background-color: @button-primary;
   color: @button-text-light;
-  width: 250px;
-  border-radius: 18px;
-  border: none;
-  .border-box();
-  padding: @space-smallest;
-  font-size: 14px;
-  .ambient-light();
+}
+
+@{prefix}button-secondary {
+  background-color: @button-secondary;
+  color: @button-text-dark;
 }
 
 @{prefix}button-wrapper {

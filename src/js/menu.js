@@ -11,7 +11,7 @@
   var $trigger = $topBar.find('.dqpl-menu-trigger');
   var $menu = jQuery('.dqpl-main-nav');
   // top level menuitems
-  var $topBarMenuItems = findTopLevels($topBar.find('ul').first(), true);
+  var $topBarMenuItems = findTopLevels($topBar.find('[role="menubar"]').first(), true);
 
   /**
    * Listen for resize so we can configure stuff based on the locking of the menu
@@ -23,6 +23,13 @@
   }, onResize);
 
   onResize();
+
+
+  /**
+   * Listen for refresh events
+   * (prevents menus from getting in funky states)
+   */
+  $topBar.on('dqpl:refresh', onRefresh);
 
   /**
    * Listen for clicks outside the menu (when
@@ -82,7 +89,10 @@
         case 37:
         case 39:
           e.preventDefault(); // don't scroll
-          arrowHandler($topBarMenuItems, $target, which === 39 ? 'next' : 'prev');
+          arrowHandler(
+            findTopLevels($topBar.find('[role="menubar"]').first(), true),
+            $target, which === 39 ? 'next' : 'prev'
+          );
           break;
         case 38:
         case 40:
@@ -187,9 +197,10 @@
     if (width >= 1024) {
       $menu.attr('data-prev-expanded', $menu.attr('aria-expanded'));
       $menu.removeAttr('aria-expanded');
-      if ($trigger.prop('tabIndex') === '0') {
+
+      if ($trigger.prop('tabIndex') === 0) {
         // since `$trigger` gets hidden (via css) "activate" something else in the menubar
-        $topBarMenuItems = findTopLevels($topBar.find('ul').first(), true);
+        $topBarMenuItems = findTopLevels($topBar.find('[role="menubar"]').first(), true);
         $topBarMenuItems.prop('tabIndex', -1).first().prop('tabIndex', 0);
       }
       $menu.attr('data-locked', 'true');
@@ -197,6 +208,17 @@
       $menu.attr('aria-expanded', $menu.attr('data-prev-expanded') || 'false');
       $topBarMenuItems = findTopLevels($topBar.find('ul').first(), true);
       $menu.attr('data-locked', 'false');
+    }
+  }
+
+  /**
+   * Ensure that there is 1 item with tabindex="0"
+   */
+  function onRefresh() {
+    $topBarMenuItems = findTopLevels($topBar.find('[role="menubar"]').first(), true);
+    var $activeOne = $topBarMenuItems.filter('[tabindex="0"]');
+    if (!$activeOne.length) {
+      $topBarMenuItems.first().prop('tabIndex', 0);
     }
   }
 
