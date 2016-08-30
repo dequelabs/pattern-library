@@ -182,12 +182,12 @@
 
   function idrefsText(str) {
     if (!str) { return ''; }
-		var result = [], index, length;
-		var idrefs = str.trim().replace(/\s{2,}/g, ' ').split(' ');
-		for (index = 0, length = idrefs.length; index < length; index++) {
-			result.push(document.getElementById(idrefs[index]).textContent);
-		}
-		return result.join(' ');
-	}
+    var result = [], index, length;
+    var idrefs = str.trim().replace(/\s{2,}/g, ' ').split(' ');
+    for (index = 0, length = idrefs.length; index < length; index++) {
+      result.push(document.getElementById(idrefs[index]).textContent);
+    }
+    return result.join(' ');
+  }
 
 }());
