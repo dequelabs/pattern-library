@@ -136,10 +136,17 @@
     &@{prefix}menuitem-selected {
       border-left: 8px solid @top-bar-accent-primary;
 
+      &:not(@{prefix}account):not(@{prefix}branding) {
+        a {
+          color: @text-light;
+          font-weight: @weight-medium;
+        }
+      }
+
       &:focus {
         &:before {
           content: '';
-          width: 5px;
+          width: 8px;
           height: 100%;
           background-color: @top-bar-text;
           position: absolute;
@@ -220,17 +227,18 @@
   @{prefix}account {
     .display-flex();
     .align-items(center);
-    padding: @space-large;
+    border-bottom: 1px solid @top-bar-divider;
 
     @{prefix}account-image {
       img {
-        width: 62px;
+        width: 63px;
         .circle();
+        border: 2px solid #fff;
       }
     }
 
     @{prefix}account-info {
-      padding-left: @space-half;
+      padding-left: @space-smallest;
 
       h2 {
         color: @text-light;
@@ -243,6 +251,7 @@
       @{prefix}account-title,
       @{prefix}account-org {
         font-size: @text-smaller;
+        padding: @space-quarter;
       }
 
       @{prefix}account-title {
