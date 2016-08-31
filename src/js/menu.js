@@ -54,7 +54,7 @@
    */
   $trigger.on('click', onTriggerClick);
 
-  function onTriggerClick() {
+  function onTriggerClick(e, noFocus) {
     toggleSubmenu($trigger, function (_, done) {
       $trigger.toggleClass(ACTIVE_CLASS);
       var wasActive = $menu.hasClass(ACTIVE_CLASS);
@@ -66,7 +66,9 @@
       setTimeout(function () {
         $menu.toggleClass(second);
         $scrim.toggleClass('dqpl-scrim-fade-in');
-        setTimeout(done);
+        setTimeout(function () {
+          done(noFocus);
+        });
       }, 100);
     });
   }
@@ -186,6 +188,17 @@
           $link[0].click();
         }
       }
+    })
+    .on('keydown', function (e) {
+      var which = e.which;
+      if (which !== 9) { return; }
+      setTimeout(function () {
+        var outsideOfMenu = !$menu.has(document.activeElement).length;
+        var isExpanded = $menu.attr('aria-expanded') === 'true';
+        if (outsideOfMenu && isExpanded) {
+          onTriggerClick(null, true);
+        }
+      });
     });
 
 
@@ -212,6 +225,9 @@
       $menu.attr('aria-expanded', $menu.attr('data-prev-expanded') || 'false');
       $topBarMenuItems = findTopLevels($topBar.find('ul').first(), true);
       $menu.attr('data-locked', 'false');
+      if ($menu.attr('data-prev-expanded') === 'true') {
+        $scrim.addClass('dqpl-scrim-show').addClass('dqpl-scrim-fade-in');
+      }
     }
   }
 
@@ -272,16 +288,18 @@
       return;
     }
 
-    toggleFn($droplet, function () {
+    toggleFn($droplet, function (noFocus) {
       var prevExpanded = $droplet.attr('aria-expanded');
       var wasCollapsed = !prevExpanded || prevExpanded === 'false';
       $droplet.attr('aria-expanded', wasCollapsed);
-      var $focusMe = wasCollapsed ?
-        $droplet.find('[role="menuitem"][tabindex="0"]').filter(':visible').first() :
-        $droplet.closest('[aria-controls][role="menuitem"]');
+      if (!noFocus) {
+        var $focusMe = wasCollapsed ?
+          $droplet.find('[role="menuitem"][tabindex="0"]').filter(':visible').first() :
+          $droplet.closest('[aria-controls][role="menuitem"]');
 
-      $focusMe = $focusMe.length ? $focusMe : $trigger;
-      $focusMe.focus();
+        $focusMe = $focusMe.length ? $focusMe : $trigger;
+        $focusMe.focus();
+      }
     });
   }
 
