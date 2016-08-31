@@ -1,6 +1,7 @@
 @import "../variables.less";
 
-@{prefix}button-primary, @{prefix}button-secondary {
+@{prefix}button-primary,
+@{prefix}button-secondary {
   width: 100px;
   border-radius: 18px;
   border: none;
@@ -13,6 +14,62 @@
   margin: 0 auto;
   text-align: center;
   height: 36px;
+
+  &:hover {
+    .key-light();
+  }
+}
+
+@{prefix}button-wrap {
+  padding: 0;
+  display: block;
+
+  &@{prefix}button-primary {
+    border: 3px solid @button-primary;
+    .border-box();
+
+
+    @{prefix}inner-button {
+      width: 100%;
+      background-color: @button-primary;
+      color: @text-light;
+      border-radius: 18px;
+      .border-box();
+      display: inline-block;
+      padding: 6px;
+    }
+  }
+
+  &@{prefix}button-secondary {
+    border: 3px solid @button-secondary;
+    .border-box();
+
+    @{prefix}inner-button {
+      width: 100%;
+      background-color: @button-secondary;
+      color: @button-text-dark;
+      border-radius: 18px;
+      .border-box();
+      display: inline-block;
+      padding: 6px;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+
+    &@{prefix}button-primary {
+      background-color: @text-light;
+    }
+
+    &@{prefix}button-secondary {
+      background-color: @button-text-dark;
+    }
+
+    @{prefix}inner-button {
+      width: 94%;
+    }
+  }
 }
 
 @{prefix}button-primary {

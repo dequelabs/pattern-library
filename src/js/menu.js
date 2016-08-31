@@ -10,6 +10,7 @@
   var $topBar = jQuery('.dqpl-top-bar');
   var $trigger = $topBar.find('.dqpl-menu-trigger');
   var $menu = jQuery('.dqpl-main-nav');
+  var $scrim = jQuery('#dqpl-side-bar-scrim');
   // top level menuitems
   var $topBarMenuItems = findTopLevels($topBar.find('[role="menubar"]').first(), true);
 
@@ -56,13 +57,15 @@
   function onTriggerClick() {
     toggleSubmenu($trigger, function (_, done) {
       $trigger.toggleClass(ACTIVE_CLASS);
-
-      var first = $menu.hasClass(ACTIVE_CLASS) ? ACTIVE_CLASS : 'dqpl-show';
+      var wasActive = $menu.hasClass(ACTIVE_CLASS);
+      var first = wasActive ? ACTIVE_CLASS : 'dqpl-show';
       var second = first === ACTIVE_CLASS ? 'dqpl-show' : ACTIVE_CLASS;
 
       $menu.toggleClass(first);
+      $scrim.toggleClass('dqpl-scrim-show');
       setTimeout(function () {
         $menu.toggleClass(second);
+        $scrim.toggleClass('dqpl-scrim-fade-in');
         setTimeout(done);
       }, 100);
     });
@@ -197,6 +200,7 @@
     if (width >= 1024) {
       $menu.attr('data-prev-expanded', $menu.attr('aria-expanded'));
       $menu.removeAttr('aria-expanded');
+      $scrim.removeClass('dqpl-scrim-show').removeClass('dqpl-scrim-fade-in');
 
       if ($trigger.prop('tabIndex') === 0) {
         // since `$trigger` gets hidden (via css) "activate" something else in the menubar
