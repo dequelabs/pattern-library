@@ -74,6 +74,21 @@
   }
 
   /**
+   * Toggle submenu on other menu items with submenus
+   */
+  $topBar.on('click', '[role="menuitem"][aria-controls]', function () {
+    var $this = jQuery(this);
+    // trigger clicks are handled separately...
+    if ($this.is($trigger)) { return; }
+
+    toggleSubmenu($this, function ($dropdown, done) {
+      $dropdown.toggleClass('dqpl-dropdown-active');
+      done(false, ($dropdown.hasClass('dqpl-dropdown-active') ? $dropdown : $this));
+    });
+
+  });
+
+  /**
    * Setup for menu items
    */
   $topBarMenuItems.prop('tabIndex', -1).first().prop('tabIndex', 0);
@@ -118,6 +133,20 @@
       var $link = $target.find('a');
       if ($link.length) {
         $link[0].click();
+      }
+    })
+    .on('keydown', '.dqpl-dropdown', function (e) {
+      var which = e.which;
+      var $target = jQuery(e.target);
+      var $dropdown = jQuery(this);
+
+      switch (which) {
+        case 27:
+        case 38:
+          var id = $dropdown.prop('id');
+          var $trigger = jQuery('[aria-controls="' + id + '"]');
+          $trigger.click();
+          break;
       }
     });
 
@@ -288,11 +317,13 @@
       return;
     }
 
-    toggleFn($droplet, function (noFocus) {
+    toggleFn($droplet, function (noFocus, $focus) {
       var prevExpanded = $droplet.attr('aria-expanded');
       var wasCollapsed = !prevExpanded || prevExpanded === 'false';
       $droplet.attr('aria-expanded', wasCollapsed);
-      if (!noFocus) {
+      if ($focus) {
+        $focus.focus();
+      } else if (!noFocus) {
         var $focusMe = wasCollapsed ?
           $droplet.find('[role="menuitem"][tabindex="0"]').filter(':visible').first() :
           $droplet.closest('[aria-controls][role="menuitem"]');

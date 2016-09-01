@@ -1,0 +1,22 @@
+@import "../variables.less";
+
+@{prefix}dropdown {
+  position: absolute;
+  padding: 8px;
+  background-color: @tile-bg;
+  .ambient-light();
+  border: 1px solid @field-border;
+  color: @text-base;
+  display: none;
+
+  &@{prefix}dropdown-active {
+    display: block;
+  }
+}
+
+@{prefix}top-bar {
+  @{prefix}dropdown {
+    top: 72px;
+    right: 0;
+  }
+}
