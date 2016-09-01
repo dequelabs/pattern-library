@@ -11,3 +11,9 @@ Orphan branch dist-only releases...
 
 ## Notes
 * All media query stuff should go in `src/less/layout.less`
+
+## Implementation Notes
+* If content of app is somehow loaded in after page load, you'll need to fire the "dqpl:ready" event so the javascript can reassess stuff.  Example:
+```js
+jQuery(document).trigger('dqpl:ready'); // tell the pattern library we're ready to go
+```

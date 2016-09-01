@@ -47,48 +47,65 @@
    * 		I am the target of the third skip link "Hop to other thing"
    * 	</div>
    *
+   *
+   * NOTE: add `data-remove-tabindex-on-blur="true"` to the skip container
+   * if you want tabindex to be removed from a skip target on blur (so when
+   * you click inside of a container the focus ring doesn't show up)
    */
 
   var $skipContainer = jQuery('.dqpl-skip-container');
 
   if (!$skipContainer.length) {
-    return;
+    return listenForReady();
+  } else {
+    landmarksMenu();
   }
 
-  // focus management
-  $skipContainer
-      .on('focusin', function (e) {
-        var $target = jQuery(e.target);
+  function listenForReady() {
+    jQuery(document).one('dqpl:ready', function () {
+      $skipContainer = jQuery('.dqpl-skip-container');
+      landmarksMenu();
+    });
+  }
 
-        if ($target.closest('ul').length) {
-          $skipContainer.addClass('dqpl-child-focused');
-        }
-        $skipContainer.addClass('dqpl-skip-container-active');
-        setTimeout(function () {
-          $skipContainer.addClass('dqpl-skip-fade');
-        });
-      })
-      .on('focusout', function (e) {
-        var $target = jQuery(e.target);
+  function landmarksMenu() {
+    var shouldRemove = $skipContainer.is('[data-remove-tabindex-on-blur]');
 
-        setTimeout(function () {
-          var activeEl = document.activeElement;
-          if (!jQuery(activeEl).closest('.dqpl-skip-container').length) {
-            if ($target.closest('ul').length) {
-              $skipContainer.removeClass('dqpl-child-focused');
-            }
-            $skipContainer.removeClass('dqpl-skip-container-active');
-            setTimeout(function () {
-              $skipContainer.removeClass('dqpl-skip-fade');
-            });
+    // focus management
+    $skipContainer
+        .on('focusin', function (e) {
+          var $target = jQuery(e.target);
+
+          if ($target.closest('ul').length) {
+            $skipContainer.addClass('dqpl-child-focused');
           }
-        });
-      });
+          $skipContainer.addClass('dqpl-skip-container-active');
+          setTimeout(function () {
+            $skipContainer.addClass('dqpl-skip-fade');
+          });
+        })
+        .on('focusout', function (e) {
+          var $target = jQuery(e.target);
 
-  if ($skipContainer.children().length) {
-    return fixExistingLinks();
-  } else {
-    return createLandmarkMenu();
+          setTimeout(function () {
+            var activeEl = document.activeElement;
+            if (!jQuery(activeEl).closest('.dqpl-skip-container').length) {
+              if ($target.closest('ul').length) {
+                $skipContainer.removeClass('dqpl-child-focused');
+              }
+              $skipContainer.removeClass('dqpl-skip-container-active');
+              setTimeout(function () {
+                $skipContainer.removeClass('dqpl-skip-fade');
+              });
+            }
+          });
+        });
+
+    if ($skipContainer.children().length) {
+      return fixExistingLinks();
+    } else {
+      return createLandmarkMenu();
+    }
   }
 
   function fixExistingLinks() {
@@ -106,6 +123,11 @@
       $landing.prop('tabIndex', $landing.prop('tabIndex') || '-1');
       // focus it
       $landing.focus();
+      if (shouldRemove) {
+        $landing.off('blur.dqpl').one('blur.dqpl', function () {
+          $landing.removeAttr('tabIndex');
+        });
+      }
     });
   }
 
@@ -120,9 +142,7 @@
     var links = [];
 
     jQuery(SELECTOR).each(function (_, skipTarget) {
-      // ensure its focusable
-      skipTarget.tabIndex = skipTarget.tabIndex || -1;
-
+      var $skipTarget = jQuery(skipTarget);
       // calculate link text
       var linkText = calculateText(skipTarget);
 
@@ -142,7 +162,15 @@
 
       $link.on('click', function (e) {
         e.preventDefault();
+        // ensure its focusable
+        skipTarget.tabIndex = skipTarget.tabIndex || -1;
+        // focus it
         skipTarget.focus();
+        if (shouldRemove) {
+          $skipTarget.off('blur.dqpl').one('blur.dqpl', function () {
+            $skipTarget.removeAttr('tabIndex');
+          });
+        }
       });
     });
 
