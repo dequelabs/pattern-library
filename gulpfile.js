@@ -15,8 +15,9 @@ gulp.task('default', ['fonts', 'css', 'js', 'variables']);
 
 gulp.task('css', () => {
   gulp.src([
-    'bower_components/components-font-awesome/css/font-awesome.min.css', // ICONS
-    'bower_components/roboto-fontface/css/roboto-fontface.css', // FONT (Roboto)
+    './bower_components/components-font-awesome/css/font-awesome.min.css', // ICONS
+    './bower_components/roboto-fontface/css/roboto-fontface.css', // FONT (Roboto)
+    './node_modules/prismjs/themes/prism-coy.css', // prismjs coy theme (syntax highlighting)
     './src/less/**/*.less'
   ])
     .pipe(less())
@@ -41,7 +42,10 @@ gulp.task('variables', () => {
 
 gulp.task('js', () => {
   gulp.src([
-    'bower_components/jquery/dist/jquery.min.js',
+    './bower_components/jquery/dist/jquery.min.js',
+    './bower_components/a11y-tabs/a11y-tabs.js',
+    './node_modules/prismjs/prism.js',
+    './node_modules/prismjs/components/prism-jade.min.js',
     './src/js/utils/**/*.js',
     './src/js/**/*.js'
   ])
