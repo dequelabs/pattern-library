@@ -72,6 +72,7 @@ gulp.task('fonts', () => {
 gulp.task('watch', () => {
   gulp.watch(['./src/less/**/*.less'], ['css']);
   gulp.watch(['./src/js/**/*.js'], ['js']);
+  gulp.watch(['./src/less/variables.less'], ['variables']);
 });
 
 /**

@@ -1,11 +1,39 @@
-
 @import './variables.less';
 
-@{prefix}main-content {
-  margin-top: @top-bar-height;
-  padding: @space-gutter @space-gutter 0 @space-gutter;
+.contentFocus() {
+  outline: 0;
+  border-left-color: @top-bar-bg;
 }
 
+@{prefix}main-content {
+  margin-top: (@top-bar-height + @space-gutter);
+  padding: 0 @space-gutter 0 21px;
+  margin-left: 21px;
+  border-left: 6px solid transparent;
+  &:focus {
+    .contentFocus();
+  }
+}
+
+@{prefix}content-block, [data-skip-target="true"] {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: -27px;
+    background-color: transparent;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+  }
+
+  &:focus {
+    outline: 0;
+    &::before {
+      background-color: @top-bar-bg;
+    }
+  }
+}
 
 @media (min-width: 1024px) {
   body {
@@ -22,7 +50,7 @@
     }
 
     @{prefix}main-content {
-      margin-left: @menu-width;
+      margin-left: (@menu-width + 21px);
     }
   }
 }

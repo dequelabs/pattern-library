@@ -56,17 +56,15 @@
   var $skipContainer = jQuery('.dqpl-skip-container');
 
   if (!$skipContainer.length) {
-    return listenForReady();
-  } else {
-    landmarksMenu();
+    return;
   }
 
-  function listenForReady() {
-    jQuery(document).one('dqpl:ready', function () {
-      $skipContainer = jQuery('.dqpl-skip-container');
-      landmarksMenu();
-    });
-  }
+  landmarksMenu();
+
+  jQuery(document).on('dqpl:ready', function () {
+    $skipContainer = jQuery('.dqpl-skip-container');
+    landmarksMenu();
+  });
 
   function landmarksMenu() {
     var shouldRemove = $skipContainer.is('[data-remove-tabindex-on-blur]');
@@ -102,13 +100,13 @@
         });
 
     if ($skipContainer.children().length) {
-      return fixExistingLinks();
+      return fixExistingLinks(shouldRemove);
     } else {
-      return createLandmarkMenu();
+      return createLandmarkMenu(shouldRemove);
     }
   }
 
-  function fixExistingLinks() {
+  function fixExistingLinks(shouldRemove) {
     jQuery(document.body).on('click', '.dqpl-skip-link', function (e) {
       e.preventDefault();
       var $link = jQuery(this);
@@ -131,7 +129,7 @@
     });
   }
 
-  function createLandmarkMenu() {
+  function createLandmarkMenu(shouldRemove) {
     var SELECTOR = [
       '[role="main"]',
       '[role="banner"]',
