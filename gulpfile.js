@@ -46,6 +46,7 @@ gulp.task('js', () => {
     './bower_components/a11y-tabs/a11y-tabs.js',
     './node_modules/prismjs/prism.js',
     './node_modules/prismjs/components/prism-jade.min.js',
+    './src/js/utils/rndid.js', // ensure rndid is defined for the utils
     './src/js/utils/**/*.js',
     './src/js/**/*.js'
   ])

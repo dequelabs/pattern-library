@@ -1,0 +1,43 @@
+@import "../variables.less";
+
+@{prefix}tooltip {
+  width: 145px;
+  .key-light();
+  border: 1px solid @header;
+  font-size: @text-smallest;
+  position: absolute;
+  display: none;
+  background: @button-secondary;
+  padding: @space-smallest;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 48px;
+
+  &:after {
+    position: absolute;
+    bottom: -14px;
+    right: 32px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15.6px 9px 0 9px;
+    border-color: @button-secondary transparent transparent transparent;
+  }
+
+  &:before {
+    position: absolute;
+    bottom: -15px;
+    right: 32px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15.6px 9px 0 9px;
+    border-color: @header transparent transparent transparent;
+  }
+
+  &@{prefix}tip-active {
+    display: block;
+  }
+}

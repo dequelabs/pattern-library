@@ -1,0 +1,20 @@
+@import "../variables.less";
+
+@one-third: (100% / 3);
+
+@{prefix}3-col {
+  .border-box();
+  width: 100%;
+  .display-flex();
+  .align-items(flex-start);
+  .flex-wrap(wrap);
+
+  @{prefix}col {
+    .border-box();
+    .flex(1 0 @one-third);
+  }
+}
+
+@{prefix}col {
+  padding: @space-small;
+}

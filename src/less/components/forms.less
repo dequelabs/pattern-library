@@ -29,6 +29,7 @@ textarea,
 
   &@{prefix}error {
     border: 1px solid @field-error-border;
+    outline: 2px solid @field-error-border;
 
     &:focus {
       .field-focus-error();
@@ -38,6 +39,15 @@ textarea,
       border: 1px solid @field-error-hover-border;
     }
   }
+}
+
+@{prefix}error-wrap {
+  height: @space-large;
+  color: @error;
+  text-align: left;
+  margin-bottom: @space-smallest;
+  font-size: @text-smallest;
+  font-weight: @weight-normal;
 }
 
 @{prefix}field-wrap {
@@ -57,9 +67,26 @@ textarea,
 @{prefix}label {
   display: block;
   text-align: left;
-  font-size: @text-small;
+  font-size: @text-smaller;
+  font-weight: @weight-light;
   margin-bottom: @space-three-quarters;
   margin-left: @space-half;
+
+  &@{prefix}required {
+    &:after {
+      content: 'Required';
+      display: inline-block;
+      margin-left: @space-large;
+      font-style: italic;
+      font-weight: @weight-normal;
+    }
+  }
+
+  &@{prefix}error {
+    &:after {
+      color: @error;
+    }
+  }
 }
 
 @{prefix}label-inline {
@@ -69,11 +96,24 @@ textarea,
 }
 
 @{prefix}text-input {
-  padding: 3px;
+  padding: @space-half;
   .border-box();
-  .box-sizing(border-box);
-  font-size: @text-smallest;
+  font-size: @text-small;
   color: @text-base;
+  min-width: @input-min-width;
+
+  &[disabled], &[aria-disabled="true"] {
+    background-color: @field-disabled;
+    border: 1px solid @field-disabled;
+  }
+}
+
+@{prefix}textarea {
+  min-height: 56px;
+  font-size: @text-smaller;
+  min-width: @input-min-width;
+  padding: @space-half;
+  max-width: 500px;
 }
 
 // custom radios
@@ -101,5 +141,31 @@ textarea,
   &:focus {
     border: 1px solid @focus;
     .box-shadow(none);
+  }
+}
+
+
+// help
+@{prefix}field-help {
+  .display-flex();
+  position: relative;
+
+  @{prefix}text-input {
+    width: (@input-min-width - 30px);
+  }
+
+  @{prefix}help-button {
+    padding: @space-smallest;
+    border: 0;
+    margin: 0;
+    color: @link;
+    font-size: @text-small;
+    background-color: transparent;
+    .border-box();
+    position: relative;
+
+    &:focus {
+      outline-offset: 0;
+    }
   }
 }
