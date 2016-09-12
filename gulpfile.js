@@ -5,6 +5,7 @@ const gulp = require('gulp');
 const less = require('gulp-less');
 const concat = require('gulp-concat');
 const open = require('gulp-open');
+const mochaPhantomJS = require('gulp-mocha-phantomjs');
 const DIST = './dist/';
 
 gulp.task('default', ['fonts', 'css', 'js', 'variables']);
@@ -80,7 +81,17 @@ gulp.task('watch', () => {
  * Test runner
  */
 
-gulp.task('test', () => {
-  gulp.src('./test/index.html')
-    .pipe(open());
+gulp.task('test', ['default'], () => {
+  gulp
+    .src('test/runner.html')
+    .pipe(mochaPhantomJS({
+      reporter: 'nyan',
+      phantomjs: {
+        viewportSize: {
+          width: 965,
+          height: 700
+        },
+        useColors: true
+      }
+    }));
 });

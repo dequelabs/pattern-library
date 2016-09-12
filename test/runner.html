@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../dist/css/alchemy.css">
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+    <title>Pattern Library Tests</title>
+</head>
+<body>
+    <div id="fixture"></div> <!-- insert markup into fixture via your test file -->
+    <div id="mocha"></div>
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+    <script>
+        mocha.ui('bdd');
+        mocha.reporter('html');
+        var assert = chai.assert;
+    </script>
+    <script src="../dist/js/alchemy.js"></script>
+
+    <!-- insert test scripts below... -->
+    <script src="./js/menu.js"></script>
+    <script src="./js/landmarks-menu.js"></script>
+
+    <script>
+        if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+        else { mocha.run(); }
+    </script>
+</body>
+</html>

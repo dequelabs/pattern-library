@@ -55,11 +55,9 @@
 
   var $skipContainer = jQuery('.dqpl-skip-container');
 
-  if (!$skipContainer.length) {
-    return;
+  if ($skipContainer.length) {
+    landmarksMenu();
   }
-
-  landmarksMenu();
 
   jQuery(document).on('dqpl:ready', function () {
     $skipContainer = jQuery('.dqpl-skip-container');
@@ -114,7 +112,7 @@
       var $landing = jQuery(href);
 
       if (!href || !$landing.length) {
-        console.warn('Please provide a valid href for the skip link: ', this);
+        return console.warn('Please provide a valid href for the skip link: ', this);
       }
 
       // ensure focusability
@@ -145,7 +143,7 @@
       var linkText = calculateText(skipTarget);
 
       if (!linkText) {
-        return console.warn('unable to calculate text for skip link for: ', skipLinkTarget);
+        return console.warn('Unable to calculate text for skip link for: ', skipTarget);
       }
 
       var skipToText = $skipContainer.attr('data-skip-to-text') || '';

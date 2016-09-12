@@ -1,6 +1,9 @@
 (function () {
   'use strict';
 
+  // TODO:
+  // - should this add tabindex="-1" to ALL links within menuitems? -> YES
+
   var initialState;
   var ACTIVE_CLASS = 'dqpl-active';
   var $topBar = jQuery('.dqpl-top-bar');
@@ -100,7 +103,6 @@
         $dropdown.toggleClass('dqpl-dropdown-active');
         done(false, ($dropdown.hasClass('dqpl-dropdown-active') ? $dropdown : $this));
       });
-
     });
 
     /**
