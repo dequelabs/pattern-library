@@ -57,6 +57,10 @@
   background-color: @button-primary;
   color: @button-text-light;
 
+  &@{prefix}disabled {
+    color: @text-light-disabled;
+  }
+
   &:focus {
     &:after {
       .box-shadow(4px 0 @text-light);
@@ -71,6 +75,10 @@
 @{prefix}button-secondary {
   background-color: @button-secondary;
   color: @button-text-dark;
+
+  &@{prefix}disabled {
+    color: @disabled;
+  }
 
   &:focus {
     &:after {
