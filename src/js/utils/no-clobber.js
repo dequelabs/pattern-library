@@ -3,7 +3,6 @@
 
   jQuery.fn.noClobber = function ($refElement, attr) {
     attr = attr || 'aria-describedby';
-    console.log('$refElement: ', $refElement);
     return this.each(function (_, target) {
       noClobber(jQuery(target), $refElement, attr);
     });

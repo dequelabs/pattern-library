@@ -54,7 +54,6 @@ describe('menu (top bar and side bar)', function () {
 
     describe('tabindex', function () {
       it('should set tabindex to 0 on the FIRST menuitem', function () {
-        console.log($topbar.html());
         assert.isTrue(active($topbarItems, 0));
       });
 
