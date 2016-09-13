@@ -2,12 +2,16 @@
 
 @one-third: (100% / 3);
 
-@{prefix}3-col {
+.gridWrapDefaults() {
   .border-box();
   width: 100%;
   .display-flex();
   .align-items(flex-start);
   .flex-wrap(wrap);
+}
+
+@{prefix}3-col {
+  .gridWrapDefaults();
 
   @{prefix}col {
     .border-box();
@@ -17,4 +21,14 @@
 
 @{prefix}col {
   padding: @space-small;
+}
+
+@{prefix}2-col {
+  .gridWrapDefaults();
+
+  @{prefix}col {
+    .border-box();
+    min-width: 290px;
+    .flex(1 0 50%);
+  }
 }
