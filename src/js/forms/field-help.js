@@ -17,7 +17,7 @@
     var $tip = tooltip(tipText);
 
     // insert it into the DOM
-    var $wrap = $btn.closest('.dqpl-field-help');
+    var $wrap = $btn.closest('.dqpl-help-button-wrap');
     if (!$wrap.length) { $wrap = $btn.parent(); }
     $wrap.append($tip);
 
