@@ -12,6 +12,7 @@ textarea,
 [role="listbox"],
 [role="spinbutton"] {
   border: 1px solid @field-border;
+  margin-bottom: @space-half;
 
   &:focus {
     outline: 0 !important;
@@ -48,6 +49,7 @@ textarea,
   margin-bottom: @space-smallest;
   font-size: @text-smallest;
   font-weight: @weight-normal;
+  padding-left: @space-half;
 }
 
 @{prefix}field-wrap {
@@ -69,7 +71,7 @@ textarea,
   text-align: left;
   font-size: @text-smaller;
   font-weight: @weight-light;
-  margin-bottom: @space-three-quarters;
+  margin-bottom: @space-half;
   margin-left: @space-half;
 
   &@{prefix}required {
@@ -109,6 +111,7 @@ textarea,
 }
 
 @{prefix}textarea {
+  display: block;
   min-height: 56px;
   font-size: @text-smaller;
   min-width: @input-min-width;
@@ -155,7 +158,7 @@ textarea,
   }
 
   @{prefix}help-button {
-    padding: @space-smallest;
+    padding: @space-quarter @space-smallest @space-smallest @space-smallest;
     border: 0;
     margin: 0;
     color: @link;
