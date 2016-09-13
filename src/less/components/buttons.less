@@ -1,22 +1,51 @@
 @import "../variables.less";
 
 @{prefix}button-primary,
-@{prefix}button-secondary {
-  width: 100px;
+@{prefix}button-secondary,
+@{prefix}button-clear {
+  min-width: 110px;
   border-radius: 18px;
   border: none;
   padding: @space-smallest;
   font-size: @text-small;
   .border-box();
-  padding: @space-smallest;
+  padding: @space-smallest @space-medium;
   .ambient-light();
   position: relative;
   margin: 0 auto;
   text-align: center;
   height: 36px;
+  position: relative;
+  text-transform: uppercase;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    .border-radius(50%);
+    .box-shadow(-4px 0 transparent);
+    top: 3px;
+    left: 8px;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    .border-radius(50%);
+    .box-shadow(4px 0 transparent);
+    top: 3px;
+    right: 8px;
+  }
 
   &:hover {
     .key-light();
+  }
+
+  &:focus {
+    outline: 0;
   }
 
   &:active {
@@ -24,83 +53,54 @@
   }
 }
 
-@{prefix}button-wrap {
-  padding: 0;
-  display: block;
-
-  &@{prefix}button-primary {
-    border: 3px solid @button-primary;
-    .border-box();
-
-
-    @{prefix}inner-button {
-      width: 100%;
-      background-color: @button-primary;
-      color: @text-light;
-      border-radius: 18px;
-      .border-box();
-      display: inline-block;
-      padding: 6px;
-    }
-  }
-
-  &@{prefix}button-secondary {
-    border: 3px solid @button-secondary;
-    .border-box();
-
-    @{prefix}inner-button {
-      width: 100%;
-      background-color: @button-secondary;
-      color: @button-text-dark;
-      border-radius: 18px;
-      .border-box();
-      display: inline-block;
-      padding: 6px;
-    }
-  }
-
-  &:focus {
-    outline: 0;
-
-    &@{prefix}button-primary {
-      background-color: @text-light;
-    }
-
-    &@{prefix}button-secondary {
-      background-color: @button-text-dark;
-    }
-
-    @{prefix}inner-button {
-      width: 94%;
-    }
-  }
-}
-
 @{prefix}button-primary {
   background-color: @button-primary;
   color: @button-text-light;
+
+  &:focus {
+    &:after {
+      .box-shadow(4px 0 @text-light);
+    }
+
+    &:before {
+      .box-shadow(-4px 0 @text-light);
+    }
+  }
 }
 
 @{prefix}button-secondary {
   background-color: @button-secondary;
   color: @button-text-dark;
+
+  &:focus {
+    &:after {
+      .box-shadow(4px 0 @button-text-dark);
+    }
+
+    &:before {
+      .box-shadow(-4px 0 @button-text-dark);
+    }
+  }
 }
 
-@{prefix}button-wrapper {
-  padding: @space-smallest;
-}
-
-@{prefix}button-link {
+@{prefix}button-clear {
   background-color: transparent;
-  color: @link;
-  font-weight: @weight-medium;
-  padding: 0;
-  border: none;
-  font-size: 13px;
-  text-decoration: none;
+  .box-shadow(none);
 
-  &:hover, &:focus {
-    text-decoration: underline;
+  &:hover {
+    background-color: @button-secondary;
+    .box-shadow(none);
+  }
+
+  &:focus {
+    background-color: @button-secondary;
+    &:after {
+      .box-shadow(4px 0 @button-text-dark);
+    }
+
+    &:before {
+      .box-shadow(-4px 0 @button-text-dark);
+    }
   }
 }
 
