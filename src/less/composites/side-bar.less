@@ -68,18 +68,39 @@
 
     // for deque branding apps
     &@{prefix}branding {
-      padding: @space-large @space-large @space-large @space-small;
+      padding: 11px 16px 18px 16px;
       border-bottom: 1px solid @top-bar-divider;
 
-      @{prefix}name {
-        margin-top: @space-quarter;
-      }
-
       a {
-        display: block;
         text-decoration: none;
         color: @text-light;
         font-weight: @weight-light;
+        .display-flex();
+        .flex-direction(row);
+        .align-items(flex-start);
+
+        @{prefix}name {
+          margin-top: @space-quarter;
+          color: @text-light;
+
+          @{prefix}name-primary {
+            font-size: @text-medium;
+            font-weight: @weight-normal;
+          }
+
+          @{prefix}name-secondary {
+            font-size: @text-smaller;
+            font-weight: @weight-light;
+            margin-top: 3px;
+          }
+        }
+
+        @{prefix}logo {
+          img {
+            width: 55px;
+            padding-left: @space-large;
+          }
+        }
       }
     }
   }
