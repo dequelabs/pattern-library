@@ -18,7 +18,11 @@
 
     // insert it into the DOM
     var $wrap = $btn.closest('.dqpl-help-button-wrap');
-    if (!$wrap.length) { $wrap = $btn.parent(); }
+
+    if (!$wrap.length) {
+      return console.warn('Unable to generate tooltip without a `.dqpl-help-button-wrap` wrapper for: ', $btn);
+    }
+
     $wrap.append($tip);
 
     // associate trigger with tip
