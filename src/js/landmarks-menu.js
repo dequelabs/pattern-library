@@ -139,6 +139,9 @@
 
     jQuery(SELECTOR).each(function (_, skipTarget) {
       var $skipTarget = jQuery(skipTarget);
+      if ($skipTarget.is('[data-no-skip="true"]')) {
+        return;
+      }
       // calculate link text
       var linkText = calculateText(skipTarget);
 

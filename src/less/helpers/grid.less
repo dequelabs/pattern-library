@@ -6,7 +6,6 @@
   .border-box();
   width: 100%;
   .display-flex();
-  .align-items(flex-start);
   .flex-wrap(wrap);
 }
 
@@ -17,6 +16,17 @@
     .border-box();
     .flex(1 0 @one-third);
   }
+}
+
+@{prefix}align-center {
+  .align-items(center);
+  @{prefix}col {
+    margin: 0 auto;
+  }
+}
+
+@{prefix}align-top {
+  .align-self(flex-start);
 }
 
 @{prefix}col {

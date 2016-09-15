@@ -38,6 +38,17 @@ describe('landmarks menu', function () {
       });
     });
 
+    describe('given a valid skip target with [data-no-skip]', function () {
+      it('should NOT add a skip link for the target', function () {
+        var $main = $fixture.find('[role="main"]');
+        $main.attr('data-no-skip', 'true');
+        $fixture.find('.dqpl-skip-container').empty();
+        jQuery(document).trigger('dqpl:ready');
+        assert.equal($skipDiv.children().length, 0);
+        $main.removeAttr('data-no-skip');
+      });
+    });
+
     describe('given a valid skip target with no calculatable text', function () {
       it('should NOT generate a skip link for the target with no calculcatable text', function () {
         // in addition to the role=main added in beforeEach, let's add another target

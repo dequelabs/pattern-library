@@ -1,5 +1,24 @@
 # Pattern Library
 
+## Usage
+This is a private repo only available to deque employees.  To include alchemy in your app you need install it via bower.  This can be done by adding `git@bitbucket.org:dmusser/pattern-library.git#0.0.5` as a dependency.  Example bower.json to include the pattern library:
+```json
+{
+  "name": "my-awesome-app",
+  "description": "just an awesome app",
+  "main": "fred.js",
+  "authors": [
+    "Fred"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "pattern-library": "git@bitbucket.org:dmusser/pattern-library.git#0.0.5"
+  }
+}
+```
+
 ## Development
 - `npm install`
 - `bower install`

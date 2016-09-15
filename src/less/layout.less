@@ -13,6 +13,10 @@
   &:focus {
     .contentFocus();
   }
+
+  &@{prefix}collapsed {
+    margin-left: 0;
+  }
 }
 
 @{prefix}content-block, [data-skip-target="true"] {
@@ -51,6 +55,10 @@
 
     @{prefix}main-content {
       margin-left: (@menu-width + 21px);
+
+      &@{prefix}collapsed {
+        margin-left: @menu-width;
+      }
     }
   }
 }
