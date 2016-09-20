@@ -10,6 +10,10 @@ body {
   padding: 0;
   background-color: @workspace-bg;
 
+  &@{prefix}modal-open {
+    overflow: hidden;
+  }
+
   :focus {
     .focusRing();
   }

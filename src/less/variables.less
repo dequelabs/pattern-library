@@ -14,7 +14,7 @@
 @workspace-bg: rgba(253, 253, 254, 1);
 @tile-bg: rgba(255, 255, 255, 1);
 @bg-light: darken(@tile-bg, 10%);
-@scrim: lighten(#000000, 50%);
+@scrim: rgba(0, 0, 0, .5);
 @top-bar-divider: rgba(90, 98, 104, 1);
 
 // Text
@@ -113,7 +113,13 @@
 
 // Animation
 .animate(@args) {
-  .vendor(transition, @args)
+  .vendor(transition, @args);
+}
+
+.transform(@val) {
+  -webkit-transform: @val;
+	-ms-transform: @val;
+	transform: @val;
 }
 
 // Shadows/Glows
