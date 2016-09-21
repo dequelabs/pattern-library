@@ -3,6 +3,7 @@
 @{prefix}tooltip {
   width: 145px;
   .ambient-light();
+  .box-sizing(border-box);
   border: 1px solid #999999;
   .border-radius(2px);
   font-size: @text-smallest;
@@ -40,5 +41,18 @@
 
   &@{prefix}tip-active {
     display: block;
+  }
+}
+
+@{prefix}definition-button-wrap {
+  @{prefix}tooltip {
+    bottom: 30px;
+    right: 50%;
+    margin-right: -72.5px; // half the width of the tooltip
+
+    &:before, &:after {
+      right: 50%;
+      margin-right: -9px; // half the width of the triangle
+    }
   }
 }

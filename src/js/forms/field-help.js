@@ -6,7 +6,7 @@
   jQuery(document).on('dqpl:ready', helpHandler);
 
   function helpHandler() {
-    jQuery('.dqpl-help-button').each(helpInit);
+    jQuery('.dqpl-help-button, .dqpl-button-definition').each(helpInit);
   }
 
   function helpInit(_, helpBtn) {
@@ -17,10 +17,11 @@
     var $tip = tooltip(tipText);
 
     // insert it into the DOM
-    var $wrap = $btn.closest('.dqpl-help-button-wrap');
+    var $wrap = $btn.closest('.dqpl-help-button-wrap, .dqpl-definition-button-wrap');
 
     if (!$wrap.length) {
-      return console.warn('Unable to generate tooltip without a `.dqpl-help-button-wrap` wrapper for: ', $btn);
+      var wrapper = $btn.is('.dqpl-help-button') ? '.dqpl-help-button-wrap' : '.dqpl-definition-button-wrap';
+      return console.warn('Unable to generate tooltip without a `' + wrapper + '` wrapper for: ', $btn);
     }
 
     $wrap.append($tip);
