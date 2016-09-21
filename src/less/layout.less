@@ -7,11 +7,24 @@
 
 @{prefix}main-content {
   margin-top: (@top-bar-height + @space-gutter);
-  padding: 0 @space-gutter 0 21px;
-  margin-left: 21px;
-  border-left: 6px solid transparent;
+  padding: 0 @space-gutter 0 @space-gutter;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 17px;
+    background-color: transparent;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+  }
+
   &:focus {
-    .contentFocus();
+    outline: 0;
+    &:before {
+      background-color: @top-bar-bg;
+    }
   }
 
   &@{prefix}collapsed {
@@ -24,7 +37,7 @@
   &::before {
     content: '';
     position: absolute;
-    left: -27px;
+    left: -23px;
     background-color: transparent;
     top: 0;
     bottom: 0;
@@ -54,7 +67,7 @@
     }
 
     @{prefix}main-content {
-      margin-left: (@menu-width + 21px);
+      margin-left: (@menu-width);
 
       &@{prefix}collapsed {
         margin-left: @menu-width;
