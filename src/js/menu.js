@@ -341,8 +341,12 @@
         if ($focus) {
           $focus.focus();
         } else if (!noFocus) {
+          var $active = $droplet.find('.dqpl-menuitem-selected');
+          $active = $active.length ?
+            $active :
+            $droplet.find('[role="menuitem"][tabindex="0"]').filter(':visible').first();
           var $focusMe = wasCollapsed ?
-            $droplet.find('[role="menuitem"][tabindex="0"]').filter(':visible').first() :
+            $active :
             $droplet.closest('[aria-controls][role="menuitem"]');
 
           $focusMe = $focusMe.length ? $focusMe : $trigger;
