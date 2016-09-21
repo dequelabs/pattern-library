@@ -1,0 +1,55 @@
+@import "../variables.less";
+
+.badge-styles() {
+  font-size: @text-smallest;
+  font-weight: @weight-normal;
+  padding: 0 @space-smallest;
+  margin: 0 @space-smallest;
+  text-transform: lowercase;
+  display: inline-block;
+  .border-radius(15px);
+
+  @{prefix}icon {
+    font-size: 12px;
+    color: @header-dark;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: @space-half;
+  }
+
+  @{prefix}badge-text {
+    font-size: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    color: @header-dark;
+  }
+}
+
+@{prefix}badge-tag {
+  .badge-styles();
+  background-color: @button-secondary;
+  border: 1px solid @text-base;
+  .ambient-light();
+
+  &:hover {
+    .active-light();
+  }
+}
+
+@{prefix}badge-error {
+  .badge-styles();
+  border: 1px solid @top-bar-accent-error;
+  background-color: @top-bar-accent-error;
+}
+
+@{prefix}badge-success {
+  .badge-styles();
+  border: 1px solid @top-bar-accent-success;
+  background-color: @top-bar-accent-success;
+}
+
+@{prefix}badge-warning {
+  .badge-styles();
+  border: 1px solid @top-bar-accent-warning;
+  background-color: @top-bar-accent-warning;
+}
