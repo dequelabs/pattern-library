@@ -165,6 +165,9 @@
         skipTarget.tabIndex = skipTarget.tabIndex || -1;
         // focus it
         skipTarget.focus();
+        // account for the 80px of top bar height
+        window.scrollTo(0, $skipTarget.offset().top - 80);
+
         if (shouldRemove) {
           $skipTarget.off('blur.dqpl').one('blur.dqpl', function () {
             $skipTarget.removeAttr('tabIndex');
