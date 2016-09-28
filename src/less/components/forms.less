@@ -3,8 +3,6 @@
 input,
 select,
 textarea,
-[role="radio"],
-[role="checkbox"],
 [role="menuitemcheckbox"],
 [role="menuitemradio"],
 [role="textbox"],
@@ -22,10 +20,6 @@ textarea,
 
   &:hover {
     border: 1px solid @field-hover-border;
-  }
-
-  &[role="checkbox"]:hover {
-    border: 0;
   }
 
   &@{prefix}error {
@@ -66,6 +60,16 @@ textarea,
   }
 }
 
+@{prefix}checkbox-wrap, @{prefix}radio-wrap {
+  .border-box();
+  position: relative;
+  margin-bottom: 0;
+
+  @{prefix}label {
+    margin-bottom: 0;
+  }
+}
+
 @{prefix}label {
   display: block;
   text-align: left;
@@ -73,6 +77,11 @@ textarea,
   font-weight: @weight-light;
   margin-bottom: @space-half;
   margin-left: @space-half;
+  cursor: default;
+
+  &@{prefix}label-disabled {
+    color: @disabled;
+  }
 
   &@{prefix}required {
     &:after {
@@ -120,8 +129,8 @@ textarea,
 }
 
 // custom radios
-@{prefix}custom-radio,
-@{prefix}custom-checkbox {
+@{prefix}radio,
+@{prefix}checkbox {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -141,9 +150,20 @@ textarea,
     color: @link;
   }
 
+  &[aria-disabled="true"], &[disabled] {
+    @{prefix}inner-checkbox, @{prefix}inner-radio {
+      color: @disabled;
+    }
+  }
+
   &:focus {
+    outline: 0;
     border: 1px solid @focus;
     .box-shadow(none);
+  }
+
+  &:active:not([aria-disabled="true"]) {
+    background-color: @focus-active;
   }
 }
 

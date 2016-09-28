@@ -21,7 +21,8 @@
 
     if (!$wrap.length) {
       var wrapper = $btn.is('.dqpl-help-button') ? '.dqpl-help-button-wrap' : '.dqpl-definition-button-wrap';
-      return console.warn('Unable to generate tooltip without a `' + wrapper + '` wrapper for: ', $btn);
+      console.warn('Unable to generate tooltip without a `' + wrapper + '` wrapper for: ', $btn);
+      return;
     }
 
     $wrap.append($tip);

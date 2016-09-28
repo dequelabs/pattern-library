@@ -1,33 +1,31 @@
 'use strict';
 
-var markup = [
-  '<button type="button" data-modal="foo">Foo</button>',
-  '<div class="dqpl-modal" role="dialog" id="foo">',
-  '<div class="dqpl-modal-inner">',
-  '<div class="dqpl-modal-header">',
-  '<h2 tabindex="-1">Text modal</h2>',
-  '<button class="dqpl-modal-close dqpl-icon" type="button">',
-  '<div class="fa fa-close"></div>',
-  '<div class="dqpl-offscreen">Close</div>',
-  '</button>',
-  '</div>',
-  '<div class="dqpl-modal-content" style="max-height: 526px;">',
-  '<p>Hey what\'s up? I am some content and stuff.</p>',
-  '</div>',
-  '<div class="dqpl-modal-footer">',
-  '<button class="dqpl-button-secondary dqpl-modal-cancel" type="button">OK</button>',
-  '</div>',
-  '</div>'
-].join('');
-
 describe('modal', function () {
+  var markup = [
+    '<button type="button" data-modal="foo">Foo</button>',
+    '<div class="dqpl-modal" role="dialog" id="foo">',
+    '<div class="dqpl-modal-inner">',
+    '<div class="dqpl-modal-header">',
+    '<h2 tabindex="-1">Text modal</h2>',
+    '<button class="dqpl-modal-close dqpl-icon" type="button">',
+    '<div class="fa fa-close"></div>',
+    '<div class="dqpl-offscreen">Close</div>',
+    '</button>',
+    '</div>',
+    '<div class="dqpl-modal-content" style="max-height: 526px;">',
+    '<p>Hey what\'s up? I am some content and stuff.</p>',
+    '</div>',
+    '<div class="dqpl-modal-footer">',
+    '<button class="dqpl-button-secondary dqpl-modal-cancel" type="button">OK</button>',
+    '</div>',
+    '</div>'
+  ].join('');
   var jQuery = window.jQuery;
   var $fixture = jQuery('#fixture');
   var $trigger, $modal;
 
   beforeEach(function () {
-    $fixture.html(markup);
-
+    $fixture.empty().append(jQuery(markup));
     $trigger = $fixture.find('[data-modal="foo"]');
     $modal = jQuery('#foo');
   });

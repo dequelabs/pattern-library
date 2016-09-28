@@ -5,6 +5,7 @@ var skipContainer = '<div class="dqpl-skip-container"></div>';
 describe('landmarks menu', function () {
   var jQuery = window.jQuery;
   var $fixture = jQuery('#fixture');
+  var consoleWarn = console.warn;
 
   describe('given an empty skip container', function () {
     var $skipDiv;
@@ -12,10 +13,12 @@ describe('landmarks menu', function () {
       $fixture.html(skipContainer + '<div role="main"></div>');
       jQuery(document).trigger('dqpl:ready');
       $skipDiv = $fixture.find('.dqpl-skip-container');
+      console.warn = function () {};
     });
 
     afterEach(function () {
       $fixture.empty();
+      console.warn = consoleWarn;
     });
 
     describe('given a single valid skip target', function () {
