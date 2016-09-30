@@ -23,6 +23,7 @@
 @header: lighten(#000000, 30%);
 @disabled: lighten(#000000, 80%);
 @link: rgba(60, 122, 174, 1);
+@link-light: rgba(60, 122, 174, .1);
 @error: rgba(217, 50, 81, 1);
 @top-bar-text: rgba(212, 221, 224, 1);
 @text-light: rgba(255, 255, 255, 1);
@@ -98,6 +99,16 @@
 @top-bar-height: 80px;
 @menu-width: 257px;
 @input-min-width: 250px;
+
+// z-index
+@z-index-tooltip: 9;
+@z-index-scrim: 7;
+@z-index-modal: 21;
+@z-index-modal-scrim: 20;
+@z-index-side-bar: 9;
+@z-index-top-bar: 9;
+@z-index-listbox: 6;
+
 
 // Vendor prefixer
 .vendor(@property, @value) {

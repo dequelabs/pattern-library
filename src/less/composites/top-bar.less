@@ -21,7 +21,7 @@
   .flex-direction(row);
   .border-box();
   .top-bar-drop();
-  z-index: 9;
+  z-index: @z-index-top-bar;
 
   > ul {
     list-style-type: none;
@@ -98,7 +98,7 @@
   opacity: 0;
   .animate(250ms opacity);
   .border-radius(2px);
-  z-index: 9;
+  z-index: @z-index-top-bar;
 
 
   &@{prefix}skip-container-active {

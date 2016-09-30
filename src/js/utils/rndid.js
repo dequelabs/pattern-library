@@ -3,8 +3,10 @@
 
   jQuery.fn.rndid = function () {
     return this.each(function (_, el) {
-      var uniqueId = rndid();
-      jQuery(el).prop('id', uniqueId);
+      if (!jQuery(el).prop('id')) {
+        var uniqueId = rndid();
+        jQuery(el).prop('id', uniqueId);
+      }
     });
   };
 

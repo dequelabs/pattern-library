@@ -14,7 +14,7 @@
     left: 50%;
     top: 40px;
     position: fixed;
-    z-index: 21;
+    z-index: @z-index-modal;
     .transform(translate(-50%, 0));
     .border-radius(3px);
     background: @tile-bg;
@@ -101,6 +101,6 @@
     bottom: 0;
     background: @scrim;
     position: fixed;
-    z-index: 20;
+    z-index: @z-index-modal-scrim;
   }
 }
