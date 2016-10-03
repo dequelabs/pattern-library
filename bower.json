@@ -5,7 +5,7 @@
   "authors": [
     "Harris Schneiderman <harris.schneiderman@deque.com>"
   ],
-  "license": "ISC",
+  "license": "UNLICENSED",
   "homepage": "",
   "private": true,
   "ignore": [
@@ -13,7 +13,8 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "src",
+    "TODO.md"
   ],
   "dependencies": {
     "jquery": "~1.12.3",
