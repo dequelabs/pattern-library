@@ -83,7 +83,7 @@
     ariaShow();
     $trigger.focus();
 
-    // trigger open event
+    // trigger close event
     $modal.trigger('dqpl:modal-close');
 
     jQuery(window).off('resize.dqplModal');

@@ -10,7 +10,7 @@
   // top level menuitems
   var $topBarMenuItems = findTopLevels($topBar.find('[role="menubar"]').first(), true);
 
-  if (!$topBar.length || !$menu.length || !$trigger.length) {
+  if (!$topBar.length) {
     return listenForReady();
   } else {
     ready();
