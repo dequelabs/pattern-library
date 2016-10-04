@@ -43,6 +43,14 @@
           }
           break;
       }
+    })
+    .on('keydown', '.dqpl-modal-header h2', function (e) {
+      if (e.which === 9 && e.shiftKey) {
+        e.preventDefault();
+        var $modal = jQuery(this).closest('.dqpl-modal');
+        var $focusables = $modal.focusable(false, true);
+        $focusables.last().focus();
+      }
     });
 
 
