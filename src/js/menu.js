@@ -1,14 +1,11 @@
 (function () {
   'use strict';
 
-  // TODO:
-  // - should this add tabindex="-1" to ALL links within menuitems? -> YES
-
   var initialState;
   var ACTIVE_CLASS = 'dqpl-active';
   var $topBar = jQuery('.dqpl-top-bar');
   var $trigger = $topBar.find('.dqpl-menu-trigger');
-  var $menu = jQuery('.dqpl-main-nav');
+  var $menu = jQuery('.dqpl-side-bar');
   var $scrim = jQuery('#dqpl-side-bar-scrim');
   // top level menuitems
   var $topBarMenuItems = findTopLevels($topBar.find('[role="menubar"]').first(), true);
@@ -23,7 +20,7 @@
     jQuery(document).one('dqpl:ready', function () {
       $topBar = jQuery('.dqpl-top-bar');
       $trigger = $topBar.find('.dqpl-menu-trigger');
-      $menu = jQuery('.dqpl-main-nav');
+      $menu = jQuery('.dqpl-side-bar');
       $scrim = jQuery('#dqpl-side-bar-scrim');
       // top level menuitems
       $topBarMenuItems = findTopLevels($topBar.find('[role="menubar"]').first(), true);
@@ -56,7 +53,7 @@
      */
     jQuery(document).on('click', function (e) {
       var $target = jQuery(e.target);
-      var isWithin = $target.closest('.dqpl-main-nav').length;
+      var isWithin = $target.closest('.dqpl-side-bar').length;
       var isHamburger = $target.is('.dqpl-menu-trigger') || !!$target.closest('.dqpl-menu-trigger').length;
       if (isWithin || isHamburger || $menu.attr('data-locked') === 'locked') {
         return;
@@ -181,13 +178,19 @@
         switch (which) {
           case 27:
           case 37:
-            if ($menu.attr('data-locked') === 'true' && $target.parent().is($menu)) {
+            var isOfMenu = $target.parent().is($menu);
+            if ($menu.attr('data-locked') === 'true' && isOfMenu) {
               return;
             }
             e.preventDefault();
             e.stopPropagation(); // prevent bubbling for sake of submenus
+
             var $thisMenu = $target.closest('[role="menu"]');
-            jQuery('[aria-controls="' + $thisMenu.prop('id') + '"]').click();
+            var $thisTrigger = jQuery('[aria-controls="' + $thisMenu.prop('id') + '"]');
+
+            $thisTrigger.click();
+
+            if (!isOfMenu) { activateMenuitem($target, $thisTrigger); }
             break;
           case 40:
             e.preventDefault();
@@ -341,7 +344,7 @@
         if ($focus) {
           $focus.focus();
         } else if (!noFocus) {
-          var $active = $droplet.find('.dqpl-menuitem-selected');
+          var $active = $droplet.find('.dqpl-menuitem-selected').filter(':visible');
           $active = $active.length ?
             $active :
             $droplet.find('[role="menuitem"][tabindex="0"]').filter(':visible').first();
