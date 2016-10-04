@@ -20,6 +20,7 @@
     "jquery": "~1.12.3",
     "components-font-awesome": "^4.6.3",
     "roboto-fontface": "^0.4.5",
-    "a11y-tabs": "^1.0.1"
+    "a11y-tabs": "^1.0.1",
+    "gridlex": "^2.2.2"
   }
 }

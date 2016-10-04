@@ -19,6 +19,7 @@ gulp.task('css', () => {
     './bower_components/components-font-awesome/css/font-awesome.min.css', // ICONS
     './bower_components/roboto-fontface/css/roboto-fontface.css', // FONT (Roboto)
     './node_modules/prismjs/themes/prism-coy.css', // prismjs coy theme (syntax highlighting)
+    './bower_components/gridlex/src/gridlex.less', // flexbox grid system
     './src/less/**/*.less'
   ])
     .pipe(less())
