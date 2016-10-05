@@ -203,7 +203,7 @@
           case 32:
           case 13:
             e.preventDefault();
-            $target.click();
+            $target.trigger('click');
             if (!$target.attr('aria-controls')) {
               var $link = $target.find('a');
               if ($link.length) {
@@ -226,10 +226,12 @@
         var $trigger = jQuery(this);
         if ($trigger.attr('aria-controls')) {
           toggleSubmenu($trigger, function ($submenu, done) {
-            // TODO: CSS Transition?
-            $submenu.slideToggle();
-            $trigger.toggleClass('dqpl-weight-bold');
-            setTimeout(done);
+            $submenu.slideToggle(400, function () {
+              $trigger.toggleClass('dqpl-weight-bold');
+              var $toFocus = $submenu.find('[role="menuitem"][tabindex="0"]');
+              $toFocus = $toFocus.length ? $toFocus : $submenu.find('[role="menuitem"]').first();
+              done(false, $toFocus);
+            });
           });
         } else {
           var $link = $trigger.find('a');
