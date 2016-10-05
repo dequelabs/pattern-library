@@ -23,7 +23,7 @@ gulp.task('css', () => {
     './src/less/**/*.less'
   ])
     .pipe(less())
-    .pipe(concat('alchemy.css'))
+    .pipe(concat('cauldron.css'))
     .pipe(gulp.dest(path.join(DIST, 'css')));
 });
 
@@ -52,7 +52,7 @@ gulp.task('js', () => {
     './src/js/utils/**/*.js',
     './src/js/**/*.js'
   ])
-    .pipe(concat('alchemy.js'))
+    .pipe(concat('cauldron.js'))
     .pipe(gulp.dest(path.join(DIST, 'js')));
 });
 
