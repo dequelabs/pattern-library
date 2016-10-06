@@ -18,15 +18,24 @@
     </script>
     <script src="../dist/js/cauldron.js"></script>
 
+    <!-- util for creating jquery events -->
+    <script>
+      function createEvent(type, which) {
+      	var e = jQuery.Event(type);
+      	if (which) { e.which = which; }
+      	return e;
+      }
+    </script>
+
     <!-- insert test scripts below... -->
-    <script src="./js/menu.js"></script>
-    <script src="./js/landmarks-menu.js"></script>
-    <script src="./js/forms/field-help.js"></script>
+    <script src="./js/composites/menu.js"></script>
+    <script src="./js/composites/landmarks-menu.js"></script>
+    <script src="./js/components/field-help.js"></script>
     <script src="./js/utils/no-clobber.js"></script>
-    <script src="./js/modal.js"></script>
-    <script src="./js/forms/checkboxes.js"></script>
-    <script src="./js/forms/radio-buttons.js"></script>
-    <script src="./js/forms/selects.js"></script>
+    <script src="./js/composites/modal.js"></script>
+    <script src="./js/components/checkboxes.js"></script>
+    <script src="./js/components/radio-buttons.js"></script>
+    <script src="./js/components/selects.js"></script>
     <script src="./js/components/option-menus.js"></script>
 
     <script>
