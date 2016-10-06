@@ -391,7 +391,7 @@ describe('menu (top bar and side bar)', function () {
           setTimeout(function () {
             assert.equal($submenu.attr('aria-expanded'), 'true');
             done();
-          });
+          }, 500);
         });
       });
 

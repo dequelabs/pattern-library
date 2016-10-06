@@ -1,0 +1,66 @@
+@import "../variables.less";
+
+@{prefix}options-menu-wrap {
+  position: relative;
+  width: 34px; // same as trigger
+
+  @{prefix}options-menu-trigger {
+    font-size: @text-small-medium;
+    color: @header-dark;
+    .border-radius(3px);
+    background-color: @tile-bg;
+    border: 1px solid @field-border;
+    .border-box();
+    height: 34px;
+    width: 34px;
+    text-align: center;
+  }
+
+  @{prefix}options-menu {
+    display: none;
+    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: @tile-bg;
+    top: 33px; // one less than the height of the trigger
+    right: 0; // default: right aligned dropdowns
+    left: auto;
+    border: 1px solid @field-border;
+    z-index: @z-index-listbox;
+    min-width: 150px;
+    max-height: 140px;
+    overflow-y: auto;
+
+    &[aria-expanded="true"] {
+      display: block;
+    }
+
+    @{prefix}options-menuitem {
+      font-size: @text-small;
+      font-weight: @weight-normal;
+      padding: 2px @space-smallest;
+      cursor: default;
+
+      &:hover, &:focus {
+        background-color: @link-light;
+        outline: 0;
+      }
+
+      &[aria-disabled="true"] {
+        color: @disabled;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+    }
+  }
+  // left aligned ones
+  &@{prefix}align-left {
+    @{prefix}options-menu {
+      left: 0;
+      right: auto;
+    }
+  }
+}
