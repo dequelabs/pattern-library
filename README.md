@@ -20,7 +20,7 @@ This is a private repo only available to deque employees.  To include cauldron i
   }
 }
 ```
-__NOTE__: To include the pattern library up above you will need to have SSH setup for your bitbucket account. (Here's how)[https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html]
+__NOTE__: To include the pattern library up above you will need to have SSH setup for your bitbucket account. [Here's how](https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html)
 
 ## Development
 - `npm install`
@@ -28,7 +28,7 @@ __NOTE__: To include the pattern library up above you will need to have SSH setu
 - `gulp`: will build stuff into the _dist_ directory (`gulp watch` is also available)
 
 ## Testing
-Testing is done using mocha-phantomjs along with the 'chai' assertion library (`assert.equal(!!0, false)`).  The `test/` directory structure matches the `src/` directory.  This means that if I'm testing `src/js/foo/index.js`, I should create my test in `test/js/foo/index.js`.  In order for mocha to run your test, you need to add it to the list of scripts at the bottom of `test/runner.html`.  (Read more info about mocha)[https://mochajs.org/]
+Testing is done using mocha-phantomjs along with the 'chai' assertion library (`assert.equal(!!0, false)`).  The `test/` directory structure matches the `src/` directory.  This means that if I'm testing `src/js/foo/index.js`, I should create my test in `test/js/foo/index.js`.  In order for mocha to run your test, you need to add it to the list of scripts at the bottom of `test/runner.html`.  [Read more info about mocha](https://mochajs.org/)
 
 ```bash
 $ gulp test
@@ -42,7 +42,8 @@ $ open test/runner.html
 
 ## Releases
 Orphan branch dist-only releases...
-* https://gist.github.com/schne324/6ca72fac89f35d961a0d
+
+ * https://gist.github.com/schne324/6ca72fac89f35d961a0d
 
 ## Notes
 * All media query stuff should go in `src/less/layout.less`
