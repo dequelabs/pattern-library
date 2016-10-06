@@ -31,6 +31,9 @@
       checkForMissingAttrs($combobox, $listbox);
       attachEvents($combobox, $listbox);
 
+      // attach native click-on-label-to-focus-control behavior
+      labelHandler($combobox);
+
       // check if there is a default selected and ensure it has the right attrs/classes
       var initiallyActive = $combobox.attr('aria-activedescendant');
       if (initiallyActive) {
@@ -178,6 +181,18 @@
     $combobox.attr('aria-expanded', 'true');
     $listbox.attr('data-cached-selected', $combobox.attr('aria-activedescendant'));
     activateOption($combobox, $listbox);
+  }
+
+  function labelHandler($combobox) {
+    var dataLabelID = $combobox.attr('data-label-id');
+    var $label = dataLabelID ?
+      jQuery('#' + dataLabelID) :
+      $combobox.closest('.dqpl-field-wrap').find('.dqpl-label, .dqpl-label-inline');
+
+    $label.off('click.dqplSelect').on('click.dqplSelect', function () {
+      $combobox.focus();
+    });
+
   }
 
   function nonDisabled(_, el) {

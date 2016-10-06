@@ -5,17 +5,27 @@ const gulp = require('gulp');
 const less = require('gulp-less');
 const concat = require('gulp-concat');
 const open = require('gulp-open');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
+const cleanCSS = require('gulp-clean-css');
 const mochaPhantomJS = require('gulp-mocha-phantomjs');
 const DIST = './dist/';
 
-gulp.task('default', ['fonts', 'css', 'js', 'variables']);
+gulp.task('default', [
+  'fonts',
+  'css',
+  'js',
+  'variables',
+  'minify-css',
+  'minify-js'
+]);
 
 /**
  * Styles
  */
 
 gulp.task('css', () => {
-  gulp.src([
+  return gulp.src([
     './bower_components/components-font-awesome/css/font-awesome.min.css', // ICONS
     './bower_components/roboto-fontface/css/roboto-fontface.css', // FONT (Roboto)
     './node_modules/prismjs/themes/prism-coy.css', // prismjs coy theme (syntax highlighting)
@@ -27,6 +37,17 @@ gulp.task('css', () => {
     .pipe(gulp.dest(path.join(DIST, 'css')));
 });
 
+/**
+ * Minify `cauldron.css`
+ */
+
+gulp.task('minify-css', ['css'], () => {
+  return gulp.src(path.join(DIST, 'css', 'cauldron.css'))
+    .pipe(cleanCSS())
+    .pipe(rename('cauldron.min.css'))
+    .pipe(gulp.dest(path.join(DIST, 'css')));
+});
+
 
 /**
  * Variables
@@ -34,7 +55,7 @@ gulp.task('css', () => {
  */
 
 gulp.task('variables', () => {
-  gulp.src(['./src/less/variables.less'])
+  return gulp.src(['./src/less/variables.less'])
     .pipe(gulp.dest(path.join(DIST, 'less')));
 });
 
@@ -43,7 +64,7 @@ gulp.task('variables', () => {
  */
 
 gulp.task('js', () => {
-  gulp.src([
+  return gulp.src([
     './bower_components/jquery/dist/jquery.min.js',
     './bower_components/a11y-tabs/a11y-tabs.js',
     './node_modules/prismjs/prism.js',
@@ -57,11 +78,22 @@ gulp.task('js', () => {
 });
 
 /**
+ * Minify cauldron.js
+ */
+
+gulp.task('minify-js', ['js'], () => {
+  return gulp.src(path.join(DIST, 'js', 'cauldron.js'))
+    .pipe(uglify())
+    .pipe(rename('cauldron.min.js'))
+    .pipe(gulp.dest(path.join(DIST, 'js')));
+});
+
+/**
  * Fonts
  */
 
 gulp.task('fonts', () => {
-  gulp.src([
+  return gulp.src([
     './bower_components/components-font-awesome/fonts/**/*',
     './bower_components/roboto-fontface/fonts/**/*'
   ])
