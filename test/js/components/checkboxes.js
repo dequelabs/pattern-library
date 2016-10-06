@@ -124,10 +124,4 @@ describe('checkboxes', function () {
       assert.equal(document.activeElement, $checkboxes.first()[0]);
     });
   });
-
-  function createEvent(type, which) {
-  	var e = jQuery.Event(type);
-  	if (which) { e.which = which; }
-  	return e;
-  }
 });

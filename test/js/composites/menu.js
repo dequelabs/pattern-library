@@ -427,10 +427,4 @@ describe('menu (top bar and side bar)', function () {
 
     return allGoods === $list.length;
   }
-
-  function createEvent(type, which) {
-  	var e = jQuery.Event(type);
-  	if (which) { e.which = which; }
-  	return e;
-  }
 });

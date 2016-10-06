@@ -245,10 +245,4 @@ describe('selects', function () {
       });
     });
   });
-
-  function createEvent(type, which) {
-  	var e = jQuery.Event(type);
-  	if (which) { e.which = which; }
-  	return e;
-  }
 });
