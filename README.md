@@ -27,6 +27,8 @@ __NOTE__: To include the pattern library up above you will need to have SSH setu
 - `bower install`
 - `gulp`: will build stuff into the _dist_ directory (`gulp watch` is also available)
 
+__NOTE__: if a new component or composite is added, remember to create a quick [wiki](https://bitbucket.org/dmusser/pattern-library/wiki/Home) entry explaining what is absolutely necessary in using this widget.
+
 ## Testing
 Testing is done using mocha-phantomjs along with the 'chai' assertion library (`assert.equal(!!0, false)`).  The `test/` directory structure matches the `src/` directory.  This means that if I'm testing `src/js/foo/index.js`, I should create my test in `test/js/foo/index.js`.  In order for mocha to run your test, you need to add it to the list of scripts at the bottom of `test/runner.html`.  [Read more info about mocha](https://mochajs.org/)
 
