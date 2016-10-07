@@ -65,7 +65,6 @@ gulp.task('variables', () => {
 
 gulp.task('js', () => {
   return gulp.src([
-    './bower_components/jquery/dist/jquery.min.js',
     './bower_components/a11y-tabs/a11y-tabs.js',
     './node_modules/prismjs/prism.js',
     './node_modules/prismjs/components/prism-jade.min.js',
