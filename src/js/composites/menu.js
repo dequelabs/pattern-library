@@ -40,7 +40,6 @@
 
     onResize();
 
-
     /**
      * Listen for refresh events
      * (prevents menus from getting in funky states)
@@ -258,26 +257,38 @@
      * - ensure aria-expanded is removed/readded properly
      * - ensure the topbar menu isn't thrown off (in case the hamburger was the "active" item)
      */
+    var lastSize;
     function onResize() {
       var width = jQuery(window).width();
 
       if (width >= 1024) {
-        $menu.attr('data-prev-expanded', $menu.attr('aria-expanded'));
-        $menu.removeAttr('aria-expanded');
-        $scrim.removeClass('dqpl-scrim-show').removeClass('dqpl-scrim-fade-in');
+        if (!lastSize || lastSize === 'narrow') {
+          lastSize = 'wide';
+          var expanded = $menu.attr('aria-expanded');
+          if (expanded) {
+            $menu.attr('data-prev-expanded', expanded);
+          }
 
-        if ($trigger.prop('tabIndex') === 0) {
-          // since `$trigger` gets hidden (via css) "activate" something else in the menubar
-          $topBarMenuItems = findTopLevels($topBar.find('[role="menubar"]').first(), true);
-          $topBarMenuItems.prop('tabIndex', -1).first().prop('tabIndex', 0);
+          $menu.removeAttr('aria-expanded');
+          $scrim.removeClass('dqpl-scrim-show').removeClass('dqpl-scrim-fade-in');
+
+          if ($trigger.prop('tabIndex') === 0) {
+            // since `$trigger` gets hidden (via css) "activate" something else in the menubar
+            $topBarMenuItems = findTopLevels($topBar.find('[role="menubar"]').first(), true);
+            $topBarMenuItems.prop('tabIndex', -1).first().prop('tabIndex', 0);
+          }
+          $menu.attr('data-locked', 'true');
         }
-        $menu.attr('data-locked', 'true');
       } else {
-        $menu.attr('aria-expanded', $menu.attr('data-prev-expanded') || 'false');
-        $topBarMenuItems = findTopLevels($topBar.find('ul').first(), true);
-        $menu.attr('data-locked', 'false');
-        if ($menu.attr('data-prev-expanded') === 'true') {
-          $scrim.addClass('dqpl-scrim-show').addClass('dqpl-scrim-fade-in');
+        if (!lastSize || lastSize === 'wide') {
+          lastSize = 'narrow';
+          var expandedVal = $menu.attr('data-prev-expanded') === 'true' ? 'true' : 'false';
+          $menu.attr('aria-expanded', expandedVal);
+          $topBarMenuItems = findTopLevels($topBar.find('ul').first(), true);
+          $menu.attr('data-locked', 'false');
+          if (expandedVal === 'true') {
+            $scrim.addClass('dqpl-scrim-show').addClass('dqpl-scrim-fade-in');
+          }
         }
       }
     }
