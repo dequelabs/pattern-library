@@ -22,6 +22,24 @@ This is a private repo only available to deque employees.  To include cauldron i
 ```
 __NOTE__: To include the pattern library up above you will need to have SSH setup for your bitbucket account. [Here's how](https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html)
 
+### Dependencies
+
+The one and only dependency of the pattern library is jQuery which you will have to include on your own _before_ the inclusion of the pattern library's javascript file.
+
+```html
+<html>
+  <head>
+    ...
+    <link rel="stylesheet" href="path-to-pattern-library-css/cauldron.min.css" />
+  </head>
+  <body>
+    ...
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="path-to-pattern-library-js/cauldron.min.js"></script>
+  </body>
+</html>
+```
+
 ## Development
 - `npm install`
 - `bower install`
