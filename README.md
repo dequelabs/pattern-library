@@ -1,7 +1,5 @@
 # Pattern Library
 
-For developer documentation read the [Wiki](https://bitbucket.org/dmusser/pattern-library/wiki/Home)
-
 ## Usage
 This is a private repo only available to deque employees.  To include cauldron in your app you need install it via bower.  This can be done by adding `git@bitbucket.org:dmusser/pattern-library.git#1.0.0` as a dependency.  Example bower.json to include the pattern library:
 ```json
