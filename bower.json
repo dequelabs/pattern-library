@@ -1,12 +1,12 @@
 {
-  "name": "pattern-library",
-  "description": "Patterns and stuffs",
+  "name": "deque-pattern-library",
+  "description": "Deque Pattern Library",
   "main": "gulpfile.js",
   "authors": [
     "Harris Schneiderman <harris.schneiderman@deque.com>"
   ],
-  "license": "UNLICENSED",
-  "homepage": "",
+  "license": "MPL-2.0",
+  "homepage": "https://github.com/dequelabs/pattern-library",
   "private": true,
   "ignore": [
     "**/.*",
