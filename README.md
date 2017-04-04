@@ -1,24 +1,9 @@
 # Pattern Library
 
 ## Usage
-This is a private repo only available to deque employees.  To include cauldron in your app you need install it via bower.  This can be done by adding `git@bitbucket.org:dmusser/pattern-library.git#1.0.0` as a dependency.  Example bower.json to include the pattern library:
-```json
-{
-  "name": "my-awesome-app",
-  "description": "just an awesome app",
-  "main": "fred.js",
-  "authors": [
-    "Fred"
-  ],
-  "license": "UNLICENSED",
-  "homepage": "",
-  "private": true,
-  "dependencies": {
-    "pattern-library": "git@bitbucket.org:dmusser/pattern-library.git#1.0.0"
-  }
-}
+```bash
+$ bower install deque-pattern-library
 ```
-__NOTE__: To include the pattern library up above you will need to have SSH setup for your bitbucket account. [Here's how](https://confluence.atlassian.com/bitbucket/set-up-ssh-for-git-728138079.html)
 
 ### Dependencies
 

@@ -5,8 +5,8 @@
   "authors": [
     "Harris Schneiderman <harris.schneiderman@deque.com>"
   ],
-  "license": "UNLICENSED",
-  "homepage": "",
+  "license": "MPL-2.0",
+  "homepage": "https://github.com/dequelabs/pattern-library",
   "private": true,
   "ignore": [
     "**/.*",
