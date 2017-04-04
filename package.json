@@ -1,7 +1,7 @@
 {
   "name": "deque-pattern-library",
   "version": "1.1.0",
-  "description": "",
+  "description": "Deque Pattern Library",
   "main": "dist/js/cauldron.js",
   "scripts": {
     "test": "gulp test"
