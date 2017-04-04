@@ -13,12 +13,12 @@ The one and only dependency of the pattern library is jQuery which you will have
 <html>
   <head>
     ...
-    <link rel="stylesheet" href="path-to-pattern-library-css/cauldron.min.css" />
+    <link rel="stylesheet" href="./bower_components/deque-pattern-library/css/cauldron.min.css" />
   </head>
   <body>
     ...
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="path-to-pattern-library-js/cauldron.min.js"></script>
+    <script src="./bower_components/deque-pattern-library/js/cauldron.min.js"></script>
   </body>
 </html>
 ```
