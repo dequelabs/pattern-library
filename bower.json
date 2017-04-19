@@ -2,7 +2,7 @@
   "name": "deque-pattern-library",
   "description": "Deque Pattern Library",
   "main": "gulpfile.js",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "authors": [
     "Harris Schneiderman <harris.schneiderman@deque.com>"
   ],
