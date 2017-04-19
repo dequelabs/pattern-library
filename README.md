@@ -1,8 +1,17 @@
 # Pattern Library
 
-## Usage
+## Installation
+
+### Bower
+
 ```bash
 $ bower install deque-pattern-library
+```
+
+### NPM
+
+```bash
+$ npm install deque-pattern-library
 ```
 
 ### Dependencies
@@ -56,3 +65,6 @@ Orphan branch dist-only releases...
 ```js
 jQuery(document).trigger('dqpl:ready'); // tell the pattern library we're ready to go
 ```
+
+## TODO
+- wrap all js in `jQuery(document).ready()` (to support adding script to head and not having to fire a `jQuery(document).trigger('dqpl:ready')`)
