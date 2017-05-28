@@ -7,6 +7,9 @@ const concat = require('gulp-concat');
 const open = require('gulp-open');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const babel = require('gulp-babel');
 const cleanCSS = require('gulp-clean-css');
 const mochaPhantomJS = require('gulp-mocha-phantomjs');
 const DIST = './dist/';
@@ -14,10 +17,9 @@ const DIST = './dist/';
 gulp.task('default', [
   'fonts',
   'css',
-  'js',
+  'babelify',
   'variables',
-  'minify-css',
-  'minify-js'
+  'minify-css'
 ]);
 
 /**
@@ -26,10 +28,10 @@ gulp.task('default', [
 
 gulp.task('css', () => {
   return gulp.src([
-    './bower_components/components-font-awesome/css/font-awesome.min.css', // ICONS
-    './bower_components/roboto-fontface/css/roboto-fontface.css', // FONT (Roboto)
+    './node_modules/font-awesome/css/font-awesome.min.css', // ICONS
+    './node_modules/roboto-fontface/css/roboto/roboto-fontface.css', // FONT (Roboto)
     './node_modules/prismjs/themes/prism-coy.css', // prismjs coy theme (syntax highlighting)
-    './bower_components/flexboxgrid/dist/flexboxgrid.min.css', // flexbox grid system
+    './node_modules/flexboxgrid/dist/flexboxgrid.min.css', // flexbox grid system
     './src/less/**/*.less'
   ])
     .pipe(less())
@@ -63,16 +65,32 @@ gulp.task('variables', () => {
  * Scripts
  */
 
+// gulp.task('js', () => {
+//   return gulp.src([
+//     './bower_components/a11y-tabs/a11y-tabs.js',
+//     './node_modules/prismjs/prism.js',
+//     './node_modules/prismjs/components/prism-jade.min.js',
+//     './src/js/utils/rndid.js', // ensure rndid is defined for the utils
+//     './src/js/utils/**/*.js',
+//     './src/js/**/*.js'
+//   ])
+//     .pipe(concat('cauldron.js'))
+//     .pipe(gulp.dest(path.join(DIST, 'js')));
+// });
+
 gulp.task('js', () => {
-  return gulp.src([
-    './bower_components/a11y-tabs/a11y-tabs.js',
-    './node_modules/prismjs/prism.js',
-    './node_modules/prismjs/components/prism-jade.min.js',
-    './src/js/utils/rndid.js', // ensure rndid is defined for the utils
-    './src/js/utils/**/*.js',
-    './src/js/**/*.js'
-  ])
-    .pipe(concat('cauldron.js'))
+  return browserify('./index.js')
+    .bundle()
+    .pipe(source('cauldron.js'))
+    .pipe(gulp.dest(path.join(DIST, 'js')));
+});
+
+
+gulp.task('babelify', ['js'], () => {
+  return gulp.src('./dist/cauldron.js')
+    .pipe(babel({
+      presets: ['es2015']
+    }))
     .pipe(gulp.dest(path.join(DIST, 'js')));
 });
 
@@ -80,7 +98,7 @@ gulp.task('js', () => {
  * Minify cauldron.js
  */
 
-gulp.task('minify-js', ['js'], () => {
+gulp.task('minify-js', ['babelify'], () => {
   return gulp.src(path.join(DIST, 'js', 'cauldron.js'))
     .pipe(uglify())
     .pipe(rename('cauldron.min.js'))
@@ -91,12 +109,16 @@ gulp.task('minify-js', ['js'], () => {
  * Fonts
  */
 
-gulp.task('fonts', () => {
-  return gulp.src([
-    './bower_components/components-font-awesome/fonts/**/*',
-    './bower_components/roboto-fontface/fonts/**/*'
-  ])
+gulp.task('fonts', ['icons', 'roboto']);
+
+gulp.task('icons', () => {
+  return gulp.src('./node_modules/font-awesome/fonts/**/*')
     .pipe(gulp.dest(path.join(DIST, '/fonts/')));
+});
+
+gulp.task('roboto', () => {
+  return gulp.src('./node_modules/roboto-fontface/fonts/Roboto/**/*')
+    .pipe(gulp.dest(path.join(DIST, '/fonts/Roboto/')));
 });
 
 /**
@@ -105,7 +127,7 @@ gulp.task('fonts', () => {
 
 gulp.task('watch', () => {
   gulp.watch(['./src/less/**/*.less'], ['css']);
-  gulp.watch(['./src/js/**/*.js'], ['js']);
+  gulp.watch(['./lib/**/*.js', './index.js'], ['js']);
   gulp.watch(['./src/less/variables.less'], ['variables']);
 });
 

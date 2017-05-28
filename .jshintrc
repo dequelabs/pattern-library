@@ -1,4 +1,7 @@
 {
   "node": true,
-  "esnext": true
+  "esnext": true,
+  "globals": {
+    "document": true
+  }
 }
