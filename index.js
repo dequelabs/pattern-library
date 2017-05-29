@@ -21,4 +21,5 @@ ready(() => {
   require('./lib/components/radio-buttons')();
   require('./lib/components/field-help')();
   require('./lib/components/option-menus')();
+  require('./lib/components/selects')();
 });
