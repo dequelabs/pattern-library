@@ -19,7 +19,8 @@ gulp.task('default', [
   'css',
   'babelify',
   'variables',
-  'minify-css'
+  'minify-css',
+  'minify-js'
 ]);
 
 /**
@@ -74,7 +75,7 @@ gulp.task('js', () => {
 
 
 gulp.task('babelify', ['js'], () => {
-  return gulp.src('./dist/cauldron.js')
+  return gulp.src('./dist/js/cauldron.js')
     .pipe(babel({
       presets: ['es2015']
     }))
