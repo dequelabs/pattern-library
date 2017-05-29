@@ -2,6 +2,7 @@
   "node": true,
   "esnext": true,
   "globals": {
-    "document": true
+    "document": true,
+    "window": true
   }
 }
