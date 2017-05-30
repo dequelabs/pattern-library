@@ -28,4 +28,5 @@ ready(() => {
    */
 
   require('./lib/composites/landmarks-menu')();
+  require('./lib/composites/modals')();
 });
