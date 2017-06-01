@@ -19,7 +19,8 @@ gulp.task('default', [
   'babelify',
   'variables',
   'minify-css',
-  'minify-js'
+  'minify-js',
+  'extras'
 ]);
 
 /**
@@ -29,10 +30,9 @@ gulp.task('default', [
 gulp.task('css', () => {
   return gulp.src([
     './node_modules/font-awesome/css/font-awesome.min.css', // ICONS
-    './node_modules/roboto-fontface/css/roboto/roboto-fontface.css', // FONT (Roboto)
     './node_modules/prismjs/themes/prism-coy.css', // prismjs coy theme (syntax highlighting)
     './node_modules/flexboxgrid/dist/flexboxgrid.min.css', // flexbox grid system
-    './src/less/**/*.less'
+    './lib/**/*.less'
   ])
     .pipe(less())
     .pipe(concat('cauldron.css'))
@@ -81,11 +81,21 @@ gulp.task('babelify', ['js'], () => {
     .pipe(gulp.dest(path.join(DIST, 'js')));
 });
 
+gulp.task('extras', ['babelify'], () => {
+  return gulp.src([
+      './dist/js/cauldron.js',
+      './node_modules/prismjs/prism.js',
+      './node_modules/prismjs/components/prism-jade.min.js'
+    ])
+    .pipe(concat('cauldron.js'))
+    .pipe(gulp.dest(path.join(DIST, 'js')));
+});
+
 /**
  * Minify cauldron.js
  */
 
-gulp.task('minify-js', ['babelify'], () => {
+gulp.task('minify-js', ['babelify', 'extras'], () => {
   return gulp.src(path.join(DIST, 'js', 'cauldron.js'))
     .pipe(uglify())
     .pipe(rename('cauldron.min.js'))
