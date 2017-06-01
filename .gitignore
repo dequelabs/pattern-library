@@ -3,3 +3,4 @@ bower_components/
 dist/
 playground/
 html-report/
+npm-debug.log

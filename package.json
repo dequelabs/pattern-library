@@ -4,7 +4,7 @@
   "description": "Deque Pattern Library",
   "main": "dist/js/cauldron.js",
   "scripts": {
-    "test": "mochify ./test/**/*.js --transform [ babelify --presets [ es2015 ] ] --plugin [ mochify-istanbul --report html ]",
+    "test": "mochify ./test/**/*.js --transform [ babelify --presets [ es2015 ] ] --transform [ stringify --extensions [ .html .css ] ] --plugin [ proxyquire-universal ] --plugin [ mochify-istanbul --report text ]",
     "build": "gulp",
     "dev": "gulp && gulp watch"
   },
@@ -48,8 +48,12 @@
     "mocha-phantomjs": "^4.1.0",
     "mochify": "^3.2.1",
     "mochify-istanbul": "^2.4.2",
+    "proxyquire": "^1.8.0",
+    "proxyquire-universal": "^1.0.8",
+    "proxyquireify": "^3.2.1",
     "rndm": "^1.2.0",
     "roboto-fontface": "^0.7.0",
+    "simulant": "^0.2.2",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
