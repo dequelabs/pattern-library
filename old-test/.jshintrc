@@ -1,0 +1,17 @@
+{
+  "node": true,
+  "predef": [
+    "assert",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "should",
+    "it",
+    "describe",
+    "jQuery",
+    "window",
+    "document",
+    "createEvent"
+  ]
+}

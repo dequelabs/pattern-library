@@ -1,17 +1,14 @@
 {
   "node": true,
-  "predef": [
-    "assert",
-    "before",
-    "beforeEach",
-    "after",
-    "afterEach",
-    "should",
-    "it",
-    "describe",
-    "jQuery",
-    "window",
-    "document",
-    "createEvent"
-  ]
+  "esnext": true,
+  "globals": {
+    "document": true,
+    "window": true,
+    "describe": true,
+    "it": true,
+    "before": true,
+    "beforeEach": true,
+    "after": true,
+    "afterEach": true
+  }
 }

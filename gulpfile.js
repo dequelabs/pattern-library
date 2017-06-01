@@ -11,7 +11,6 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const babel = require('gulp-babel');
 const cleanCSS = require('gulp-clean-css');
-const mochaPhantomJS = require('gulp-mocha-phantomjs');
 const DIST = './dist/';
 
 gulp.task('default', [
@@ -117,23 +116,4 @@ gulp.task('watch', () => {
   gulp.watch(['./src/less/**/*.less'], ['css']);
   gulp.watch(['./lib/**/*.js', './index.js'], ['js']);
   gulp.watch(['./src/less/variables.less'], ['variables']);
-});
-
-/**
- * Test runner
- */
-
-gulp.task('test', ['default'], () => {
-  gulp
-    .src('test/runner.html')
-    .pipe(mochaPhantomJS({
-      reporter: 'nyan',
-      phantomjs: {
-        viewportSize: {
-          width: 965,
-          height: 700
-        },
-        useColors: true
-      }
-    }));
 });
