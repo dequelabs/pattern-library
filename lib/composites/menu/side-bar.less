@@ -24,6 +24,18 @@
 
   @{prefix}submenu {
     display: none;
+    .animate(max-height 400ms);
+
+    &@{prefix}slidedown-setup {
+      display: block;
+      max-height: 0;
+      .animate(max-height 400ms ease-out);
+
+      &@{prefix}slidedown {
+        .animate(max-height 400ms ease-in);
+        max-height: 1000px;
+      }
+    }
   }
 
   li {

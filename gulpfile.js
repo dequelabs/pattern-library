@@ -123,7 +123,7 @@ gulp.task('roboto', () => {
  */
 
 gulp.task('watch', () => {
-  gulp.watch(['./src/less/**/*.less'], ['css']);
+  gulp.watch(['./lib/**/*.less'], ['css']);
   gulp.watch(['./lib/**/*.js', './index.js'], ['js']);
   gulp.watch(['./src/less/variables.less'], ['variables']);
 });
