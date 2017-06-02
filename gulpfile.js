@@ -57,7 +57,7 @@ gulp.task('minify-css', ['css'], () => {
  */
 
 gulp.task('variables', () => {
-  return gulp.src(['./src/less/variables.less'])
+  return gulp.src(['./lib/variables.less'])
     .pipe(gulp.dest(path.join(DIST, 'less')));
 });
 
@@ -125,5 +125,5 @@ gulp.task('roboto', () => {
 gulp.task('watch', () => {
   gulp.watch(['./lib/**/*.less'], ['css']);
   gulp.watch(['./lib/**/*.js', './index.js'], ['js', 'babelify', 'extras', 'minify-js']);
-  gulp.watch(['./src/less/variables.less'], ['variables']);
+  gulp.watch(['./lib/variables.less'], ['variables']);
 });
