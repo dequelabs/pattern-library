@@ -6,8 +6,8 @@ const proxyquire = require('proxyquire');
 const attributes = require('../../../lib/components/checkboxes/attributes');
 const snippet = require('./snippet.html');
 const Fixture = require('../../fixture');
-const queryAll = require('../../../lib/helpers/query-all');
-const getLabel = require('../../../lib/helpers/get-label');
+const queryAll = require('../../../lib/commons/query-all');
+const getLabel = require('../../../lib/commons/get-label');
 
 describe('components/checkboxes/attributes', () => {
   let fixture, checkboxes;

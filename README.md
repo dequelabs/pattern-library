@@ -14,9 +14,9 @@ $ bower install deque-pattern-library
 $ npm install deque-pattern-library
 ```
 
-### Dependencies
+## Usage
 
-The one and only dependency of the pattern library is jQuery which you will have to include on your own _before_ the inclusion of the pattern library's javascript file.
+Just drop the css and js into your page:
 
 ```html
 <html>
@@ -26,45 +26,33 @@ The one and only dependency of the pattern library is jQuery which you will have
   </head>
   <body>
     ...
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="./bower_components/deque-pattern-library/js/cauldron.min.js"></script>
   </body>
 </html>
 ```
 
+### Implementation Notes
+* If content of app is somehow loaded in after page load, you'll need to fire the "dqpl:ready" event so the javascript can reassess stuff.  Example:
+```js
+const e = new Event('dqpl:ready');
+document.dispatchEvent(e); // tells the pattern library that we're ready
+```
+
 ## Development
 - `npm install`
 - `bower install`
-- `gulp`: will build stuff into the _dist_ directory (`gulp watch` is also available)
+- `npm run build` or for development - `npm run dev` which will rebuild when files are changed
 
 __NOTE__: if a new component or composite is added, remember to create a quick [wiki](https://bitbucket.org/dmusser/pattern-library/wiki/Home) entry explaining what is absolutely necessary in using this widget.
 
-## Testing
-Testing is done using mocha-phantomjs along with the 'chai' assertion library (`assert.equal(!!0, false)`).  The `test/` directory structure matches the `src/` directory.  This means that if I'm testing `src/js/foo/index.js`, I should create my test in `test/js/foo/index.js`.  In order for mocha to run your test, you need to add it to the list of scripts at the bottom of `test/runner.html`.  [Read more info about mocha](https://mochajs.org/)
+### Testing
+Testing is done using mochify along with the 'chai' assertion library (`assert.equal(!!0, false)`).  The `test/` directory structure matches the `lib/` directory.  This means that if you're testing `lib/components/foo/index.js`, you would create a test in `test/components/foo/index.js`.  See the `test/` directory for examples.
 
 ```bash
-$ gulp test
+$ npm run test
 ```
 
-Or if you like running your tests in the browser
-
-```bash
-$ open test/runner.html
-```
-
-## Releases
+### Releases
 Orphan branch dist-only releases...
 
  * https://gist.github.com/schne324/6ca72fac89f35d961a0d
-
-## Notes
-* All media query stuff should go in `src/less/layout.less`
-
-## Implementation Notes
-* If content of app is somehow loaded in after page load, you'll need to fire the "dqpl:ready" event so the javascript can reassess stuff.  Example:
-```js
-jQuery(document).trigger('dqpl:ready'); // tell the pattern library we're ready to go
-```
-
-## TODO
-- wrap all js in `jQuery(document).ready()` (to support adding script to head and not having to fire a `jQuery(document).trigger('dqpl:ready')`)

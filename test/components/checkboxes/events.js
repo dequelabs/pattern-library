@@ -6,7 +6,7 @@ const attrs = require('../../../lib/components/checkboxes/attributes');
 const events = require('../../../lib/components/checkboxes/events');
 const snippet = require('./snippet.html');
 const Fixture = require('../../fixture');
-const queryAll = require('../../../lib/helpers/query-all');
+const queryAll = require('../../../lib/commons/query-all');
 
 describe('components/checkboxes/events', () => {
   let fixture, checkboxes;

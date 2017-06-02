@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mochify ./test/**/*.js --transform [ babelify --presets [ es2015 ] ] --transform [ stringify --extensions [ .html .css ] ] --plugin [ proxyquire-universal ] --plugin [ mochify-istanbul --report text ]",
     "build": "gulp",
-    "dev": "gulp && gulp watch"
+    "dev": "gulp default watch"
   },
   "author": {
     "name": "Harris Schneiderman",

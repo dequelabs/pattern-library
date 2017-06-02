@@ -7,16 +7,21 @@
 
 
 @{prefix}main-content {
-  margin-top: (@top-bar-height + @space-gutter);
-  padding: 0 @space-gutter 0 @space-gutter;
-  position: relative;
+  top: @top-bar-height;
+  padding: @space-gutter @space-gutter 0 @space-gutter;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
   &::before {
     content: '';
     position: absolute;
     left: 17px;
     background-color: transparent;
-    top: 0;
+    top: @space-gutter;
     bottom: 0;
     width: 6px;
   }
@@ -68,7 +73,7 @@
     }
 
     @{prefix}main-content {
-      margin-left: (@menu-width);
+      left: (@menu-width);
 
       &@{prefix}collapsed {
         margin-left: @menu-width;

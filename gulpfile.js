@@ -124,6 +124,6 @@ gulp.task('roboto', () => {
 
 gulp.task('watch', () => {
   gulp.watch(['./lib/**/*.less'], ['css']);
-  gulp.watch(['./lib/**/*.js', './index.js'], ['js']);
+  gulp.watch(['./lib/**/*.js', './index.js'], ['js', 'babelify', 'extras', 'minify-js']);
   gulp.watch(['./src/less/variables.less'], ['variables']);
 });
