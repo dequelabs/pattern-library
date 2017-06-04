@@ -54,6 +54,7 @@
     "rndm": "^1.2.0",
     "roboto-fontface": "^0.7.0",
     "simulant": "^0.2.2",
+    "stringify": "^5.1.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
