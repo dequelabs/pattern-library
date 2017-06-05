@@ -38,8 +38,8 @@ module.exports = class Fixture {
    */
 
   destroy() {
-    if (this.fixture) {
-      document.body.removeChild(this.fixture);
+    if (this.element) {
+      document.body.removeChild(this.element);
     }
 
     return this;
@@ -51,5 +51,6 @@ module.exports = class Fixture {
 
   cleanUp() {
     document.body.removeChild(this.style);
+    return this;
   }
 };

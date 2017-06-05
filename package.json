@@ -4,7 +4,7 @@
   "description": "Deque Pattern Library",
   "main": "dist/js/cauldron.js",
   "scripts": {
-    "test": "mochify ./test/**/*.js --transform [ babelify --presets [ es2015 ] ] --transform [ stringify --extensions [ .html .css ] ] --plugin [ proxyquire-universal ] --plugin [ mochify-istanbul --report text ]",
+    "test": "mochify ./test/**/*.js --transform [ babelify --presets [ es2015 ] ] --transform [ stringify --extensions [ .html .css ] ] --plugin [ proxyquire-universal ] --plugin [ mochify-istanbul --report text --exclude '**/+(test|node_modules|dist)/**/*' ]",
     "build": "gulp",
     "dev": "gulp default watch"
   },
