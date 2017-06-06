@@ -17,11 +17,31 @@
     outline: 0;
     border: 1px solid @text-base;
   }
+
+  [role="menuitem"] {
+    font-size: @text-small;
+    font-weight: @weight-normal;
+    padding: 2px @space-smallest;
+    cursor: default;
+
+    &:hover, &:focus {
+      background-color: @link-light;
+      outline: 0;
+    }
+
+    &[aria-disabled="true"] {
+      color: @disabled;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
 }
 
 @{prefix}top-bar {
   @{prefix}dropdown {
-    top: 72px;
+    top: (@top-bar-height - 8px);
     right: 0;
   }
 }

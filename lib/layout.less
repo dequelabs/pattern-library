@@ -73,7 +73,29 @@
     }
 
     @{prefix}main-content {
-      left: (@menu-width);
+      left: @menu-width;
+    }
+
+    @{prefix}toast {
+      left: @menu-width;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  @{prefix}top-bar {
+    > ul {
+      > li[role='menuitem'] {
+        &@{prefix}account-item {
+          @{prefix}avatar {
+            margin-right: 0 !important;
+          }
+
+          @{prefix}account-info {
+            display: none;
+          }
+        }
+      }
     }
   }
 }

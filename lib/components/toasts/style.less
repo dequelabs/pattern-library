@@ -1,0 +1,45 @@
+@import "../../variables.less";
+
+@toast-warning: rgba(255, 221, 117, 0.9);
+@toast-error: rgba(254, 109, 107, 0.9);
+@toast-success: rgba(98, 232, 107, 0.9);
+
+@{prefix}toast {
+  top: @top-bar-height;
+  position: fixed;
+  color: @top-bar-bg-active;
+  font-size: @text-normal;
+  z-index: @z-index-toast;
+  .align-items(center);
+  .border-box();
+  .display-flex();
+  padding: 7.5px 15px;
+  right: 0;
+  left: 0;
+
+  &@{prefix}toast-success {
+    background-color: @toast-success;
+  }
+
+  &@{prefix}toast-warning {
+    background-color: @toast-warning;
+  }
+
+  &@{prefix}toast-error {
+    background-color: @toast-error;
+  }
+
+  // Dismiss button
+  @{prefix}toast-dismiss {
+    background: transparent;
+    border: 0;
+
+    &:focus {
+      outline: 2px solid;
+    }
+  }
+
+  @{prefix}toast-message {
+    margin: 0 auto;
+  }
+}
