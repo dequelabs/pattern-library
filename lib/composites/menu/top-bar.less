@@ -2,12 +2,12 @@
 
 .underborder() {
   .border-box();
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
+  border-top: @border-width solid transparent;
+  border-bottom: @border-width solid transparent;
 }
 
 .underborderShow() {
-  border-bottom: 8px solid @top-bar-text;
+  border-bottom: @border-width solid @top-bar-text;
 }
 
 @{prefix}top-bar {
@@ -81,7 +81,7 @@
         }
 
         &[data-dropdown-expanded="true"]:hover {
-          border-bottom: 8px solid transparent;
+          border-bottom: @border-width solid transparent;
         }
       }
 
@@ -115,12 +115,13 @@
     background-color: @top-bar-bg-active;
 
     &:hover {
-      border-bottom: 8px solid transparent !important;
+      border-bottom: @border-width solid transparent !important;
     }
   }
 
   @{prefix}menu-trigger {
-    display: block;
+    .display-flex();
+    .align-items(center);
     background-color: @top-bar-bg;
     color: @top-bar-text;
     font-size: @text-medium;

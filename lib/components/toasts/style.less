@@ -10,7 +10,7 @@
   top: @top-bar-height;
   position: fixed;
   color: @top-bar-bg-active;
-  font-size: @text-normal;
+  font-size: @text-small;
   z-index: @z-index-toast;
   .align-items(center);
   .border-box();
@@ -43,5 +43,38 @@
 
   @{prefix}toast-message {
     margin: 0 auto;
+
+    &:before {
+      font-family: 'FontAwesome';
+      content: "\f0da";
+      margin: 0 2px;
+      display: inline-block;
+      color: transparent;
+      margin-right: @space-smallest;
+    }
+
+    .fa { // space between toast's icon and toast's messsage
+      margin-right: 3px;
+    }
+
+    @{prefix}link {
+      color: @top-bar-bg-active;
+      font-size: @text-small;
+      font-weight: @weight-light;
+      text-decoration: underline;
+
+      &:focus {
+        .focusRingInherit();
+      }
+    }
+  }
+
+  &:focus {
+    outline: 0;
+    @{prefix}toast-message {
+      &:before {
+        color: @top-bar-bg-active;
+      }
+    }
   }
 }
