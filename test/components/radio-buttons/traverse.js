@@ -20,8 +20,8 @@ describe('components/radio-buttons/traverse', () => {
   describe('given a dir of "next"', () => {
     it('should call setSelected with the proper params', () => {
       const t = proxyquire('../../../lib/components/radio-buttons/traverse', {
-        './set-selected': (radios, enabled) => {
-          assert.equal(enabled, radios[1]);
+        './set-selected': (radioButtons, enabled) => {
+          assert.equal(enabled, radioButtons[1]);
         }
       });
 
@@ -32,8 +32,8 @@ describe('components/radio-buttons/traverse', () => {
   describe('given a dir of "prev"', () => {
     it('should call setSelected with the proper params', () => {
       const t = proxyquire('../../../lib/components/radio-buttons/traverse', {
-        './set-selected': (radios, enabled) => {
-          assert.equal(enabled, radios[0]);
+        './set-selected': (radioButtons, enabled) => {
+          assert.equal(enabled, radioButtons[0]);
         }
       });
 

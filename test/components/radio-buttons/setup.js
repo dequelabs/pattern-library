@@ -67,12 +67,13 @@ describe('components/radio-buttons/setup', () => {
 
   describe('radio label', () => {
     it('should setup label clicks to match native radio behavior', () => {
-      let clicked = false;
       const radioLabel = fixture.element.querySelector('.dqpl-label');
       const radio = radios[0];
+      let clicked = false;
       radio.addEventListener('click', () => clicked = true);
       simulant.fire(radioLabel, 'click');
       assert.equal(document.activeElement, radio);
+      assert.isTrue(clicked);
     });
   });
 

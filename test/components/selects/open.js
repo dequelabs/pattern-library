@@ -6,7 +6,6 @@ const proxyquire = require('proxyquire');
 const snippet = require('./snippet.html');
 const queryAll = require('../../../lib/commons/query-all');
 const Fixture = require('../../fixture');
-const fire = require('simulant').fire;
 const open = require('../../../lib/components/selects/open');
 
 describe('components/selects/open', () => {

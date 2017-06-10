@@ -1,12 +1,9 @@
 'use strict';
 
 const assert = require('chai').assert;
-const Classlist = require('classlist');
 const proxyquire = require('proxyquire');
 const snippet = require('./snippet.html');
-const queryAll = require('../../../lib/commons/query-all');
 const Fixture = require('../../fixture');
-const fire = require('simulant').fire;
 
 describe('components/selects/arrow', () => {
   let fixture, select, list;

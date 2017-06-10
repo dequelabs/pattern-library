@@ -51,7 +51,7 @@ describe('composites/modals/close', () => {
     trigger.parentNode.removeChild(trigger);
     proxyquire('../../../lib/composites/modals/close', {
       'debug': () => {
-        return function () { called = true }
+        return function () { called = true; };
       }
     })(modal);
 

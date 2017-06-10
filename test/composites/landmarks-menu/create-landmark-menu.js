@@ -5,7 +5,7 @@ const proxyquire = require('proxyquire');
 const fire = require('simulant').fire;
 const Fixture = require('../../fixture');
 const snippet = require('./snippet-empty-menu.html');
-const create = require('../../../lib/composites/landmarks-menu/create-landmark-menu')
+const create = require('../../../lib/composites/landmarks-menu/create-landmark-menu');
 
 describe('composites/landmarks-menu/create-landmark-menu', () => {
   let fixture, container, main, nav, banner, target;
@@ -28,7 +28,7 @@ describe('composites/landmarks-menu/create-landmark-menu', () => {
     let called = false;
     proxyquire('../../../lib/composites/landmarks-menu/create-landmark-menu', {
       'debug': () => {
-        return function () { called = true; }
+        return function () { called = true; };
       }
     })(null, container);
 

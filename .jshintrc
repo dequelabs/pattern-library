@@ -1,8 +1,0 @@
-{
-  "node": true,
-  "esnext": true,
-  "globals": {
-    "document": true,
-    "window": true
-  }
-}

@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('chai').assert;
-const proxyquire = require('proxyquire');
 const fire = require('simulant').fire;
 const Fixture = require('../../fixture');
 const snippet = require('./snippet-existing-menu.html');

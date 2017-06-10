@@ -4,7 +4,6 @@ const path = require('path');
 const gulp = require('gulp');
 const less = require('gulp-less');
 const concat = require('gulp-concat');
-const open = require('gulp-open');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const browserify = require('browserify');

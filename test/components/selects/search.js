@@ -23,7 +23,7 @@ describe('components/selects/search', () => {
   });
 
   afterEach((done) => {
-    fixture.destroy()
+    fixture.destroy();
     setTimeout(done, 600); // allow the search timer to reset...
   });
   after(() => fixture.cleanUp());
@@ -33,7 +33,7 @@ describe('components/selects/search', () => {
       // search for "5", then for "4"
       search(53, selects[0], lists[0]);
       search(52, selects[0], lists[0]);
-      assert.equal(lists[0].querySelector('.foo').id, selects[0].getAttribute('aria-activedescendant'))
+      assert.equal(lists[0].querySelector('.foo').id, selects[0].getAttribute('aria-activedescendant'));
     });
   });
 
@@ -47,10 +47,9 @@ describe('components/selects/search', () => {
 
   describe('no match', () => {
     it('should not update aria-activedescendant', () => {
-      console.log(selects[0].getAttribute('aria-activedescendant'));
       // search "x" (no options contain "x")
       search(0, selects[0], lists[0]);
       assert.equal(selects[0].getAttribute('aria-activedescendant'), 'default');
     });
-  })
+  });
 });

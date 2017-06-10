@@ -27,7 +27,7 @@ describe('components/checkboxes/attributes', () => {
     const firstBox = document.querySelector('.dqpl-checkbox');
     firstBox.removeAttribute('role');
     let debugged = false;
-    const logger = (msg) => debugged = true;
+    const logger = () => debugged = true;
     const attrs = proxyquire('../../../lib/components/checkboxes/attributes', {
       'debug': () => logger
     });
