@@ -5,10 +5,9 @@
   border-left-color: @top-bar-bg;
 }
 
-
-@{prefix}main-content {
+@{prefix}layout {
   top: @top-bar-height;
-  padding: @space-gutter @space-gutter 0 @space-gutter;
+  padding: 23px 23px 0 17px;
   position: fixed;
   overflow-x: hidden;
   overflow-y: auto;
@@ -16,25 +15,18 @@
   bottom: 0;
   left: 0;
 
-  &::before {
-    content: '';
-    position: absolute;
-    left: 17px;
-    background-color: transparent;
-    top: @space-gutter;
-    bottom: 0;
-    width: 6px;
-  }
+  @{prefix}main-content {
+    padding: 17px 17px 0 17px;
+    border-left: 6px solid transparent;
 
-  &:focus {
-    outline: 0;
-    &:before {
-      background-color: @top-bar-bg;
+    &:focus {
+      outline: 0;
+      border-left-color: @top-bar-bg;
     }
-  }
 
-  &@{prefix}collapsed {
-    margin-left: 0;
+    &@{prefix}collapsed {
+      margin-left: 0;
+    }
   }
 }
 
@@ -72,7 +64,7 @@
       }
     }
 
-    @{prefix}main-content {
+    @{prefix}layout {
       left: @menu-width;
     }
 
