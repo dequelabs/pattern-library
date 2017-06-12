@@ -13,6 +13,7 @@ module.exports = class Fixture {
 
   addCauldron() {
     this.style = document.createElement('style');
+    this.style.innerHTML = cauldronCSS;
     // TODO: do we need fonts too (roboto and font awesome)?
     document.body.appendChild(this.style);
     return this;

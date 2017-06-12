@@ -30,6 +30,7 @@
     "chai": "^3.5.0",
     "classlist": "^1.0.1",
     "closest": "0.0.1",
+    "custom-event": "^1.0.1",
     "debug": "^2.6.8",
     "delegate": "^3.1.2",
     "document-ready": "^2.0.1",

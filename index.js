@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Deque Pattern Library entry
  */

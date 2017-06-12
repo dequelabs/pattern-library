@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('chai').assert;
+const CustomEvent = require('custom-event');
 const Classlist = require('classlist');
 const proxyquire = require('proxyquire');
 const attributes = require('../../../lib/components/checkboxes/attributes');
@@ -94,6 +95,47 @@ describe('components/checkboxes/attributes', () => {
     });
   });
 
-  // TODO: Tests for dqpl:checkbox:disable
-  // TODO: Tests for dqpl:checkbox:enable
+  describe('dqpl:checkbox:disable', () => {
+    it('should disable the checkbox', () => {
+      attributes();
+      const e = new CustomEvent('dqpl:checkbox:disable');
+      checkboxes[0].dispatchEvent(e);
+      assert.equal(checkboxes[0].getAttribute('aria-disabled'), 'true');
+    });
+
+    it('should set the right classes', () => {
+      attributes();
+      const box = checkboxes[0];
+      const label = getLabel(box, '.dqpl-checkbox-wrap', '.dqpl-label');
+      const inner = box.querySelector('.dqpl-inner-checkbox');
+      const isChecked = box.getAttribute('aria-checked') === 'true';
+      const e = new CustomEvent('dqpl:checkbox:disable');
+      box.dispatchEvent(e);
+
+      assert.isTrue(Classlist(inner).contains(isChecked ? 'fa-check-square' : 'fa-square'));
+      assert.isTrue(Classlist(label).contains('dqpl-label-disabled'));
+    });
+  });
+
+  describe('dqpl:checkbox:enable', () => {
+    it('should disable the checkbox', () => {
+      attributes();
+      const e = new CustomEvent('dqpl:checkbox:enable');
+      checkboxes[0].dispatchEvent(e);
+      assert.isNull(checkboxes[0].getAttribute('aria-disabled'));
+    });
+
+    it('should set the right classes', () => {
+      attributes();
+      const box = checkboxes[0];
+      const label = getLabel(box, '.dqpl-checkbox-wrap', '.dqpl-label');
+      const inner = box.querySelector('.dqpl-inner-checkbox');
+      const isChecked = box.getAttribute('aria-checked') === 'true';
+      const e = new CustomEvent('dqpl:checkbox:enable');
+      box.dispatchEvent(e);
+
+      assert.isTrue(Classlist(inner).contains(isChecked ? 'fa-check-square' : 'fa-square-o'));
+      assert.isFalse(Classlist(label).contains('dqpl-label-disabled'));
+    });
+  });
 });
