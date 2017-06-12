@@ -10,6 +10,7 @@ const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const babel = require('gulp-babel');
 const cleanCSS = require('gulp-clean-css');
+const del = require('del');
 const DIST = './dist/';
 
 gulp.task('default', [
@@ -21,6 +22,11 @@ gulp.task('default', [
   'minify-js',
   'extras'
 ]);
+
+// removes everything from dist
+gulp.task('clean', () => {
+  return del(['dist/**/*']);
+});
 
 /**
  * Styles
@@ -34,18 +40,18 @@ gulp.task('css', () => {
     './lib/**/*.less'
   ])
     .pipe(less())
-    .pipe(concat('cauldron.css'))
+    .pipe(concat('pattern-library.css'))
     .pipe(gulp.dest(path.join(DIST, 'css')));
 });
 
 /**
- * Minify `cauldron.css`
+ * Minify `pattern-library.css`
  */
 
 gulp.task('minify-css', ['css'], () => {
-  return gulp.src(path.join(DIST, 'css', 'cauldron.css'))
+  return gulp.src(path.join(DIST, 'css', 'pattern-library.css'))
     .pipe(cleanCSS())
-    .pipe(rename('cauldron.min.css'))
+    .pipe(rename('pattern-library.min.css'))
     .pipe(gulp.dest(path.join(DIST, 'css')));
 });
 
@@ -67,13 +73,13 @@ gulp.task('variables', () => {
 gulp.task('js', () => {
   return browserify('./index.js')
     .bundle()
-    .pipe(source('cauldron.js'))
+    .pipe(source('pattern-library.js'))
     .pipe(gulp.dest(path.join(DIST, 'js')));
 });
 
 
 gulp.task('babelify', ['js'], () => {
-  return gulp.src('./dist/js/cauldron.js')
+  return gulp.src('./dist/js/pattern-library.js')
     .pipe(babel({
       presets: ['es2015']
     }))
@@ -82,22 +88,22 @@ gulp.task('babelify', ['js'], () => {
 
 gulp.task('extras', ['babelify'], () => {
   return gulp.src([
-      './dist/js/cauldron.js',
+      './dist/js/pattern-library.js',
       './node_modules/prismjs/prism.js',
       './node_modules/prismjs/components/prism-jade.min.js'
     ])
-    .pipe(concat('cauldron.js'))
+    .pipe(concat('pattern-library.js'))
     .pipe(gulp.dest(path.join(DIST, 'js')));
 });
 
 /**
- * Minify cauldron.js
+ * Minify pattern-library.js
  */
 
 gulp.task('minify-js', ['babelify', 'extras'], () => {
-  return gulp.src(path.join(DIST, 'js', 'cauldron.js'))
+  return gulp.src(path.join(DIST, 'js', 'pattern-library.js'))
     .pipe(uglify())
-    .pipe(rename('cauldron.min.js'))
+    .pipe(rename('pattern-library.min.js'))
     .pipe(gulp.dest(path.join(DIST, 'js')));
 });
 

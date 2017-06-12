@@ -32,6 +32,7 @@
     "closest": "0.0.1",
     "custom-event": "^1.0.1",
     "debug": "^2.6.8",
+    "del": "^3.0.0",
     "delegate": "^3.1.2",
     "document-ready": "^2.0.1",
     "dom-matches": "^2.0.0",
@@ -58,6 +59,7 @@
     "proxyquireify": "^3.2.1",
     "rndm": "^1.2.0",
     "roboto-fontface": "^0.7.0",
+    "scroll-into-view-if-needed": "^1.1.0",
     "simulant": "^0.2.2",
     "stringify": "^5.1.0",
     "vinyl-source-stream": "^1.1.0"
