@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('chai').assert;
+const CustomEvent = require('custom-event');
 const Classlist = require('classlist');
 const proxyquire = require('proxyquire');
 const simulant = require('simulant');
@@ -78,9 +79,6 @@ describe('components/radio-buttons/setup', () => {
   });
 
   describe('events', () => {
-    // TODO: dqpl:radio:disable tests
-    // TODO: dqpl:radio:enable tests
-
     describe('clicks on radios', () => {
       it('should set the clicked radio as selected (and unselect previously selected)', () => {
         assert.equal(radios[0].getAttribute('aria-checked'), 'true');
@@ -134,6 +132,18 @@ describe('components/radio-buttons/setup', () => {
           assert.equal(radio.getAttribute('aria-checked'), 'false');
           assert.equal(radios[1].getAttribute('aria-checked'), 'true');
         });
+      });
+    });
+
+    describe('dqpl:radio:disable', () => {
+      it('should disable the radio and set the proper class', () => {
+        const radio = radios[0];
+        const inner = radio.querySelector('.dqpl-inner-radio');
+        const isChecked = radio.getAttribute('aria-checked') === 'true';
+        const e = new CustomEvent('dqpl:radio:disable');
+        radio.dispatchEvent(e);
+        assert.equal(radio.getAttribute('aria-disabled'), 'true');
+        assert.isTrue(Classlist(inner).contains(isChecked ? 'fa-dot-circle-o' : 'fa-circle'));
       });
     });
   });

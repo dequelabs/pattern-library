@@ -42,4 +42,15 @@ describe('components/checkboxes/events', () => {
     simulant.fire(box, 'keydown', { which: 32 });
     assert.equal(box.getAttribute('aria-checked'), 'false');
   });
+
+  it('should submit the form on enter press if the checkbox is in a form', () => {
+    const form = document.getElementById('foo');
+    let submitted = false;
+
+    form.submit = () => submitted = true;
+
+    const box = checkboxes[0];
+    simulant.fire(box, 'keydown', { which: 13 });
+    assert.isTrue(submitted);
+  });
 });
