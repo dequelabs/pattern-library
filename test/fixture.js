@@ -1,6 +1,6 @@
 'use strict';
 
-const cauldronCSS = require('../dist/css/cauldron.min.css');
+const cauldronCSS = require('../dist/css/pattern-library.min.css');
 
 module.exports = class Fixture {
   constructor() {
@@ -14,7 +14,6 @@ module.exports = class Fixture {
   addCauldron() {
     this.style = document.createElement('style');
     this.style.innerHTML = cauldronCSS;
-    // TODO: do we need fonts too (roboto and font awesome)?
     document.body.appendChild(this.style);
     return this;
   }

@@ -13,8 +13,7 @@
     "node_modules",
     "bower_components",
     "test",
-    "src",
-    "TODO.md"
+    "lib",
   ],
   "dependencies": {}
 }

@@ -17,6 +17,5 @@ describe('components/field-help/index', () => {
 
     f();
     assert.isTrue(called);
-    // TODO: dqpl:ready test?
   });
 });

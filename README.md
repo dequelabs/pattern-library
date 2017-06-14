@@ -22,11 +22,11 @@ Just drop the css and js into your page:
 <html>
   <head>
     ...
-    <link rel="stylesheet" href="./node_modules/deque-pattern-library/css/cauldron.min.css" />
+    <link rel="stylesheet" href="./node_modules/deque-pattern-library/css/pattern-library.min.css" />
   </head>
   <body>
     ...
-    <script src="./node_modules/deque-pattern-library/js/cauldron.min.js"></script>
+    <script src="./node_modules/deque-pattern-library/js/pattern-library.min.js"></script>
   </body>
 </html>
 ```
