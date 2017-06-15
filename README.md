@@ -55,6 +55,9 @@ or to have a watcher re-run tests every time you add a new test:
 $ npm run test:dev
 ```
 
+### Debugging
+The pattern library uses the [debug](https://www.npmjs.com/package/debug) module. To turn all debugging on, execute: `localStorage.debug = 'dqpl:*'` and refresh the page.  The directory structure of lib is used as the debug naming convention meaning to specifically debug the "selects" component, for example, execute: `localStorage.debug = 'dqpl:components:selects'`.
+
 ### Releases
 Orphan branch dist-only releases:
 
