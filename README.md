@@ -22,11 +22,11 @@ Just drop the css and js into your page:
 <html>
   <head>
     ...
-    <link rel="stylesheet" href="./node_modules/deque-pattern-library/css/pattern-library.min.css" />
+    <link rel="stylesheet" href="./node_modules/deque-pattern-library/dist/css/pattern-library.min.css" />
   </head>
   <body>
     ...
-    <script src="./node_modules/deque-pattern-library/js/pattern-library.min.js"></script>
+    <script src="./node_modules/deque-pattern-library/dist/js/pattern-library.min.js"></script>
   </body>
 </html>
 ```
@@ -71,8 +71,3 @@ $ npm run test:dev
 
 ### Debugging
 The pattern library uses the [debug](https://www.npmjs.com/package/debug) module. To turn all debugging on, execute: `localStorage.debug = 'dqpl:*'` and refresh the page.  The directory structure of lib is used as the debug naming convention. For example, to specifically debug the "selects" component, execute: `localStorage.debug = 'dqpl:components:selects'`.
-
-### Releases
-Orphan branch dist-only releases:
-
- * https://gist.github.com/schne324/6ca72fac89f35d961a0d
