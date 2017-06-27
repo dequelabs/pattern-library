@@ -8,7 +8,6 @@ const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
-const babel = require('gulp-babel');
 const cleanCSS = require('gulp-clean-css');
 const del = require('del');
 const DIST = './dist/';
@@ -16,14 +15,14 @@ const DIST = './dist/';
 gulp.task('default', [
   'fonts',
   'css',
-  'babelify',
+  'bundle',
   'variables',
   'minify-css',
   'minify-js',
   'extras'
 ]);
 
-// removes everything from dist
+// Empties out dist/
 gulp.task('clean', () => {
   return del(['dist/**/*']);
 });
@@ -67,26 +66,20 @@ gulp.task('variables', () => {
 });
 
 /**
- * Scripts
+ * Scripts bundle
  */
 
-gulp.task('js', () => {
+gulp.task('bundle', () => {
   return browserify('./index.js')
+    .transform('babelify', {
+      presets: ['es2015']
+    })
     .bundle()
     .pipe(source('pattern-library.js'))
     .pipe(gulp.dest(path.join(DIST, 'js')));
 });
 
-
-gulp.task('babelify', ['js'], () => {
-  return gulp.src('./dist/js/pattern-library.js')
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(gulp.dest(path.join(DIST, 'js')));
-});
-
-gulp.task('extras', ['babelify'], () => {
+gulp.task('extras', ['bundle'], () => {
   return gulp.src([
       './dist/js/pattern-library.js',
       './node_modules/prismjs/prism.js',
@@ -100,7 +93,7 @@ gulp.task('extras', ['babelify'], () => {
  * Minify pattern-library.js
  */
 
-gulp.task('minify-js', ['babelify', 'extras'], () => {
+gulp.task('minify-js', ['bundle', 'extras'], () => {
   return gulp.src(path.join(DIST, 'js', 'pattern-library.js'))
     .pipe(uglify())
     .pipe(rename('pattern-library.min.js'))
@@ -129,6 +122,6 @@ gulp.task('roboto', () => {
 
 gulp.task('watch', () => {
   gulp.watch(['./lib/**/*.less'], ['css']);
-  gulp.watch(['./lib/**/*.js', './index.js'], ['js', 'babelify', 'extras', 'minify-js']);
+  gulp.watch(['./lib/**/*.js', './index.js'], ['bundle', 'extras', 'minify-js']);
   gulp.watch(['./lib/variables.less'], ['variables']);
 });

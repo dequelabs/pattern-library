@@ -1,10 +1,11 @@
 'use strict';
 
+import ready from 'document-ready';
+
 /**
  * Deque Pattern Library entry
  */
 
-const ready = require('document-ready');
 const debug = require('debug')('dqpl:entry');
 
 ready(() => {
