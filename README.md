@@ -31,6 +31,20 @@ Just drop the css and js into your page:
 </html>
 ```
 
+## What is included?
+
+* css
+  * `pattern-library.css`
+  * `pattern-library.min.css`
+* fonts
+  * Roboto
+  * FontAwesome
+* js
+  * `pattern-library.js`
+  * `pattern-library.min.js`
+* less
+  * `variables.less`: All of the pattern library's colors and mixins
+
 ## Getting started
 
 Please refer to the [wiki](https://github.com/dequelabs/pattern-library/wiki)
@@ -43,7 +57,7 @@ Please refer to the [wiki](https://github.com/dequelabs/pattern-library/wiki)
 __NOTE__: if a new component or composite is added, remember to create a quick [wiki](https://github.com/dequelabs/pattern-library/wiki) entry explaining what is absolutely necessary in using this widget.
 
 ### Testing
-Testing is done using mochify along with the 'chai' assertion library (`assert.equal(!!0, false)`).  The `test/` directory structure matches the `lib/` directory.  This means that if you're testing `lib/components/foo/index.js`, you would create a test in `test/components/foo/index.js`.  See the `test/` directory for examples.  The tests are browserified and transpiled before running in the phantomjs headless browser so you can `require` stuff and use es6 syntax in the tests.
+Testing is done using mochify along with the 'chai' assertion library (`assert.isFalse(!!0)`).  The `test/` directory structure matches the `lib/` directory.  This means that if you're testing `lib/components/foo/index.js`, you would create a test in `test/components/foo/index.js`.  See the `test/` directory for examples.  The tests are browserified and transpiled before running in the phantomjs headless browser so you can `require` stuff and use es6 syntax in the tests.
 
 ```bash
 $ npm run test
@@ -56,7 +70,7 @@ $ npm run test:dev
 ```
 
 ### Debugging
-The pattern library uses the [debug](https://www.npmjs.com/package/debug) module. To turn all debugging on, execute: `localStorage.debug = 'dqpl:*'` and refresh the page.  The directory structure of lib is used as the debug naming convention meaning to specifically debug the "selects" component, for example, execute: `localStorage.debug = 'dqpl:components:selects'`.
+The pattern library uses the [debug](https://www.npmjs.com/package/debug) module. To turn all debugging on, execute: `localStorage.debug = 'dqpl:*'` and refresh the page.  The directory structure of lib is used as the debug naming convention. For example, to specifically debug the "selects" component, execute: `localStorage.debug = 'dqpl:components:selects'`.
 
 ### Releases
 Orphan branch dist-only releases:
