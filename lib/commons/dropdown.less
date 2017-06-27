@@ -1,0 +1,48 @@
+@import "../variables.less";
+
+@{prefix}dropdown {
+  position: absolute;
+  padding: 8px;
+  background-color: @tile-bg;
+  .ambient-light();
+  border: 1px solid @field-border;
+  color: @text-base;
+  display: none;
+  list-style: none;
+
+  &@{prefix}dropdown-active {
+    display: block;
+  }
+
+  &:focus {
+    outline: 0;
+    border: 1px solid @text-base;
+  }
+
+  [role="menuitem"] {
+    font-size: @text-small;
+    font-weight: @weight-normal;
+    padding: 2px @space-smallest;
+    cursor: default;
+
+    &:hover, &:focus {
+      background-color: @link-light;
+      outline: 0;
+    }
+
+    &[aria-disabled="true"] {
+      color: @disabled;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+@{prefix}top-bar {
+  @{prefix}dropdown {
+    top: (@top-bar-height - 8px);
+    right: 0;
+  }
+}

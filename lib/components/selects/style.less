@@ -1,0 +1,90 @@
+@import "../../variables.less";
+
+
+@{prefix}select {
+  position: relative;
+
+  @{prefix}combobox {
+    padding: @space-half @space-smallest;
+    .border-box();
+    font-size: @text-small;
+    color: @text-base;
+    width: @input-min-width;
+    height: @space-largest;
+    display: inline-block;
+    position: relative;
+    line-height: 1.4;
+
+    // down arrow
+    &:after {
+      font-family: 'FontAwesome';
+      content: '\f0d7';
+      position: absolute;
+      right: @space-smallest;
+      top: 2.5px;
+      font-size: @text-small;
+      color: @text-base;
+      font-weight: @weight-normal;
+    }
+
+    &[disabled], &[aria-disabled="true"] {
+      background-color: @field-disabled;
+      border: 1px solid @field-disabled;
+    }
+  }
+
+  @{prefix}listbox {
+    display: none;
+    margin: 0;
+    padding: 0;
+    .border-box();
+    overflow-y: auto;
+    background-color: @tile-bg;
+    width: @input-min-width;
+    position: absolute;
+    list-style-type: none;
+    z-index: @z-index-listbox;
+    max-height: 200px;
+    top: 28px; // the height of the combobox - 1px for the border collapse
+
+    &@{prefix}listbox-show {
+      display: block;
+    }
+
+    @{prefix}option {
+      font-size: @text-small;
+      font-weight: @weight-normal;
+      padding: 2px @space-large;
+      top: 28px; // TODO: This probably wasn't meant to be here...
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+      white-space: nowrap;
+      cursor: default;
+
+      &:hover, &@{prefix}option-active {
+        background-color: @link-light;
+      }
+
+      &[aria-disabled="true"] {
+        color: @disabled;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+
+      &[aria-selected='true'],
+      &[aria-selected='true']@{prefix}option-active {
+        background-color: @link;
+        color: @text-light;
+
+        &:before { // check mark
+          font-family: 'FontAwesome';
+          content: '\f00c';
+          position: absolute;
+          left: 5px;
+        }
+      }
+    }
+  }
+}

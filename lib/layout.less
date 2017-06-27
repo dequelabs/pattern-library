@@ -1,0 +1,138 @@
+@import './variables.less';
+
+.contentFocus() {
+  outline: 0;
+  border-left-color: @top-bar-bg;
+}
+
+@adjusted-padding: @layout-padding - @border-width;
+
+@{prefix}layout {
+  top: @top-bar-height;
+  padding: @layout-padding @layout-padding 0 @layout-padding;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  .display-flex();
+  .flex-direction(column);
+
+  @{prefix}main-content {
+    padding: @layout-padding @layout-padding 0 @layout-padding;
+    border-left: @border-width solid transparent;
+
+    &:focus {
+      outline: 0;
+      border-left-color: @top-bar-bg;
+    }
+
+    &@{prefix}collapsed {
+      margin-left: 0;
+    }
+
+    // Content header
+    @{prefix}content-header {
+      .display-flex();
+      .align-items(baseline);
+      .flex-wrap(wrap);
+      padding-bottom: 10px;
+      border-bottom: 1px solid @field-disabled;
+      margin-bottom: @space-small;
+
+      h1 {
+        margin: 0 20px 0 0;
+        padding: 0;
+        font-size: @text-larger;
+        color: @top-bar-bg-active;
+        font-weight: @weight-light;
+      }
+
+      h2, h3 {
+        padding: 0;
+        margin: 0;
+        color: @text-base;
+        font-weight: @weight-light;
+        font-size: @text-large-medium;
+      }
+    }
+
+    // Content body
+    @{prefix}content-body {
+      max-width: @content-max-width;
+    }
+  }
+}
+
+@{prefix}content-block, [data-skip-target="true"] {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: -(@layout-padding + @border-width);
+    background-color: transparent;
+    top: 0;
+    bottom: 0;
+    width: @border-width;
+  }
+
+  &:focus {
+    outline: 0;
+    &::before {
+      background-color: @top-bar-bg;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    @{prefix}side-bar {
+      display: block;
+      left: 0;
+      .animate(left .3s);
+
+    }
+    @{prefix}top-bar {
+      @{prefix}menu-trigger {
+        display: none;
+      }
+    }
+
+    @{prefix}layout {
+      left: @menu-width;
+    }
+
+    @{prefix}toast {
+      left: @menu-width;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  @{prefix}top-bar {
+    > ul {
+      > li[role='menuitem'] {
+        &@{prefix}account-item {
+          @{prefix}avatar {
+            margin-right: 0 !important;
+          }
+
+          @{prefix}account-info {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 460px) {
+  body {
+    @{prefix}modal {
+      @{prefix}modal-inner {
+        width: 301px;
+      }
+    }
+  }
+}

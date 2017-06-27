@@ -1,0 +1,58 @@
+@import "../../variables.less";
+
+@{prefix}tooltip {
+  width: 145px;
+  .ambient-light();
+  .box-sizing(border-box);
+  border: 1px solid #999999;
+  .border-radius(2px);
+  font-size: @text-smallest;
+  position: absolute;
+  display: none;
+  background: @button-secondary;
+  padding: @space-smallest;
+  bottom: 45px;
+  right: -28px;
+  z-index: @z-index-tooltip;
+
+  &:after {
+    position: absolute;
+    bottom: -14px;
+    right: 32px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15.6px 9px 0 9px;
+    border-color: @button-secondary transparent transparent transparent;
+  }
+
+  &:before {
+    position: absolute;
+    bottom: -15px;
+    right: 32px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15.6px 9px 0 9px;
+    border-color: @header transparent transparent transparent;
+  }
+
+  &@{prefix}tip-active {
+    display: block;
+  }
+}
+
+@{prefix}definition-button-wrap {
+  @{prefix}tooltip {
+    bottom: 30px;
+    right: 50%;
+    margin-right: -72.5px; // half the width of the tooltip
+
+    &:before, &:after {
+      right: 50%;
+      margin-right: -9px; // half the width of the triangle
+    }
+  }
+}

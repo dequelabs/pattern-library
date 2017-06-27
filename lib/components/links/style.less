@@ -1,0 +1,29 @@
+@import "../../variables.less";
+
+@{prefix}link {
+  text-decoration: none;
+  color: @link;
+  font-weight: @weight-medium;
+  display: inline-block;
+  padding: @space-quarter;
+
+  &:hover {
+    text-decoration: underline;
+    color: @link;
+  }
+
+  &:focus {
+    text-decoration: underline;
+    outline-offset: 0;
+  }
+}
+
+p {
+  @{prefix}link {
+    margin: 0 2px;
+    display: inline;
+    text-decoration: underline;
+    color: @header-dark;
+    font-weight: @weight-normal;
+  }
+}

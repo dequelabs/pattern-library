@@ -1,0 +1,106 @@
+@import "../../variables.less";
+
+@{prefix}modal {
+  display: none;
+  width: 100%;
+  .box-sizing(border-box);
+
+  &@{prefix}modal-show {
+    display: block;
+  }
+
+  @{prefix}modal-inner {
+    width: 450px;
+    left: 50%;
+    top: 100px;
+    position: fixed;
+    z-index: @z-index-modal;
+    .transform(translate(-50%, 0));
+    .border-radius(3px);
+    background: @tile-bg;
+    .modal-drop();
+
+    @{prefix}modal-header {
+      background-color: @button-secondary;
+      position: relative;
+      .display-flex();
+      height: 48px;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+
+      h2 {
+        font-size: @text-normal;
+        color: @text-base;
+        font-weight: @weight-normal;
+        .align-self(center);
+        padding: 8px 24px;
+        border-bottom: 4px solid transparent;
+
+        &:focus {
+          outline: 0;
+          border-bottom: 4px solid @text-base;
+        }
+      }
+
+      @{prefix}modal-close {
+        background-color: transparent;
+        color: @text-base;
+        font-size: @text-normal;
+        .align-self(center);
+        margin-left: auto;
+        padding: 8px;
+        margin-right: @space-three-quarters;
+      }
+    }
+
+    @{prefix}modal-content {
+      padding: 0 @space-large 0 @space-large;
+      margin-bottom: 60px; // the height of the footer
+      overflow-y: auto;
+
+      @{prefix}text-input,
+      @{prefix}textarea {
+        width: 100%;
+      }
+
+      :first-child {
+        h3 {
+          margin: @space-large 0;
+        }
+      }
+
+      h3 {
+        font-weight: @weight-light;
+        margin: 0 0 @space-large 0;
+        padding: 0;
+      }
+    }
+
+    @{prefix}modal-footer {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      height: 60px;
+      .display-flex();
+      .align-items(center);
+      border-top: 1px solid @field-disabled;
+      padding: 0 @space-large;
+      .box-sizing(border-box);
+      background: @tile-bg;
+
+      button {
+        margin: 0 @space-small 0 0;
+      }
+    }
+  }
+
+  @{prefix}modal-screen {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: @scrim;
+    position: fixed;
+    z-index: @z-index-modal-scrim;
+  }
+}

@@ -1,0 +1,143 @@
+@import "../../variables.less";
+
+@{prefix}button-primary,
+@{prefix}button-secondary,
+@{prefix}button-clear {
+  min-width: 110px;
+  border-radius: 18px;
+  border: none;
+  padding: @space-smallest;
+  font-size: @text-small;
+  .border-box();
+  padding: @space-smallest @space-medium;
+  .ambient-light();
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  height: 36px;
+  position: relative;
+  text-transform: uppercase;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    .border-radius(50%);
+    .box-shadow(-4px 0 transparent);
+    top: 3px;
+    left: 8px;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    .border-radius(50%);
+    .box-shadow(4px 0 transparent);
+    top: 3px;
+    right: 8px;
+  }
+
+  &:hover {
+    .key-light();
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:active {
+    .active-light();
+  }
+}
+
+@{prefix}button-primary {
+  background-color: @button-primary;
+  color: @button-text-light;
+
+  &@{prefix}disabled {
+    color: @text-light-disabled;
+  }
+
+  &:focus {
+    &:after {
+      .box-shadow(4px 0 @text-light);
+    }
+
+    &:before {
+      .box-shadow(-4px 0 @text-light);
+    }
+  }
+}
+
+@{prefix}button-secondary {
+  background-color: @button-secondary;
+  color: @button-text-dark;
+
+  &@{prefix}disabled {
+    color: @disabled;
+  }
+
+  &:focus {
+    &:after {
+      .box-shadow(4px 0 @button-text-dark);
+    }
+
+    &:before {
+      .box-shadow(-4px 0 @button-text-dark);
+    }
+  }
+}
+
+@{prefix}button-clear {
+  background-color: transparent;
+  .box-shadow(none);
+
+  &:hover {
+    background-color: @button-secondary;
+    .box-shadow(none);
+  }
+
+  &:focus {
+    background-color: @button-secondary;
+    &:after {
+      .box-shadow(4px 0 @button-text-dark);
+    }
+
+    &:before {
+      .box-shadow(-4px 0 @button-text-dark);
+    }
+  }
+}
+
+@{prefix}buttons-inline {
+  .display-flex();
+  .flex-direction(row);
+  margin: 0 auto;
+
+  button {
+    margin: 0 0 0 10px;
+  }
+}
+
+@{prefix}definition-button-wrap {
+  display: inline;
+  vertical-align: baseline;
+  position: relative;
+}
+
+@{prefix}button-definition {
+  background-color: transparent;
+  color: @text-base;
+  font-weight: @weight-normal;
+  border-bottom: 1px dotted;
+  display: inline-block;
+  margin: 0 2px;
+  padding: 0;
+  font-size: inherit;
+  vertical-align: baseline;
+  cursor: auto;
+  .vendor(user-select, text);
+}
