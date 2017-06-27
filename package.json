@@ -50,10 +50,12 @@
     "gulp-open": "^2.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.0.0",
+    "live-region": "^1.0.2",
     "mocha": "^3.0.2",
     "mocha-phantomjs": "^4.1.0",
     "mochify": "^3.2.1",
     "mochify-istanbul": "^2.4.2",
+    "prismjs": "^1.5.1",
     "proxyquire": "^1.8.0",
     "proxyquire-universal": "^1.0.8",
     "proxyquireify": "^3.2.1",
@@ -63,8 +65,5 @@
     "simulant": "^0.2.2",
     "stringify": "^5.1.0",
     "vinyl-source-stream": "^1.1.0"
-  },
-  "dependencies": {
-    "prismjs": "^1.5.1"
   }
 }

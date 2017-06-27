@@ -24,7 +24,14 @@ describe('components/selects/arrow', () => {
     select.setAttribute('aria-activedescendant', 'default');
     proxyquire('../../../lib/components/selects/arrow', {
       './activate': () => called = true
-    })(40, select, list);
+    })({
+      key: 40,
+      combobox: select,
+      listbox: list,
+      liveRegion: {
+        announce: () => {}
+      }
+    });
 
     assert.isTrue(called);
   });
@@ -34,7 +41,14 @@ describe('components/selects/arrow', () => {
     select.removeAttribute('aria-activedescendant');
     proxyquire('../../../lib/components/selects/arrow', {
       './activate': () => called = true
-    })(40, select, list);
+    })({
+      key: 40,
+      combobox: select,
+      listbox: list,
+      liveRegion: {
+        announce: () => {}
+      }
+    });
 
     assert.isFalse(called);
   });
@@ -44,7 +58,14 @@ describe('components/selects/arrow', () => {
     select.setAttribute('aria-activedescendant', 'default');
     proxyquire('../../../lib/components/selects/arrow', {
       './activate': () => called = true
-    })(38, select, list);
+    })({
+      key: 38,
+      combobox: select,
+      listbox: list,
+      liveRegion: {
+        announce: () => {}
+      }
+    });
 
     assert.isFalse(called);
   });
