@@ -98,7 +98,9 @@
         display: none;
       }
     }
+  }
 
+  body:not(@{prefix}no-sidebar) {
     @{prefix}layout {
       left: @menu-width;
     }
