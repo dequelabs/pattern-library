@@ -62,6 +62,16 @@
     @{prefix}content-body {
       max-width: @content-max-width;
     }
+
+    @{prefix}row {
+      .display-flex();
+      .flex-direction(row);
+    }
+
+    @{prefix}column {
+      .display-flex();
+      .flex-direction(column);
+    }
   }
 }
 
