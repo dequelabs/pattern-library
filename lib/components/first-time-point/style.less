@@ -1,0 +1,89 @@
+@import "../../variables.less";
+
+@{prefix}pointer-wrap {
+  position: relative;
+
+  @{prefix}arrow {
+    left: -45px;
+    position: relative;
+  }
+
+  @{prefix}arrow-pointer {
+    width: 100px;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 1px 25px 0 -22px @focus-glow, 0px 25px 6px -19px @focus-glow;
+
+    &:after {
+      content: "";
+      position: absolute;
+      border-radius: 3px;
+      width: 40px;
+      height: 40px;
+      background: @tile-bg;
+      transform: rotate(45deg);
+      top: 45px;
+      left: 31px;
+      box-shadow: 0px 0px 0 3px @focus-glow, 0px 0px 6px 5px @focus-glow;
+    }
+  }
+
+  @{prefix}arrow-neck {
+    background: @tile-bg;
+    width: 12px;
+    height: 27px;
+    margin-left: 45px;
+    position: relative;
+    z-index: 1;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    box-shadow: 6px 0px 0 -3px @focus-glow, -6px 0px 0 -3px @focus-glow, 10px 0 10px -4px @focus-glow, -10px 0 10px -4px @focus-glow;
+  }
+
+  @{prefix}box {
+    background: @tile-bg;
+    padding: 12px;
+    max-width: 300px;
+    border-radius: 3px;
+    border-top-left-radius: 0;
+    box-shadow: 0px 0px 0px 3px @focus-glow, 0px 0px 12px 4px @focus-glow;
+    z-index: 9;
+
+    @{prefix}close {
+      position: absolute;
+      right: 15px;
+      z-index: 1;
+      background: @tile-bg;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    @{prefix}content {
+      position: relative;
+
+      h4 {
+        margin: 0;
+        padding: 0;
+      }
+
+      &:focus {
+        outline: none;
+
+        &:before {
+          background: @top-bar-bg;
+        }
+      }
+
+      &:before {
+        content: '';
+        height: 100%;
+        width: 3px;
+        position: absolute;
+        left: -8px;
+      }
+    }
+  }
+}
