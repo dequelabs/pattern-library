@@ -1,0 +1,77 @@
+@import "../../variables.less";
+
+@{prefix}pointer-wrap {
+  position: relative;
+  @{prefix}arrow {
+    left: -45px;
+    position: relative;
+  }
+  @{prefix}arrow-pointer {
+    width: 100px;
+    height: 60px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 1px 25px 0 -22px rgba(193, 27, 222, 0.75), 0px 25px 6px -19px rgba(193, 27, 222, 0.75);
+    &:after {
+      content: "";
+      position: absolute;
+      border-radius: 3px;
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      transform: rotate(45deg);
+      top: 45px;
+      left: 31px;
+      box-shadow: 0px 0px 0 3px rgba(193, 27, 222, 0.75), 0px 0px 6px 5px rgba(193, 27, 222, 0.75);
+    }
+  }
+  @{prefix}arrow-neck {
+    background: #fff;
+    width: 12px;
+    height: 27px;
+    margin-left: 45px;
+    position: relative;
+    z-index: 1;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    box-shadow: 6px 0px 0 -3px rgba(193, 27, 222, 0.75), -6px 0px 0 -3px rgba(193, 27, 222, 0.75), 10px 0 10px -4px rgba(193, 27, 222, 0.75), -10px 0 10px -4px rgba(193, 27, 222, 0.75);
+  }
+  @{prefix}box {
+    background: #fff;
+    padding: 12px;
+    max-width: 300px;
+    border-radius: 3px;
+    border-top-left-radius: 0;
+    box-shadow: 0px 0px 0px 3px rgba(193, 27, 222, 0.75), 0px 0px 12px 4px rgba(193, 27, 222, 0.75);
+    z-index: 9;
+    @{prefix}close {
+      position: absolute;
+      right: 15px;
+      z-index: 1;
+      background: #ffffff;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    @{prefix}content {
+      position: relative;
+      h4 {
+        margin: 0;
+        padding: 0;
+      }
+      &:focus {
+        outline: none;
+        &:before {
+          background: #333;
+        }
+      }
+      &:before {
+        content: '';
+        height: 100%;
+        width: 3px;
+        position: absolute;
+        left: -8px;
+      }
+    }
+  }
+}
