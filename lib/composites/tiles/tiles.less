@@ -1,13 +1,88 @@
 @import "../../variables.less";
 
 @{prefix}tile {
-  background-color: @tile-bg;
-  .vendor(box-shadow, 0px 0px 13px 1px rgba(0,0,0,0.39));
-  .border-box();
-  position: relative;
+  .tile-drop();
+  max-width: 476px;
 
-  &@{prefix}small {
-    width: 298px;
-    margin: 0 auto;
+  @{prefix}row {
+    .align-items(center);
+  }
+
+  @{prefix}tile-header {
+    color: @tile-bg;
+    background-color: @top-bar-bg;
+    padding: @space-three-quarters @space-large;
+
+    h2, h3, h4, h5, h6 {
+      font-size: @text-small-medium;
+      font-weight: @weight-light;
+      color: @tile-bg;
+      margin: 0;
+    }
+
+    // option menus
+    @{prefix}options-menu-wrap {
+      margin-left: auto;
+
+      @{prefix}options-menu-trigger {
+        background: @top-bar-bg;
+        color: @tile-bg;
+        border: none;
+      }
+    }
+
+    // filters (just a flavor of the select component)
+    @{prefix}label {
+      font-size: @text-smaller;
+      font-weight: @weight-light;
+      color: @tile-bg;
+      margin-left: 0;
+      margin-bottom: 0;
+      padding: 5px 0;
+    }
+
+    @{prefix}select {
+      @{prefix}combobox {
+        width: 100px;
+        background: transparent;
+        font-size: @text-smaller;
+        color: @tile-bg;
+        border: none;
+        margin: 0 0 0 4px;
+        padding: 5px 4px;
+        height: auto;
+        cursor: default;
+
+        @{prefix}pseudo-value {
+          font-size: @text-smaller;
+          min-height: 18px;
+          font-weight: @weight-normal;
+        }
+
+        &:after {
+          top: 3px;
+          right: 1px;
+          color: @tile-bg;
+        }
+      }
+
+      @{prefix}listbox {
+        color: @text-base;
+      }
+    }
+  }
+
+  @{prefix}tile-content {
+    ul {
+      .border-box();
+      li {
+        border-bottom: 1px solid @list-separator;
+      }
+    }
+  }
+
+  @{prefix}tile-footer {
+    padding: @space-small;
+    text-align: center;
   }
 }
