@@ -5,7 +5,7 @@
   width: 100%;
   .box-sizing(border-box);
 
-  &@{prefix}alert-show {
+  &@{prefix}show {
     display: block;
   }
 
@@ -21,6 +21,7 @@
     .border-radius(3px);
     background: @tile-bg;
     .modal-drop();
+
     @{prefix}buttons {
       margin-top: 24px;
       display:flex;
@@ -29,6 +30,7 @@
       justify-content: center;
       align-content: center;
       align-items: center;
+
       button {
         margin: 0 16px 0 0;
       }
@@ -46,7 +48,7 @@
   /*
    * Alert Scrim
    */
-  @{prefix}alert-screen {
+  @{prefix}screen {
     top: 0;
     left: 0;
     right: 0;
