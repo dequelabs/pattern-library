@@ -19,7 +19,7 @@ describe('composites/alert', () => {
     fixture.create(snippet);
     const el = fixture.element;
     element = el.querySelector('.dqpl-alert');
-    trigger = document.querySelector(`[data-id="${element.id}"]`);
+    trigger = document.querySelector(`[data-alert-id="${element.id}"]`);
   });
 
   afterEach(() => fixture.destroy());
@@ -27,7 +27,7 @@ describe('composites/alert', () => {
 
   describe('clicking a trigger', () => {
     it('should call not attempt to open the alert if it cannot be found', () => {
-      trigger.removeAttribute('data-id');
+      trigger.removeAttribute('data-alert-id');
       fire(trigger, 'click');
       assert.isFalse(Classlist(element).contains('dqpl-show'));
     });

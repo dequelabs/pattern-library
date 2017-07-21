@@ -20,7 +20,7 @@ describe('composites/modals', () => {
     fixture.create(snippet);
     const el = fixture.element;
     element = el.querySelector('.dqpl-modal');
-    trigger = document.querySelector(`[data-id="${element.id}"]`);
+    trigger = document.querySelector(`[data-modal-id="${element.id}"]`);
   });
 
   afterEach(() => fixture.destroy());
@@ -28,7 +28,7 @@ describe('composites/modals', () => {
 
   describe('clicking a trigger', () => {
     it('should call not attempt to open the modal if it cannot be found', () => {
-      trigger.removeAttribute('data-id');
+      trigger.removeAttribute('data-modal-id');
       fire(trigger, 'click');
       assert.isFalse(Classlist(element).contains('dqpl-show'));
     });
