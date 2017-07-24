@@ -22,9 +22,9 @@ describe('commons/open', () => {
   afterEach(() => fixture.destroy());
   after(() => fixture.cleanUp());
 
-  it('should add the "dqpl-show" class to the modal', () => {
+  it('should add the "dqpl-dialog-show" class to the modal', () => {
     open(trigger, element);
-    assert.isTrue(Classlist(element).contains('dqpl-show'));
+    assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
   });
 
   it('should add the "dqpl-open" class to the body', () => {

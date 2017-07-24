@@ -247,31 +247,38 @@
   margin-top: -1px;
 }
 
-.loader(@color: #ffffff, @spinner: @text-base) {
+.ltr-linear-gradient(@color) {
+  background: @color;
+  background: -moz-linear-gradient(left, @color 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, @color 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, @color 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, @color 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, @color 10%, rgba(255, 255, 255, 0) 42%);
+}
+
+.animation(@animation, @timing, @iteration, @timing-function) {
+  -moz-animation: @animation @timing @iteration @timing-function;
+  -webkit-animation: @animation @timing @iteration @timing-function;
+  animation: @animation @timing @iteration @timing-function;
+}
+
+.loader(@color, @spinner) {
   font-size: 10px;
   margin: 50px auto;
   text-indent: -9999em;
   width: 7em;
   height: 7em;
-  border-radius: 50%;
-  background: @spinner;
-  background: -moz-linear-gradient(left, @spinner 10%, rgba(255, 255, 255, 0) 42%);
-  background: -webkit-linear-gradient(left, @spinner 10%, rgba(255, 255, 255, 0) 42%);
-  background: -o-linear-gradient(left, @spinner 10%, rgba(255, 255, 255, 0) 42%);
-  background: -ms-linear-gradient(left, @spinner 10%, rgba(255, 255, 255, 0) 42%);
-  background: linear-gradient(to right, @spinner 10%, rgba(255, 255, 255, 0) 42%);
+  .circle();
+  .ltr-linear-gradient(@spinner);
+  .transform(translateZ(0));
   position: relative;
-  -webkit-animation: load 1.4s infinite linear;
-  animation: load 1.4s infinite linear;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
+  .animation(load, 1.4s, infinite, linear);
 
   &:before {
     width: 50%;
     height: 50%;
     background: @spinner;
-    border-radius: 100% 0 0 0;
+    .border-radius(100% 0 0 0);
     position: absolute;
     top: 0;
     left: 0;
@@ -282,7 +289,7 @@
     background: @color;
     width: 75%;
     height: 75%;
-    border-radius: 50%;
+    .border-radius(50%);
     content: '';
     margin: auto;
     position: absolute;
@@ -295,23 +302,19 @@
 
 @-webkit-keyframes load {
   0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
+    .transform(rotate(0deg));
   }
   100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    .transform(rotate(360deg));
   }
 }
 
 @keyframes load {
   0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
+    .transform(rotate(0deg));
   }
   100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
+    .transform(rotate(360deg));
   }
 }
 

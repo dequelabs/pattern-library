@@ -29,12 +29,12 @@ describe('composites/alert', () => {
     it('should call not attempt to open the alert if it cannot be found', () => {
       trigger.removeAttribute('data-alert-id');
       fire(trigger, 'click');
-      assert.isFalse(Classlist(element).contains('dqpl-show'));
+      assert.isFalse(Classlist(element).contains('dqpl-dialog-show'));
     });
 
     it('should show the alert', () => {
       fire(trigger, 'click');
-      assert.isTrue(Classlist(element).contains('dqpl-show'));
+      assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
     });
   });
 
@@ -42,9 +42,9 @@ describe('composites/alert', () => {
     describe('escape', () => {
       it('should NOT call close', () => {
         fire(trigger, 'click'); // Shows the alert
-        assert.isTrue(Classlist(element).contains('dqpl-show'));
+        assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
         fire(element, 'keydown', { which: 27 });
-        assert.isTrue(Classlist(element).contains('dqpl-show'));
+        assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
       });
     });
 

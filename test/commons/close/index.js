@@ -24,10 +24,10 @@ describe('commons/close', () => {
 
   it('should add the proper classes', () => {
     // throw the show classes on the modal/body
-    Classlist(element).add('dqpl-show');
+    Classlist(element).add('dqpl-dialog-show');
     Classlist(document.body).add('dqpl-open');
     close(element);
-    assert.isFalse(Classlist(element).contains('dqpl-show'));
+    assert.isFalse(Classlist(element).contains('dqpl-dialog-show'));
     assert.isFalse(Classlist(document.body).contains('dqpl-open'));
   });
 

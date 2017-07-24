@@ -30,22 +30,22 @@ describe('composites/modals', () => {
     it('should call not attempt to open the modal if it cannot be found', () => {
       trigger.removeAttribute('data-modal-id');
       fire(trigger, 'click');
-      assert.isFalse(Classlist(element).contains('dqpl-show'));
+      assert.isFalse(Classlist(element).contains('dqpl-dialog-show'));
     });
 
     it('should open the modal', () => {
       fire(trigger, 'click');
-      assert.isTrue(Classlist(element).contains('dqpl-show'));
+      assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
     });
   });
 
   describe('clicking a close/cancel button', () => {
     it('should call close', () => {
       fire(trigger, 'click'); // open the modal
-      assert.isTrue(Classlist(element).contains('dqpl-show'));
+      assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
       const close = element.querySelector('.dqpl-close');
       fire(close, 'click');
-      assert.isFalse(Classlist(element).contains('dqpl-show'));
+      assert.isFalse(Classlist(element).contains('dqpl-dialog-show'));
     });
   });
 
@@ -53,9 +53,9 @@ describe('composites/modals', () => {
     describe('escape', () => {
       it('should call close', () => {
         fire(trigger, 'click'); // open the modal
-        assert.isTrue(Classlist(element).contains('dqpl-show'));
+        assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
         fire(element, 'keydown', { which: 27 });
-        assert.isFalse(Classlist(element).contains('dqpl-show'));
+        assert.isFalse(Classlist(element).contains('dqpl-dialog-show'));
       });
     });
 

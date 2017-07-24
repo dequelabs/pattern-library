@@ -5,11 +5,11 @@
   width: 100%;
   .box-sizing(border-box);
 
-  &@{prefix}show {
+  &@{prefix}dialog-show {
     display: block;
   }
 
-  @{prefix}inner {
+  @{prefix}dialog-inner {
     width: 399px;
     padding: 24px;
     left: 50%;
@@ -42,7 +42,7 @@
    */
   @{prefix}loader {
     display: none;
-    .loader();
+    .loader(#fff, @text-base);
   }
 
   /*
