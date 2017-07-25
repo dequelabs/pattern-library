@@ -5,11 +5,11 @@
   width: 100%;
   .box-sizing(border-box);
 
-  &@{prefix}modal-show {
+  &@{prefix}dialog-show {
     display: block;
   }
 
-  @{prefix}modal-inner {
+  @{prefix}dialog-inner {
     width: 450px;
     left: 50%;
     top: 100px;
@@ -42,7 +42,7 @@
         }
       }
 
-      @{prefix}modal-close {
+      @{prefix}close {
         background-color: transparent;
         color: @text-base;
         font-size: @text-normal;
@@ -53,7 +53,7 @@
       }
     }
 
-    @{prefix}modal-content {
+    @{prefix}content {
       padding: 0 @space-large 0 @space-large;
       margin-bottom: 60px; // the height of the footer
       overflow-y: auto;
@@ -94,7 +94,7 @@
     }
   }
 
-  @{prefix}modal-screen {
+  @{prefix}screen {
     top: 0;
     left: 0;
     right: 0;

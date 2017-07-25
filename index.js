@@ -34,4 +34,12 @@ ready(() => {
   require('./lib/composites/landmarks-menu')();
   require('./lib/composites/modals')();
   require('./lib/composites/menu')();
+  require('./lib/composites/alert')();
+
+  /**
+   * Globals
+   * Only need to call index (calls to specific globals should be added to lib/global/index.js)
+   */
+
+  require('./lib/global')();
 });

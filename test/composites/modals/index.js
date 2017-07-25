@@ -5,22 +5,24 @@ const Classlist = require('classlist');
 const fire = require('simulant').fire;
 const snippet = require('./fixture.html');
 const Fixture = require('../../fixture');
+const global = require('../../../lib/global');
 const index = require('../../../lib/composites/modals/');
 
 describe('composites/modals', () => {
-  let fixture, modal, trigger;
+  let fixture, element, trigger;
   before(() => {
     fixture = new Fixture();
     // NOTE: only call this once so delegated
     // events don't get attached multiple times
+    global();
     index();
   });
 
   beforeEach(() => {
     fixture.create(snippet);
     const el = fixture.element;
-    modal = el.querySelector('.dqpl-modal');
-    trigger = el.querySelector('.dqpl-button-secondary');
+    element = el.querySelector('.dqpl-modal');
+    trigger = document.querySelector(`[data-dialog-id="${element.id}"]`);
   });
 
   afterEach(() => fixture.destroy());
@@ -28,24 +30,24 @@ describe('composites/modals', () => {
 
   describe('clicking a trigger', () => {
     it('should call not attempt to open the modal if it cannot be found', () => {
-      trigger.removeAttribute('data-modal');
+      trigger.removeAttribute('data-dialog-id');
       fire(trigger, 'click');
-      assert.isFalse(Classlist(modal).contains('dqpl-modal-show'));
+      assert.isFalse(Classlist(element).contains('dqpl-dialog-show'));
     });
 
     it('should open the modal', () => {
       fire(trigger, 'click');
-      assert.isTrue(Classlist(modal).contains('dqpl-modal-show'));
+      assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
     });
   });
 
   describe('clicking a close/cancel button', () => {
     it('should call close', () => {
       fire(trigger, 'click'); // open the modal
-      assert.isTrue(Classlist(modal).contains('dqpl-modal-show'));
-      const close = modal.querySelector('.dqpl-modal-close');
+      assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
+      const close = element.querySelector('.dqpl-close');
       fire(close, 'click');
-      assert.isFalse(Classlist(modal).contains('dqpl-modal-show'));
+      assert.isFalse(Classlist(element).contains('dqpl-dialog-show'));
     });
   });
 
@@ -53,17 +55,17 @@ describe('composites/modals', () => {
     describe('escape', () => {
       it('should call close', () => {
         fire(trigger, 'click'); // open the modal
-        assert.isTrue(Classlist(modal).contains('dqpl-modal-show'));
-        fire(modal, 'keydown', { which: 27 });
-        assert.isFalse(Classlist(modal).contains('dqpl-modal-show'));
+        assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
+        fire(element, 'keydown', { which: 27 });
+        assert.isFalse(Classlist(element).contains('dqpl-dialog-show'));
       });
     });
 
     describe('shift + tab on the first focusable element within modal', () => {
       it('should focus the last focusable element in the modal', () => {
         fire(trigger, 'click'); // open the modal
-        const lastFocusable = modal.querySelector('.dqpl-modal-cancel');
-        const firstFocusable = modal.querySelector('.dqpl-modal-close');
+        const lastFocusable = element.querySelector('.dqpl-cancel');
+        const firstFocusable = element.querySelector('.dqpl-close');
         fire(firstFocusable, 'keydown', { which: 9, shiftKey: true });
         assert.equal(document.activeElement, lastFocusable);
       });
@@ -72,8 +74,8 @@ describe('composites/modals', () => {
     describe('tab on the last focusable element within the modal', () => {
       it('should focus the first element', () => {
         fire(trigger, 'click'); // open the modal
-        const lastFocusable = modal.querySelector('.dqpl-modal-cancel');
-        const firstFocusable = modal.querySelector('.dqpl-modal-close');
+        const lastFocusable = element.querySelector('.dqpl-cancel');
+        const firstFocusable = element.querySelector('.dqpl-close');
         fire(lastFocusable, 'keydown', { which: 9, shiftKey: false });
         assert.equal(document.activeElement, firstFocusable);
       });
@@ -83,8 +85,8 @@ describe('composites/modals', () => {
   describe('shift+tab on the modal\'s h2', () => {
     it('should focus the last focusable element within the modal', () => {
       fire(trigger, 'click'); // open the modal
-      const h2 = modal.querySelector('h2');
-      const lastFocusable = modal.querySelector('.dqpl-modal-cancel');
+      const h2 = element.querySelector('h2');
+      const lastFocusable = element.querySelector('.dqpl-cancel');
       fire(h2, 'keydown', { which: 9, shiftKey: true });
       assert.equal(document.activeElement, lastFocusable);
     });

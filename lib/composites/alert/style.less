@@ -1,0 +1,71 @@
+@import "../../variables.less";
+
+@{prefix}alert {
+  display: none;
+  width: 100%;
+  .box-sizing(border-box);
+
+  &@{prefix}dialog-show {
+    display: block;
+  }
+
+  @{prefix}dialog-inner {
+    width: 399px;
+    padding: 24px;
+    left: 50%;
+    top: 100px;
+    position: fixed;
+    text-align: center;
+    z-index: @z-index-modal;
+    .transform(translate(-50%, 0));
+    .border-radius(3px);
+    background: @tile-bg;
+    .modal-drop();
+
+    @{prefix}content {
+      border-left: 3px solid transparent;
+    }
+
+    &:focus {
+      outline: none;
+
+      @{prefix}content {
+        border-left: 3px solid @text-base;
+      }
+    }
+
+    @{prefix}buttons {
+      margin-top: 24px;
+      .display-flex();
+      .flex-direction();
+      .flex-wrap(wrap);
+      .justify-content();
+      .align-items(center);
+
+      button {
+        margin: 0 16px 0 0;
+      }
+    }
+  }
+
+  /**
+   * Loader Animation
+   */
+  @{prefix}loader {
+    display: none;
+    .loader(#fff, @text-base);
+  }
+
+  /*
+   * Alert Scrim
+   */
+  @{prefix}screen {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: @scrim;
+    position: fixed;
+    z-index: @z-index-modal-scrim;
+  }
+}

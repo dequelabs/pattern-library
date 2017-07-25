@@ -2,23 +2,23 @@
 
 const assert = require('chai').assert;
 const snippet = require('./fixture.html');
-const Fixture = require('../../fixture');
-const aria = require('../../../lib/composites/modals/aria');
+const Fixture = require('../../../fixture');
+const aria = require('../../../../lib/commons/dialog/aria');
 
-describe('composites/modals/aria', () => {
-  let fixture, modal, parent1, parent2, parent3, alreadyHidden, trigger;
+describe('commons/aria', () => {
+  let fixture, element, parent1, parent2, parent3, alreadyHidden, trigger;
 
   before(() => fixture = new Fixture());
 
   beforeEach(() => {
     fixture.create(snippet);
     const el = fixture.element;
-    modal = el.querySelector('.dqpl-modal');
+    element = el.querySelector('.dqpl-modal');
     parent1 = el.querySelector('#parent-1');
     parent2 = el.querySelector('#parent-2');
     parent3 = el.querySelector('#parent-3');
     alreadyHidden = el.querySelector('#sibling-1');
-    trigger = el.querySelector('.dqpl-button-secondary');
+    trigger = document.querySelector(`[data-id="${element.id}"]`);
   });
 
   afterEach(() => fixture.destroy());
@@ -26,7 +26,7 @@ describe('composites/modals/aria', () => {
 
   describe('show', () => {
     it('should remove aria-hidden from all elements except those with "data-already-aria-hidden" attr', () => {
-      const els = [modal, parent1, parent2, parent3, alreadyHidden, trigger];
+      const els = [element, parent1, parent2, parent3, alreadyHidden, trigger];
       // add aria-hidden to everything
       els.forEach((el) => el.setAttribute('aria-hidden', 'true'));
       alreadyHidden.setAttribute('data-already-aria-hidden', 'true');
@@ -45,7 +45,7 @@ describe('composites/modals/aria', () => {
 
   describe('hide', () => {
     it('should hide everything except direct parents of the modal (and the modal itself) passed in', () => {
-      aria.hide(modal);
+      aria.hide(element);
 
       [alreadyHidden, trigger].forEach((el) => {
         assert.equal(el.getAttribute('aria-hidden'), 'true');
@@ -54,7 +54,7 @@ describe('composites/modals/aria', () => {
         }
       });
 
-      assert.notEqual(modal.getAttribute('aria-hidden'), 'true');
+      assert.notEqual(element.getAttribute('aria-hidden'), 'true');
     });
   });
 });

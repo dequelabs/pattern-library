@@ -28,7 +28,7 @@ describe('composites/menu/events/resize', () => {
   beforeEach(() => {
     // reset everything
     Classlist(elements.trigger).remove('dqpl-active');
-    Classlist(elements.menu).remove('dqpl-active').remove('dqpl-show');
+    Classlist(elements.menu).remove('dqpl-active').remove('dqpl-dialog-show');
     elements.menu.setAttribute('aria-expanded', 'false');
     Classlist(elements.scrim).remove('dqpl-scrim-show').remove('dqpl-scrim-fade-in');
     Classlist(elements.dropdown).remove('dqpl-dropdown-active');
