@@ -7,7 +7,7 @@ const fire = require('simulant').fire;
 const Fixture = require('../../fixture');
 const global = require('../../../lib/global');
 
-describe.only('global/dialog', () => {
+describe('global/dialog', () => {
   let fixture, element, trigger;
 
   before(() => {
