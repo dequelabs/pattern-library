@@ -2,8 +2,8 @@
 
 const assert = require('chai').assert;
 const snippet = require('./fixture.html');
-const Fixture = require('../../fixture');
-const sizer = require('../../../lib/commons/sizer');
+const Fixture = require('../../../fixture');
+const sizer = require('../../../../lib/commons/dialog/sizer');
 
 describe('commons/sizer', () => {
   let fixture, element;

@@ -2,8 +2,8 @@
 
 const assert = require('chai').assert;
 const snippet = require('./fixture.html');
-const Fixture = require('../../fixture');
-const aria = require('../../../lib/commons/aria');
+const Fixture = require('../../../fixture');
+const aria = require('../../../../lib/commons/dialog/aria');
 
 describe('commons/aria', () => {
   let fixture, element, parent1, parent2, parent3, alreadyHidden, trigger;

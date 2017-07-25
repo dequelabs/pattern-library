@@ -4,10 +4,10 @@ const assert = require('chai').assert;
 const proxyquire = require('proxyquire');
 const Classlist = require('classlist');
 const snippet = require('./fixture.html');
-const Fixture = require('../../fixture');
-const open = require('../../../lib/commons/open');
+const Fixture = require('../../../fixture');
+const open = require('../../../../lib/commons/dialog/open');
 
-describe('commons/open', () => {
+describe('commons/dialog/open', () => {
   let fixture, element, trigger;
 
   before(() => fixture = new Fixture());
@@ -16,7 +16,7 @@ describe('commons/open', () => {
     fixture.create(snippet);
     const el = fixture.element;
     element = el.querySelector('.dqpl-modal');
-    trigger = document.querySelector(`[data-id="${element.id}"]`);
+    trigger = document.querySelector(`[data-dialog-id="${element.id}"]`);
   });
 
   afterEach(() => fixture.destroy());
@@ -39,7 +39,7 @@ describe('commons/open', () => {
 
   it('should call ariaHide and sizer', () => {
     let ariaHideCalled = false, sizerCalled = false;
-    proxyquire('../../../lib/commons/open', {
+    proxyquire('../../../../lib/commons/dialog/open', {
       '../aria': {
         hide: () => ariaHideCalled = true
       },

@@ -22,6 +22,18 @@
     background: @tile-bg;
     .modal-drop();
 
+    @{prefix}content {
+      border-left: 3px solid transparent;
+    }
+
+    &:focus {
+      outline: none;
+
+      @{prefix}content {
+        border-left: 3px solid @text-base;
+      }
+    }
+
     @{prefix}buttons {
       margin-top: 24px;
       display:flex;

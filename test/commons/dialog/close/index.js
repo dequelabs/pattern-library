@@ -4,11 +4,11 @@ const assert = require('chai').assert;
 const proxyquire = require('proxyquire');
 const Classlist = require('classlist');
 const snippet = require('./fixture.html');
-const Fixture = require('../../fixture');
-const close = require('../../../lib/commons/close');
+const Fixture = require('../../../fixture');
+const close = require('../../../../lib/commons/dialog/close');
 
 
-describe('commons/close', () => {
+describe('commons/dialog/close', () => {
   let fixture, element, trigger;
   before(() => fixture = new Fixture());
 
@@ -16,7 +16,7 @@ describe('commons/close', () => {
     fixture.create(snippet);
     const el = fixture.element;
     element = el.querySelector('.dqpl-modal');
-    trigger = document.querySelector(`[data-id="${element.id}"]`);
+    trigger = document.querySelector(`[data-dialog-id="${element.id}"]`);
   });
 
   afterEach(() => fixture.destroy());
@@ -33,7 +33,7 @@ describe('commons/close', () => {
 
   it('should call aria-show', () => {
     let called = false;
-    proxyquire('../../../lib/commons/close', {
+    proxyquire('../../../../lib/commons/dialog/close', {
       '../aria': {
         show: () => called = true
       }
@@ -50,7 +50,7 @@ describe('commons/close', () => {
   it('should call debug if trigger is not found', () => {
     let called = false;
     trigger.parentNode.removeChild(trigger);
-    proxyquire('../../../lib/commons/close', {
+    proxyquire('../../../../lib/commons/dialog/close', {
       'debug': () => {
         return function () { called = true; };
       }

@@ -5,6 +5,7 @@ const Classlist = require('classlist');
 const fire = require('simulant').fire;
 const snippet = require('./fixture.html');
 const Fixture = require('../../fixture');
+const global = require('../../../lib/global');
 const index = require('../../../lib/composites/modals/');
 
 describe('composites/modals', () => {
@@ -13,6 +14,7 @@ describe('composites/modals', () => {
     fixture = new Fixture();
     // NOTE: only call this once so delegated
     // events don't get attached multiple times
+    global();
     index();
   });
 
@@ -20,7 +22,7 @@ describe('composites/modals', () => {
     fixture.create(snippet);
     const el = fixture.element;
     element = el.querySelector('.dqpl-modal');
-    trigger = document.querySelector(`[data-modal-id="${element.id}"]`);
+    trigger = document.querySelector(`[data-dialog-id="${element.id}"]`);
   });
 
   afterEach(() => fixture.destroy());
@@ -28,7 +30,7 @@ describe('composites/modals', () => {
 
   describe('clicking a trigger', () => {
     it('should call not attempt to open the modal if it cannot be found', () => {
-      trigger.removeAttribute('data-modal-id');
+      trigger.removeAttribute('data-dialog-id');
       fire(trigger, 'click');
       assert.isFalse(Classlist(element).contains('dqpl-dialog-show'));
     });
