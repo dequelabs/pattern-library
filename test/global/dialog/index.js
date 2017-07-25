@@ -2,13 +2,12 @@
 
 const assert = require('chai').assert;
 const proxyquire = require('proxyquire');
-const Classlist = require('classlist');
 const snippet = require('./fixture.html');
 const fire = require('simulant').fire;
 const Fixture = require('../../fixture');
 const global = require('../../../lib/global');
 
-describe('global/dialog', () => {
+describe.only('global/dialog', () => {
   let fixture, element, trigger;
 
   before(() => {
@@ -26,12 +25,7 @@ describe('global/dialog', () => {
   afterEach(() => fixture.destroy());
   after(() => fixture.cleanUp());
 
-  it('should show the modal', () => {
-    fire(trigger, 'click');
-    assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
-  });
-
-  it('should call open and sizer', () => {
+  it('should call open', () => {
     let openCalled = false;
     proxyquire('../../../lib/global/dialog', {
       '../../commons/dialog/open': () => openCalled = true
@@ -39,5 +33,18 @@ describe('global/dialog', () => {
     fire(trigger, 'click');
 
     assert.isTrue(openCalled);
+  });
+
+  it('should call close', () => {
+    let closeCalled = false;
+    const cancelBtn = document.querySelector('.dqpl-close');
+    proxyquire('../../../lib/global/dialog', {
+      '../../commons/dialog/close': () => closeCalled = true
+    })(trigger, 'click');
+
+    fire(trigger, 'click');
+    fire(cancelBtn, 'click');
+
+    assert.isTrue(closeCalled);
   });
 });
