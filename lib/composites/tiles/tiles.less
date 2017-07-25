@@ -11,7 +11,7 @@
   @{prefix}tile-header {
     color: @tile-bg;
     background-color: @top-bar-bg;
-    padding: @space-three-quarters @space-large;
+    padding: @space-three-quarters @space-three-quarters @space-three-quarters @space-large;
 
     h2, h3, h4, h5, h6 {
       font-size: @text-small-medium;
@@ -43,15 +43,20 @@
 
     @{prefix}select {
       @{prefix}combobox {
-        width: 100px;
+        width: auto;
         background: transparent;
         font-size: @text-smaller;
         color: @tile-bg;
         border: none;
-        margin: 0 0 0 4px;
-        padding: 5px 4px;
+        margin: 0 0 0 2px;
+        padding: 5px 16px 5px 4px;
         height: auto;
         cursor: default;
+
+        &:focus {
+          .box-shadow(none);
+          .focusRing();
+        }
 
         @{prefix}pseudo-value {
           font-size: @text-smaller;
