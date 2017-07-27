@@ -8,7 +8,7 @@ const Fixture = require('../../../fixture');
 const open = require('../../../../lib/commons/dialog/open');
 
 describe('commons/dialog/open', () => {
-  let fixture, element, trigger;
+  let fixture, element, trigger, heading;
 
   before(() => fixture = new Fixture());
 
@@ -16,6 +16,7 @@ describe('commons/dialog/open', () => {
     fixture.create(snippet);
     const el = fixture.element;
     element = el.querySelector('.dqpl-modal');
+    heading = element.querySelector('h2');
     trigger = document.querySelector(`[data-dialog-id="${element.id}"]`);
   });
 
@@ -48,5 +49,12 @@ describe('commons/dialog/open', () => {
 
     assert.isTrue(ariaHideCalled);
     assert.isTrue(sizerCalled);
+  });
+
+  describe('given a focusEl', () => {
+    it('should focus the element', () => {
+      open(trigger, element, heading);
+      assert.equal(document.activeElement, heading);
+    });
   });
 });
