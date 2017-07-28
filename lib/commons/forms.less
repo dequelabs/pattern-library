@@ -6,13 +6,14 @@ textarea,
 [role="menuitemcheckbox"],
 [role="menuitemradio"],
 [role="textbox"],
+[role="combobox"],
 [role="listbox"],
 [role="spinbutton"] {
   border: 1px solid @field-border;
   margin-bottom: @space-half;
 
   &:focus {
-    outline: 0 !important;
+    outline: 0;
     border: 1px solid @link;
     .field-focus();
   }
