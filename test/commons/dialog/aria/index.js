@@ -6,7 +6,7 @@ const Fixture = require('../../../fixture');
 const aria = require('../../../../lib/commons/dialog/aria');
 
 describe('commons/aria', () => {
-  let fixture, element, parent1, parent2, parent3, alreadyHidden, trigger;
+  let fixture, element, parent1, parent2, parent3, alreadyHidden, trigger, icon;
 
   before(() => fixture = new Fixture());
 
@@ -18,6 +18,7 @@ describe('commons/aria', () => {
     parent2 = el.querySelector('#parent-2');
     parent3 = el.querySelector('#parent-3');
     alreadyHidden = el.querySelector('#sibling-1');
+    icon = element.querySelector('.fa-close');
     trigger = document.querySelector(`[data-id="${element.id}"]`);
   });
 
@@ -30,7 +31,7 @@ describe('commons/aria', () => {
       // add aria-hidden to everything
       els.forEach((el) => el.setAttribute('aria-hidden', 'true'));
       alreadyHidden.setAttribute('data-already-aria-hidden', 'true');
-      aria.show();
+      aria.show(element);
 
       els.forEach((el) => {
         const ah = el.getAttribute('aria-hidden');
@@ -40,6 +41,13 @@ describe('commons/aria', () => {
           assert.isNull(ah);
         }
       });
+    });
+
+    it('should not remove aria-hidden from elements within the modal', () => {
+      const isHidden = () => icon.getAttribute('aria-hidden') === 'true';
+      assert.isTrue(isHidden());
+      aria.show(element);
+      assert.isTrue(isHidden());
     });
   });
 
