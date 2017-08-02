@@ -49,6 +49,10 @@ Just drop the css and js into your page:
 
 Please refer to the [wiki](https://github.com/dequelabs/pattern-library/wiki)
 
+## Adding new components/composites
+
+All additions must be approved by our UX team so before working on anything, please create an [Issue](https://github.com/dequelabs/pattern-library) including a detailed description on the requested pattern and several use cases for it.
+
 ## Development
 
 - `npm install`
