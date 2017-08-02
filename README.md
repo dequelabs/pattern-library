@@ -51,7 +51,7 @@ Please refer to the [wiki](https://github.com/dequelabs/pattern-library/wiki)
 
 ## Adding new components/composites
 
-All additions must be approved by our UX team so before working on anything, please create an [Issue](https://github.com/dequelabs/pattern-library) including a detailed description on the requested pattern and several use cases for it.
+All additions must be approved by our UX team so before working on anything, please create an [Issue](https://github.com/dequelabs/pattern-library/issues) including a detailed description on the requested pattern and several use cases for it.
 
 ## Development
 
