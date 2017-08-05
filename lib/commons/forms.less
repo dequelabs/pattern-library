@@ -83,21 +83,18 @@ textarea,
     color: @disabled;
   }
 
-  &@{prefix}required {
-    &:after {
-      content: 'Required';
-      display: inline-block;
-      margin-left: @space-large;
-      font-style: italic;
-      font-weight: @weight-normal;
-    }
-  }
-
   &@{prefix}error {
     &:after {
       color: @error;
     }
   }
+}
+
+@{prefix}required-text {
+  display: inline-block;
+  margin-left: @space-large;
+  font-style: italic;
+  font-weight: @weight-normal;
 }
 
 @{prefix}label-inline {
