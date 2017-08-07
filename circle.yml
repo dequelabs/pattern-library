@@ -4,3 +4,4 @@ machine:
   post:
     - npm install -g npm@5.1.0
     - npm install -g gulp
+    - npm run build
