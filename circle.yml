@@ -1,7 +1,9 @@
 machine:
-  node:
-    version: 7.10.0
-  post:
-    - npm install -g npm@5.1.0
-    - npm install -g gulp
-    - npm run build
+    node:
+        version: 7.10.0
+    post:
+        - npm install -g npm@5.1.0
+        - npm install -g gulp
+    dependencies:
+        post:
+          - npm run build
