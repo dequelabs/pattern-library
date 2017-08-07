@@ -4,6 +4,4 @@ machine:
     post:
         - npm install -g npm@5.1.0
         - npm install -g gulp
-    compile:
-        override:
-          - npm run build
+        - cd /home/ubuntu/pattern-library && npm run build
