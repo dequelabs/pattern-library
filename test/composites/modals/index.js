@@ -59,6 +59,13 @@ describe('composites/modals', () => {
         fire(element, 'keydown', { which: 27 });
         assert.isFalse(Classlist(element).contains('dqpl-dialog-show'));
       });
+
+      it('should not call close if `data-force-action` is set', () => {
+        fire(trigger, 'click'); // open the modal
+        element.setAttribute('data-force-action', 'true');
+        fire(element, 'keydown', { which: 27 });
+        assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
+      });
     });
 
     describe('shift + tab on the first focusable element within modal', () => {
