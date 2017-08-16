@@ -64,7 +64,7 @@ __NOTE__: if a new component or composite is added, remember to create a quick [
 Testing is done using mochify along with the 'chai' assertion library (`assert.isFalse(!!0)`).  The `test/` directory structure matches the `lib/` directory.  This means that if you're testing `lib/components/foo/index.js`, you would create a test in `test/components/foo/index.js`.  See the `test/` directory for examples.  The tests are browserified and transpiled before running in the phantomjs headless browser so you can `require` / `import` stuff and use ES6 syntax in the tests.
 
 ```bash
-$ npm run test
+$ npm test
 ```
 
 or to have a watcher re-run tests every time you add a new test:
