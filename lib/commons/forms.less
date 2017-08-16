@@ -1,194 +1,199 @@
 @import "../variables.less";
 
-input,
-select,
-textarea,
-[role="menuitemcheckbox"],
-[role="menuitemradio"],
-[role="textbox"],
-[role="combobox"],
-[role="listbox"],
-[role="spinbutton"] {
-  border: 1px solid @field-border;
-  margin-bottom: @space-half;
-
-  &:focus {
-    outline: 0;
-    border: 1px solid @link;
-    .field-focus();
-  }
-
-  &:hover {
-    border: 1px solid @field-hover-border;
-  }
-
-  &@{prefix}error {
-    border: 1px solid @field-error-border;
-    outline: 2px solid @field-error-border;
-
-    &:focus {
-      .field-focus-error();
-    }
-
-    &:hover {
-      border: 1px solid @field-error-hover-border;
-    }
-  }
-}
-
-@{prefix}error-wrap {
-  min-height: @space-large;
-  color: @error;
-  text-align: left;
-  margin-bottom: @space-smallest;
-  font-size: @text-smallest;
-  font-weight: @weight-normal;
-  padding-left: @space-half;
-}
-
-@{prefix}field-wrap {
-  position: relative;
-  .border-box();
-  margin-bottom: @space-large;
-
-  &.flexr {
-    .align-items(center);
-
-    @{prefix}label {
-      margin-bottom: 0;
-    }
-  }
-}
-
-@{prefix}checkbox-wrap, @{prefix}radio-wrap {
-  .border-box();
-  position: relative;
-  margin-bottom: 0;
-
-  @{prefix}label {
-    margin-bottom: 0;
-  }
-}
-
-@{prefix}label {
-  display: block;
-  text-align: left;
-  font-size: @text-smaller;
-  font-weight: @weight-light;
-  margin-bottom: @space-half;
-  margin-left: @space-half;
-  cursor: default;
-
-  &@{prefix}label-disabled {
-    color: @disabled;
-  }
-
-  &@{prefix}required {
-    @{prefix}required-text {
-      display: inline-block;
-      margin-left: @space-large;
-      font-style: italic;
-      font-weight: @weight-normal;
-    }
-    &@{prefix}error {
-      @{prefix}required-text {
-        color: @error;
-      }
-    }
-  }
-}
-
-@{prefix}label-inline {
-  display: inline-block;
-  text-align: left;
-  font-size: @text-smaller;
-}
-
-@{prefix}text-input {
-  padding: @space-half;
-  .border-box();
-  font-size: @text-small;
-  color: @text-base;
-  min-width: @input-min-width;
-
-  &[disabled], &[aria-disabled="true"] {
-    background-color: @field-disabled;
-    border: 1px solid @field-disabled;
-  }
-}
-
-@{prefix}textarea {
-  display: block;
-  min-height: 56px;
-  font-size: @text-smaller;
-  min-width: @input-min-width;
-  padding: @space-half;
-  max-width: 500px;
-}
-
-// custom radios
-@{prefix}radio,
-@{prefix}checkbox {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid transparent;
-  .box-sizing(border-box);
-  .display-flex();
-  .justify-content(center);
-  .align-items(center);
-  cursor: pointer;
-
-  @{prefix}inner-radio,
-  @{prefix}inner-checkbox {
-    font-size: 17px;
-  }
-
-  &[aria-checked="true"] {
-    color: @link;
-  }
-
-  &[aria-disabled="true"], &[disabled] {
-    @{prefix}inner-checkbox, @{prefix}inner-radio {
-      color: @disabled;
-    }
-  }
-
-  &:focus {
-    outline: 0;
-    border: 1px solid @focus;
-    .box-shadow(none);
-  }
-
-  &:active:not([aria-disabled="true"]) {
-    background-color: @focus-active;
-  }
-}
-
-
-// help
-@{prefix}field-help {
-  .display-flex();
-  position: relative;
-
-  @{prefix}text-input {
-    width: (@input-min-width - 30px);
-  }
-
-  @{prefix}help-button-wrap {
-    position: relative;
-    @{prefix}help-button {
-      padding: @space-quarter @space-smallest @space-smallest @space-smallest;
-      border: 0;
-      margin: 0;
-      color: @link;
-      font-size: @text-small;
-      background-color: transparent;
-      .border-box();
-      position: relative;
+body {
+  @{prefix}layout {
+    input,
+    select,
+    textarea,
+    [role="menuitemcheckbox"],
+    [role="menuitemradio"],
+    [role="textbox"],
+    [role="combobox"],
+    [role="listbox"],
+    [role="spinbutton"] {
+      border: 1px solid @field-border;
+      margin-bottom: @space-half;
 
       &:focus {
-        outline-offset: 0;
+        outline: 0;
+        border: 1px solid @link;
+        .field-focus();
+      }
+
+      &:hover {
+        border: 1px solid @field-hover-border;
+      }
+
+      &@{prefix}error {
+        border: 1px solid @field-error-border;
+        outline: 2px solid @field-error-border;
+
+        &:focus {
+          .field-focus-error();
+          outline: 0;
+        }
+
+        &:hover {
+          border: 1px solid @field-error-hover-border;
+        }
+      }
+    }
+
+    @{prefix}error-wrap {
+      min-height: @space-large;
+      color: @error;
+      text-align: left;
+      margin-bottom: @space-smallest;
+      font-size: @text-smallest;
+      font-weight: @weight-normal;
+      padding-left: @space-half;
+    }
+
+    @{prefix}field-wrap {
+      position: relative;
+      .border-box();
+      margin-bottom: @space-large;
+
+      &.flexr {
+        .align-items(center);
+
+        @{prefix}label {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    @{prefix}checkbox-wrap, @{prefix}radio-wrap {
+      .border-box();
+      position: relative;
+      margin-bottom: 0;
+
+      @{prefix}label {
+        margin-bottom: 0;
+      }
+    }
+
+    @{prefix}label {
+      display: block;
+      text-align: left;
+      font-size: @text-smaller;
+      font-weight: @weight-light;
+      margin-bottom: @space-half;
+      margin-left: @space-half;
+      cursor: default;
+
+      &@{prefix}label-disabled {
+        color: @disabled;
+      }
+
+      &@{prefix}required {
+        @{prefix}required-text {
+          display: inline-block;
+          margin-left: @space-large;
+          font-style: italic;
+          font-weight: @weight-normal;
+        }
+        &@{prefix}error {
+          @{prefix}required-text {
+            color: @error;
+          }
+        }
+      }
+    }
+
+    @{prefix}label-inline {
+      display: inline-block;
+      text-align: left;
+      font-size: @text-smaller;
+    }
+
+    @{prefix}text-input {
+      padding: @space-half;
+      .border-box();
+      font-size: @text-small;
+      color: @text-base;
+      min-width: @input-min-width;
+
+      &[disabled], &[aria-disabled="true"] {
+        background-color: @field-disabled;
+        border: 1px solid @field-disabled;
+      }
+    }
+
+    @{prefix}textarea {
+      display: block;
+      min-height: 56px;
+      font-size: @text-smaller;
+      min-width: @input-min-width;
+      padding: @space-half;
+      max-width: 500px;
+    }
+
+    // custom radios
+    @{prefix}radio,
+    @{prefix}checkbox {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid transparent;
+      .box-sizing(border-box);
+      .display-flex();
+      .justify-content(center);
+      .align-items(center);
+      cursor: pointer;
+
+      @{prefix}inner-radio,
+      @{prefix}inner-checkbox {
+        font-size: 17px;
+      }
+
+      &[aria-checked="true"] {
+        color: @link;
+      }
+
+      &[aria-disabled="true"], &[disabled] {
+        @{prefix}inner-checkbox, @{prefix}inner-radio {
+          color: @disabled;
+        }
+      }
+
+      &:focus {
+        outline: 0;
+        border: 1px solid @focus;
+        .box-shadow(none);
+      }
+
+      &:active:not([aria-disabled="true"]) {
+        background-color: @focus-active;
+      }
+    }
+
+
+    // help
+    @{prefix}field-help {
+      .display-flex();
+      position: relative;
+
+      @{prefix}text-input {
+        width: (@input-min-width - 30px);
+      }
+
+      @{prefix}help-button-wrap {
+        position: relative;
+        @{prefix}help-button {
+          padding: @space-quarter @space-smallest @space-smallest @space-smallest;
+          border: 0;
+          margin: 0;
+          color: @link;
+          font-size: @text-small;
+          background-color: transparent;
+          .border-box();
+          position: relative;
+
+          &:focus {
+            outline-offset: 0;
+          }
+        }
       }
     }
   }
