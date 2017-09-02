@@ -12,14 +12,14 @@
 }
 
 // Backgrounds
-@top-bar-bg: rgba(40, 54, 64, 1); // #283640
+@top-bar-bg: #283640;
 @top-bar-bg-active: darken(@top-bar-bg, 15%); // #0b0e11
 @top-bar-bg-active-scrim: rgba(11, 14, 17, .9);
-@workspace-bg: rgba(253, 253, 254, 1); // #fdfdfe
-@tile-bg: rgba(255, 255, 255, 1); // #ffffff
+@workspace-bg: #fdfdfe;
+@tile-bg: #ffffff;
 @bg-light: darken(@tile-bg, 10%); // #e6e6e6
 @scrim: rgba(0, 0, 0, .5);
-@top-bar-divider: rgba(90, 98, 104, 1); // #5a6268
+@top-bar-divider: #5a6268;
 @bg-light-grey: darken(@tile-bg, 5%); // #f2f2f2
 
 // Text
@@ -27,11 +27,11 @@
 @header-dark: lighten(#000000, 20%); // #333333
 @header: lighten(#000000, 30%); // #4d4d4d
 @disabled: lighten(#000000, 80%); // #cccccc
-@link: rgba(60, 122, 174, 1); // #3c7aae
+@link: #3c7aae;
 @link-light: rgba(60, 122, 174, .1);
-@error: rgba(217, 50, 81, 1); // #d93251
-@top-bar-text: rgba(212, 221, 224, 1); // #d4dde0
-@text-light: rgba(255, 255, 255, 1); // #ffffff
+@error: #d93251;
+@top-bar-text: #d4dde0;
+@text-light: #ffffff;
 @text-light-disabled: rgba(255, 255, 255, .5);
 
 // Fields
@@ -46,7 +46,7 @@
 // Buttons
 @button-primary: @link;
 @button-secondary: darken(@tile-bg, 5%); // #f2f2f2
-@button-text-dark: rgba(90, 98, 104, 1); // #5a6268
+@button-text-dark: #5a6268;
 @button-text-light: @text-light;
 @button-text-disabled: @disabled;
 
@@ -58,17 +58,17 @@
 @table-hover-link: @top-bar-bg;
 
 // Accents
-@focus: rgba(215, 30, 247, 1); // #d71ef7
+@focus: #d71ef7;
 @focus-active: rgba(215, 30, 247, .25);
 @focus-glow: rgba(193, 27, 222, 0.75);
-@metric-accent-low: rgba(247, 132, 108, 1); // #f7846c
-@metric-accent-mid: rgba(139, 166, 197, 1); // #8ba6c5
-@metric-accent-full: rgba(165, 219, 117, 1); // #a5db75
-@top-bar-accent-primary: rgba(108, 218, 242, 1); // #6cdaf2
-@top-bar-accent-warning: rgba(255, 221, 117, 1); // #ffdd75
-@top-bar-accent-error: rgba(254, 109, 107, 1); // #fe6d6b
-@top-bar-accent-success: rgba(98, 232, 107, 1); // #62e86b
-@top-bar-accent-warning-other: rgba(247, 132, 108, 1); // #f7846c
+@metric-accent-low: #f7846c;
+@metric-accent-mid: #8ba6c5;
+@metric-accent-full: #a5db75;
+@top-bar-accent-primary: #6cdaf2;
+@top-bar-accent-warning: #ffdd75;
+@top-bar-accent-error: #fe6d6b;
+@top-bar-accent-success: #62e86b;
+@top-bar-accent-warning-other: #f7846c;
 
 // Padding/Margin
 @space-smallest: 8px;
@@ -173,7 +173,7 @@
 }
 
 .field-focus() {
-  .box-shadow(0px 0px 8px 1px rgba(60,122,174,1)); // #3c7aae
+  .box-shadow(0px 0px 8px 1px #3c7aae);
 }
 
 .field-focus-error() {
