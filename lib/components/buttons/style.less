@@ -57,7 +57,9 @@
   background-color: @button-primary;
   color: @button-text-light;
 
-  &@{prefix}disabled {
+  &@{prefix}disabled,
+  &[aria-disabled="true"],
+  &[disabled] {
     color: @text-light-disabled;
   }
 
@@ -76,7 +78,9 @@
   background-color: @button-secondary;
   color: @button-text-dark;
 
-  &@{prefix}disabled {
+  &@{prefix}disabled,
+  &[aria-disabled="true"],
+  &[disabled] {
     color: @disabled;
   }
 
