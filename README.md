@@ -14,6 +14,21 @@ $ npm install deque-pattern-library
 $ bower install deque-pattern-library
 ```
 
+## CDN
+Thanks to [unpkg](https://unpkg.com), you can link directly to deque pattern library files.
+
+```
+<link rel="stylesheet" href="https://unpkg.com/deque-pattern-library/dist/css/pattern-library.min.css" />
+<!-- or -->
+<link rel="stylesheet" href="https://unpkg.com/deque-pattern-library/dist/css/pattern-library.css" />
+```
+
+```
+<script src="https://unpkg.com/deque-pattern-library/dist/js/pattern-library.min.js"></script>
+<!-- or -->
+<script src="https://unpkg.com/deque-pattern-library/dist/js/pattern-library.js"></script>
+```
+
 ## Usage
 
 Just drop the css and js into your page:
