@@ -22,4 +22,11 @@ describe('commons/sizer', () => {
     sizer(element);
     assert.isNotNull(element.querySelector('.dqpl-content').style.maxHeight);
   });
+
+  it('should not set maxHeight if data-no-resize="true" is set', () => {
+    element.setAttribute('data-no-resize', 'true');
+    sizer(element);
+    const maxHeight = element.querySelector('.dqpl-content').style.maxHeight;
+    assert.strictEqual(maxHeight, '');
+  });
 });
