@@ -29,10 +29,13 @@ describe('commons/aria', () => {
     it('should remove aria-hidden from all elements except those with "data-already-aria-hidden" attr', () => {
       const els = [element, parent1, parent2, parent3, alreadyHidden, trigger];
       // add aria-hidden to everything
-      els.forEach((el) => el.setAttribute('aria-hidden', 'true'));
+      els.forEach((el) => {
+        el.setAttribute('aria-hidden', 'true');
+        el.setAttribute('data-dqpl-aria-hidden', 'true');
+      });
+
       alreadyHidden.setAttribute('data-already-aria-hidden', 'true');
       aria.show(element);
-
       els.forEach((el) => {
         const ah = el.getAttribute('aria-hidden');
         if (el === alreadyHidden) {
