@@ -144,7 +144,7 @@
   opacity: 0;
   .animate(250ms opacity);
   .border-radius(2px);
-  z-index: @z-index-modal;
+  z-index: (@z-index-top-bar + 1);
 
   &@{prefix}skip-container-active {
     top: 11px;

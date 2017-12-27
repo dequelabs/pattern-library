@@ -29,8 +29,10 @@ describe('commons/dialog/trap-focus', () => {
     it('should focus the last focusable element', () => {
       fire(trigger, 'click');
       trapFocus('.dqpl-alert');
+
       const lastFocusable = element.querySelector('.dqpl-buttons .cancel');
       const firstFocusable = element.querySelector('.dqpl-buttons .set');
+
       fire(firstFocusable, 'keydown', { which: 9, shiftKey: true });
       assert.equal(document.activeElement, lastFocusable);
     });
@@ -40,22 +42,27 @@ describe('commons/dialog/trap-focus', () => {
     it('should focus the first focusable element', () => {
       fire(trigger, 'click');
       trapFocus('.dqpl-alert');
+
       const lastFocusable = element.querySelector('.dqpl-buttons .cancel');
       const firstFocusable = element.querySelector('.dqpl-buttons .set');
+
       fire(lastFocusable, 'keydown', { which: 9, shiftKey: false });
       assert.equal(document.activeElement, firstFocusable);
     });
   });
 
-  describe('focusabless', () => {
+  describe('focusables', () => {
     it('should ignore hidden focusables', () => {
       const trig = fixture.element.querySelector('[data-dialog-id="demo-2"]');
       fire(trig, 'click');
       trapFocus('.dqpl-modal');
+
       const first = document.getElementById('first-focusable');
       const last = document.getElementById('last-visible-focusable');
+
       fire(last, 'keydown', { which: 9, shiftKey: false});
       assert.equal(document.activeElement, first);
+
       fire(first, 'keydown', { which: 9, shiftKey: true });
       assert.equal(document.activeElement, last);
     });
