@@ -3,5 +3,5 @@ machine:
         version: 7.10.0
     post:
         - npm install -g npm@5.4.1
-        - cd /home/ubuntu/pattern-library && npm install gulp
+        - cd /home/ubuntu/pattern-library && npm i && npm install gulp
         - cd /home/ubuntu/pattern-library && npm run build
