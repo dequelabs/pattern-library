@@ -28,6 +28,7 @@
         background: @top-bar-bg;
         color: @tile-bg;
         border: none;
+        height: auto;
       }
     }
 
@@ -38,7 +39,7 @@
       color: @tile-bg;
       margin-left: 0;
       margin-bottom: 0;
-      padding: 5px 0;
+      padding: 0 0 5px 0;
     }
 
     @{prefix}select {
@@ -49,7 +50,7 @@
         color: @tile-bg;
         border: none;
         margin: 0 0 0 2px;
-        padding: 5px 16px 5px 4px;
+        padding: 0 16px 5px 4px;
         height: auto;
         cursor: default;
 
@@ -65,7 +66,7 @@
         }
 
         &:after {
-          top: 3px;
+          top: -1px;
           right: 1px;
           color: @tile-bg;
         }

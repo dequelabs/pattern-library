@@ -4,3 +4,4 @@ dist/
 playground/
 html-report/
 npm-debug.log
+.DS_Store

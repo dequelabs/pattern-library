@@ -95,6 +95,27 @@
   }
 }
 
+@{prefix}button-error {
+  background-color: @error;
+  .box-shadow(none);
+
+  &:hover {
+    background-color: @error;
+    .box-shadow(none);
+  }
+
+  &:focus {
+    background-color: @error;
+    &:after {
+      .box-shadow(4px 0 @button-text-dark);
+    }
+
+    &:before {
+      .box-shadow(-4px 0 @button-text-dark);
+    }
+  }
+}
+
 @{prefix}button-clear {
   background-color: transparent;
   .box-shadow(none);

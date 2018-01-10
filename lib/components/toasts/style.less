@@ -1,9 +1,5 @@
 @import "../../variables.less";
 
-@toast-warning: rgba(255, 221, 117, 0.9);
-@toast-error: rgba(254, 109, 107, 0.9);
-@toast-success: rgba(98, 232, 107, 0.9);
-
 @{prefix}toast {
   top: @top-bar-height;
   position: fixed;
@@ -18,15 +14,15 @@
   left: 0;
 
   &@{prefix}toast-success {
-    background-color: @toast-success;
+    background-color: rgba(209, 255, 164, 0.95);
   }
 
   &@{prefix}toast-warning {
-    background-color: @toast-warning;
+    background-color: rgba(255, 230, 159, 0.95);
   }
 
   &@{prefix}toast-error {
-    background-color: @toast-error;
+    background-color: rgba(255, 161, 161, 0.95);
     z-index: @z-index-toast-action-needed;
   }
 
