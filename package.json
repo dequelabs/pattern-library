@@ -67,5 +67,6 @@
     "simulant": "^0.2.2",
     "stringify": "^5.1.0",
     "vinyl-source-stream": "^1.1.0"
-  }
+  },
+  "dependencies": {}
 }

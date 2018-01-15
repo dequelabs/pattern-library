@@ -5,15 +5,17 @@
 
   @{prefix}arrow {
     left: -45px;
-    position: relative;
+    position: absolute;
+    top: -62px;
   }
 
   @{prefix}arrow-pointer {
-    width: 100px;
-    height: 60px;
+    width: 88px;
+    height: 37px;
     position: relative;
+    left: 6px;
     overflow: hidden;
-    box-shadow: 1px 25px 0 -22px @focus-glow, 0px 25px 6px -19px @focus-glow;
+    box-shadow: 0px 19px 0 -16px @focus-glow, 1px 18px 6px -12px @focus-glow;
 
     &:after {
       content: "";
@@ -23,8 +25,8 @@
       height: 40px;
       background: @tile-bg;
       transform: rotate(45deg);
-      top: 45px;
-      left: 31px;
+      top: 18px;
+      left: 25px;
       box-shadow: 0px 0px 0 3px @focus-glow, 0px 0px 6px 5px @focus-glow;
     }
   }
