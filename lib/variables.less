@@ -1,3 +1,4 @@
+
 @prefix: ~'.dqpl-';
 
 // default focus ring
@@ -12,62 +13,62 @@
 }
 
 // Backgrounds
-@top-bar-bg: #283640;
-@top-bar-bg-active: darken(@top-bar-bg, 15%); // #0b0e11
+@top-bar-bg: rgba(40, 54, 64, 1);
+@top-bar-bg-active: darken(@top-bar-bg, 15%);
 @top-bar-bg-active-scrim: rgba(11, 14, 17, .9);
-@workspace-bg: #fdfdfe;
-@tile-bg: #ffffff;
-@bg-light: darken(@tile-bg, 10%); // #e6e6e6
+@workspace-bg: rgba(253, 253, 254, 1);
+@tile-bg: rgba(255, 255, 255, 1);
+@bg-light: darken(@tile-bg, 10%);
 @scrim: rgba(0, 0, 0, .5);
-@top-bar-divider: #5a6268;
+@top-bar-divider: rgba(90, 98, 104, 1);
 @bg-light-grey: darken(@tile-bg, 5%); // #f2f2f2
 
 // Text
-@text-base: lighten(#000000, 40%); // #666666
-@header-dark: lighten(#000000, 20%); // #333333
-@header: lighten(#000000, 30%); // #4d4d4d
-@disabled: lighten(#000000, 80%); // #cccccc
-@link: #3c7aae;
+@text-base: lighten(#000000, 40%);
+@header-dark: lighten(#000000, 20%);
+@header: lighten(#000000, 30%);
+@disabled: lighten(#000000, 80%);
+@link: rgba(60, 122, 174, 1);
 @link-light: rgba(60, 122, 174, .1);
-@error: #d93251;
-@top-bar-text: #d4dde0;
-@text-light: #ffffff;
+@error: rgba(217, 50, 81, 1);
+@top-bar-text: rgba(212, 221, 224, 1);
+@text-light: rgba(255, 255, 255, 1);
 @text-light-disabled: rgba(255, 255, 255, .5);
 
 // Fields
 @field-bg: @tile-bg;
-@field-border: lighten(#000000, 80%); // #cccccc
-@field-hover-border: lighten(#000000, 70%); // #b3b3b3
+@field-border: lighten(#000000, 80%);
+@field-hover-border: lighten(#000000, 70%);
 @field-focus-border: @link;
 @field-error-border: @error;
-@field-error-hover-border: darken(@error, 10%); // #b6223d
-@field-disabled: darken(@tile-bg, 5%); // #f2f2f2
+@field-error-hover-border: darken(@error, 10%);
+@field-disabled: darken(@tile-bg, 5%);
 
 // Buttons
 @button-primary: @link;
-@button-secondary: darken(@tile-bg, 5%); // #f2f2f2
-@button-text-dark: #5a6268;
+@button-secondary: darken(@tile-bg, 5%);
+@button-text-dark: rgba(90, 98, 104, 1);
 @button-text-light: @text-light;
 @button-text-disabled: @disabled;
 
 // Tables
 @table-text: @header;
-@table-header: darken(@tile-bg, 5%); // #f2f2f2
+@table-header: darken(@tile-bg, 5%);
 @table-selected: @link;
-@table-hover: lighten(@link, 95%); // #ffffff
+@table-hover: lighten(@link, 95%);
 @table-hover-link: @top-bar-bg;
 
 // Accents
-@focus: #d71ef7;
+@focus: rgba(215, 30, 247, 1);
 @focus-active: rgba(215, 30, 247, .25);
 @focus-glow: rgba(193, 27, 222, 0.75);
-@metric-accent-low: #f7846c;
-@metric-accent-mid: #8ba6c5;
-@metric-accent-full: #a5db75;
-@top-bar-accent-primary: #6cdaf2;
-@top-bar-accent-warning: #ffdd75;
-@top-bar-accent-error: #fe6d6b;
-@top-bar-accent-success: #62e86b;
+@metric-accent-low: rgba(247, 132, 108, 1);
+@metric-accent-mid: rgba(139, 166, 197, 1);
+@metric-accent-full: rgba(165, 219, 117, 1);
+@top-bar-accent-primary: rgba(108, 218, 242, 1);
+@top-bar-accent-warning: rgba(255, 221, 117, 1);
+@top-bar-accent-error: rgba(254, 109, 107, 1);
+@top-bar-accent-success: rgba(98, 232, 107, 1);
 @top-bar-accent-warning-other: #f7846c;
 
 // Padding/Margin
@@ -115,12 +116,10 @@
 @z-index-scrim: 7;
 @z-index-modal: 21;
 @z-index-modal-scrim: 20;
-@z-index-scrim-action-needed: 23;
 @z-index-side-bar: 9;
+@z-index-top-bar: 10;
 @z-index-toast: 8;
-@z-index-toast-action-needed: 24;
 @z-index-listbox: 6;
-@z-index-top-bar: 25; // this probably needs to stay as the highest value
 
 // lists
 @list-separator: rgba(153, 153, 153, .15);
@@ -145,8 +144,8 @@
 
 .transform(@val) {
   -webkit-transform: @val;
-  -ms-transform: @val;
-  transform: @val;
+	-ms-transform: @val;
+	transform: @val;
 }
 
 // Shadows/Glows
@@ -175,7 +174,7 @@
 }
 
 .field-focus() {
-  .box-shadow(0px 0px 8px 1px #3c7aae);
+  .box-shadow(0px 0px 8px 1px rgba(60,122,174,1));
 }
 
 .field-focus-error() {
@@ -184,10 +183,10 @@
 
 // Flex stuffs
 .display-flex() {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: flex;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
 }
 
 .flex(@args: none) {
@@ -204,12 +203,12 @@
 
 .align-self(@direction: stretch) {
   .vendor(align-self, @direction);
-  -ms-flex-item-align: @direction;
+	-ms-flex-item-align: @direction;
 }
 
 .align-items(@direction: stretch) {
   .vendor(align-items, @direction);
-  -ms-flex-item-align: @direction;
+	-ms-flex-item-align: @direction;
 }
 
 .justify-content(@value: center) {
@@ -217,12 +216,7 @@
 }
 
 .flex-basis(@basis: auto) {
-  .vendor(flex-basis, @basis);
-}
-
-.center() {
-  .align-items(center);
-  .justify-content(center);
+	.vendor(flex-basis, @basis);
 }
 
 // box-sizing
@@ -253,13 +247,13 @@
   margin-top: -1px;
 }
 
-.ltr-linear-gradient(@color) {
-  background: @color;
-  background: -moz-linear-gradient(left, @color 10%, rgba(255, 255, 255, 0) 42%);
-  background: -webkit-linear-gradient(left, @color 10%, rgba(255, 255, 255, 0) 42%);
-  background: -o-linear-gradient(left, @color 10%, rgba(255, 255, 255, 0) 42%);
-  background: -ms-linear-gradient(left, @color 10%, rgba(255, 255, 255, 0) 42%);
-  background: linear-gradient(to right, @color 10%, rgba(255, 255, 255, 0) 42%);
+.gradient(@type, @start-color, @end-color, @deg) {
+  background: @start-color;
+  background: ~"-moz-@{type}-gradient(@{deg}, @{start-color}, @{end-color})";
+  background: ~"-webkit-@{type}-gradient(@{deg}, @{start-color}, @{end-color})";
+  background: ~"-o-@{type}-gradient(@{deg}, @{start-color}, @{end-color})";
+  background: ~"-ms-@{type}-gradient(@{deg}, @{start-color}, @{end-color})";
+  background: ~"@{type}-gradient(@{deg}, @{start-color}, @{end-color})";
 }
 
 .animation(@animation, @timing, @iteration, @timing-function) {
@@ -274,7 +268,7 @@
   width: 7em;
   height: 7em;
   .circle();
-  .ltr-linear-gradient(@spinner);
+  .gradient(linear, @spinner 10%, rgba(255, 255, 255, 0) 42%, left);
   .transform(translateZ(0));
   position: relative;
   .animation(load, 1.4s, infinite, linear);
@@ -309,7 +303,6 @@
   0% {
     .transform(rotate(0deg));
   }
-
   100% {
     .transform(rotate(360deg));
   }
@@ -319,8 +312,11 @@
   0% {
     .transform(rotate(0deg));
   }
-
   100% {
     .transform(rotate(360deg));
   }
+}
+
+@{prefix}offscreen {
+  .offscreen();
 }
