@@ -36,6 +36,7 @@ describe('composites/menu/events/main', () => {
     Classlist(elements.scrim).remove('dqpl-scrim-show').remove('dqpl-scrim-fade-in');
     Classlist(elements.dropdown).remove('dqpl-dropdown-active');
     elements.dropdown.setAttribute('aria-expanded', 'false');
+    elements.topBar.querySelector('.dd-trig').setAttribute('data-dropdown-expanded', 'false');
   });
 
   after(() => fixture.destroy().cleanUp());
@@ -66,14 +67,11 @@ describe('composites/menu/events/main', () => {
       assert.equal(dropdown.getAttribute('aria-expanded'), 'false');
     });
 
-    it('should toggle the menu if the target is a trigger of a top-bar dropdown', (done) => {
+    it('should toggle the menu if the target is a trigger of a top-bar dropdown', () => {
       const dropdown = elements.dropdown;
       assert.equal(dropdown.getAttribute('aria-expanded'), 'false');
       fire(elements.topBar.querySelector('.dd-trig'), 'click');
-      setTimeout(() => {
-        assert.equal(dropdown.getAttribute('aria-expanded'), 'true');
-        done();
-      }, 400); // give animation/other timeouts a change to do stuff
+      assert.equal(dropdown.getAttribute('aria-expanded'), 'true');
     });
   });
 
@@ -82,7 +80,7 @@ describe('composites/menu/events/main', () => {
       it('should focus the previous dropdown item', () => {
         const dropdown = elements.dropdown;
         const items = queryAll('[role="menuitem"]', dropdown);
-        fire(elements.topBar.querySelector('.dd-trig'), 'click'); // open the dropdown
+        fire(elements.topBar.querySelector('.dd-trig'), 'click');
         fire(items[1], 'keydown', { which: 38 });
         assert.equal(items[0], document.activeElement);
       });
