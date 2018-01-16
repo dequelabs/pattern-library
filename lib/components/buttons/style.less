@@ -2,7 +2,8 @@
 
 @{prefix}button-primary,
 @{prefix}button-secondary,
-@{prefix}button-clear {
+@{prefix}button-clear,
+@{prefix}button-error {
   min-width: 110px;
   border-radius: 18px;
   border: none;
@@ -98,20 +99,33 @@
 @{prefix}button-error {
   background-color: @error;
   .box-shadow(none);
+  color: @button-text-light;
+
+  &@{prefix}disabled,
+  &[aria-disabled="true"],
+  &[disabled] {
+    color: @text-light-disabled;
+  }
 
   &:hover {
-    background-color: @error;
-    .box-shadow(none);
+    .key-light();
   }
 
   &:focus {
-    background-color: @error;
+    outline: 0;
+  }
+
+  &:active {
+    .active-light();
+  }
+
+  &:focus {
     &:after {
-      .box-shadow(4px 0 @button-text-dark);
+      .box-shadow(4px 0 @text-light);
     }
 
     &:before {
-      .box-shadow(-4px 0 @button-text-dark);
+      .box-shadow(-4px 0 @text-light);
     }
   }
 }
