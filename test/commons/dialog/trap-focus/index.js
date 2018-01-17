@@ -36,6 +36,27 @@ describe('commons/dialog/trap-focus', () => {
       fire(firstFocusable, 'keydown', { which: 9, shiftKey: true });
       assert.equal(document.activeElement, lastFocusable);
     });
+
+    it('should focus from a modal’s h2 to the last focusable', () => {
+      const trig = fixture.element.querySelector('[data-dialog-id="demo-3"]');
+      const h2 = document.getElementById('text-heading');
+      const lastFocusable = document.querySelector('.dqpl-cancel');
+      fire(trig, 'click');
+      trapFocus('#demo-3');
+      assert.equal(document.activeElement, h2);
+      fire(h2, 'keydown', { which: 9, shiftKey: true });
+      assert.equal(document.activeElement, lastFocusable);
+    });
+
+    it('should focus from an alerts content to the last focusable', () => {
+      const content = element.querySelector('.dqpl-dialog-inner');
+      const lastFocusable = element.querySelector('.dqpl-buttons .cancel');
+      fire(trigger, 'click');
+      trapFocus('.dqpl-alert');
+      assert.equal(document.activeElement, content);
+      fire(content, 'keydown', { which: 9, shiftKey: true });
+      assert.equal(document.activeElement, lastFocusable);
+    });
   });
 
   describe('tab', () => {

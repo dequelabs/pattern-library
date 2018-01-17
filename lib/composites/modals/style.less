@@ -28,12 +28,14 @@
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
 
-      h2 {
-        font-size: @text-normal;
-        color: @text-base;
-        font-weight: @weight-normal;
-        .align-self(center);
-        padding: 8px 24px;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      @{prefix}close,
+      @{prefix}header-item {
         border-bottom: 4px solid transparent;
 
         &:focus {
@@ -42,14 +44,23 @@
         }
       }
 
+      h2 {
+        font-size: @text-normal;
+        color: @text-base;
+        font-weight: @weight-normal;
+        .align-self(center);
+        padding: 8px 24px;
+        border-bottom: 4px solid transparent;
+      }
+
       @{prefix}close {
         background-color: transparent;
         color: @text-base;
         font-size: @text-normal;
         .align-self(center);
         margin-left: auto;
-        padding: 8px;
-        margin-right: @space-three-quarters;
+        padding: 8px 10px;
+        height: 100%;
       }
     }
 

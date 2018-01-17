@@ -67,35 +67,5 @@ describe('composites/modals', () => {
         assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
       });
     });
-
-    describe('shift + tab on the first focusable element within modal', () => {
-      it('should focus the last focusable element in the modal', () => {
-        fire(trigger, 'click'); // open the modal
-        const lastFocusable = element.querySelector('.dqpl-cancel');
-        const firstFocusable = element.querySelector('.dqpl-close');
-        fire(firstFocusable, 'keydown', { which: 9, shiftKey: true });
-        assert.equal(document.activeElement, lastFocusable);
-      });
-    });
-
-    describe('tab on the last focusable element within the modal', () => {
-      it('should focus the first element', () => {
-        fire(trigger, 'click'); // open the modal
-        const lastFocusable = element.querySelector('.dqpl-cancel');
-        const firstFocusable = element.querySelector('.dqpl-close');
-        fire(lastFocusable, 'keydown', { which: 9, shiftKey: false });
-        assert.equal(document.activeElement, firstFocusable);
-      });
-    });
-  });
-
-  describe('shift+tab on the modal\'s h2', () => {
-    it('should focus the last focusable element within the modal', () => {
-      fire(trigger, 'click'); // open the modal
-      const h2 = element.querySelector('h2');
-      const lastFocusable = element.querySelector('.dqpl-cancel');
-      fire(h2, 'keydown', { which: 9, shiftKey: true });
-      assert.equal(document.activeElement, lastFocusable);
-    });
   });
 });

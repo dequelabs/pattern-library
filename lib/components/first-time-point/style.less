@@ -5,15 +5,17 @@
 
   @{prefix}arrow {
     left: -45px;
-    position: relative;
+    position: absolute;
+    top: -62px;
   }
 
   @{prefix}arrow-pointer {
-    width: 100px;
-    height: 60px;
+    width: 88px;
+    height: 37px;
     position: relative;
+    left: 6px;
     overflow: hidden;
-    box-shadow: 1px 25px 0 -22px @focus-glow, 0px 25px 6px -19px @focus-glow;
+    .box-shadow(0px 19px 0 -16px @focus-glow, 1px 18px 6px -12px @focus-glow;);
 
     &:after {
       content: "";
@@ -23,9 +25,9 @@
       height: 40px;
       background: @tile-bg;
       transform: rotate(45deg);
-      top: 45px;
-      left: 31px;
-      box-shadow: 0px 0px 0 3px @focus-glow, 0px 0px 6px 5px @focus-glow;
+      top: 18px;
+      left: 25px;
+      .box-shadow(0px 0px 0 3px @focus-glow, 0px 0px 6px 5px @focus-glow;);
     }
   }
 
@@ -38,7 +40,7 @@
     z-index: 1;
     margin-top: -1px;
     margin-bottom: -1px;
-    box-shadow: 6px 0px 0 -3px @focus-glow, -6px 0px 0 -3px @focus-glow, 10px 0 10px -4px @focus-glow, -10px 0 10px -4px @focus-glow;
+    .box-shadow(6px 0px 0 -3px @focus-glow, -6px 0px 0 -3px @focus-glow, 10px 0 10px -4px @focus-glow, -10px 0 10px -4px @focus-glow;);
   }
 
   @{prefix}box {
@@ -47,7 +49,7 @@
     max-width: 300px;
     border-radius: 3px;
     border-top-left-radius: 0;
-    box-shadow: 0px 0px 0px 3px @focus-glow, 0px 0px 12px 4px @focus-glow;
+    .box-shadow(0px 0px 0px 3px @focus-glow, 0px 0px 12px 4px @focus-glow;);
     z-index: 9;
 
     @{prefix}ftp-dismiss {
