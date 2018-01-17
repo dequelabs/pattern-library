@@ -74,7 +74,7 @@ describe('composites/menu/events/main', () => {
       setTimeout(() => {
         assert.equal(dropdown.getAttribute('aria-expanded'), 'true');
         done();
-      }, 400);  // give animation/other timeouts a change to do stuff
+      }, 400); // give animation/other timeouts a change to do stuff
     });
   });
 
