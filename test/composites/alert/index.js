@@ -50,25 +50,5 @@ describe('composites/alert', () => {
         assert.isTrue(Classlist(element).contains('dqpl-dialog-show'));
       });
     });
-
-    describe('shift + tab on the first focusable element within alert', () => {
-      it('should focus the last focusable element in the alert', () => {
-        fire(trigger, 'click'); // Shows the alert
-        const lastFocusable = element.querySelector('.dqpl-buttons .dqpl-button-secondary');
-        const firstFocusable = element.querySelector('.dqpl-buttons .dqpl-button-primary');
-        fire(firstFocusable, 'keydown', { which: 9, shiftKey: true });
-        assert.equal(document.activeElement, lastFocusable);
-      });
-    });
-
-    describe('tab on the last focusable element within the alert', () => {
-      it('should focus the first element', () => {
-        fire(trigger, 'click'); // Shows the alert
-        const lastFocusable = element.querySelector('.dqpl-buttons .dqpl-button-secondary');
-        const firstFocusable = element.querySelector('.dqpl-buttons .dqpl-button-primary');
-        fire(lastFocusable, 'keydown', { which: 9, shiftKey: false });
-        assert.equal(document.activeElement, firstFocusable);
-      });
-    });
   });
 });
