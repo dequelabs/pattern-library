@@ -67,14 +67,14 @@ describe('composites/menu/events/main', () => {
       assert.equal(dropdown.getAttribute('aria-expanded'), 'false');
     });
 
-    it('should toggle the menu if the target is a trigger of a top-bar dropdown', () => {
+    it('should toggle the menu if the target is a trigger of a top-bar dropdown', (done) => {
       const dropdown = elements.dropdown;
       assert.equal(dropdown.getAttribute('aria-expanded'), 'false');
       fire(elements.topBar.querySelector('.dd-trig'), 'click');
+      setTimeout(() => {
       assert.equal(dropdown.getAttribute('aria-expanded'), 'true');
-      // setTimeout(() => {
-      //   done();
-      // }, 400); // give animation/other timeouts a change to do stuff
+        done();
+      }, 400); // give animation/other timeouts a change to do stuff
     });
   });
 
