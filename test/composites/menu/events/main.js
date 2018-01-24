@@ -70,7 +70,7 @@ describe('composites/menu/events/main', () => {
     it('should toggle the menu if the target is a trigger of a top-bar dropdown', (done) => {
       const dropdown = elements.dropdown;
       assert.equal(dropdown.getAttribute('aria-expanded'), 'false');
-      fire(elements.topBar.querySelector('.dd-trig'), 'click');
+      fire(elements.topBar.querySelector('#drop-1'), 'click');
       setTimeout(() => {
       assert.equal(dropdown.getAttribute('aria-expanded'), 'true');
         done();
@@ -83,7 +83,7 @@ describe('composites/menu/events/main', () => {
       it('should focus the previous dropdown item', () => {
         const dropdown = elements.dropdown;
         const items = queryAll('[role="menuitem"]', dropdown);
-        fire(elements.topBar.querySelector('.dd-trig'), 'click'); // open the dropdown
+        fire(elements.topBar.querySelector('#drop-1'), 'click'); // open the dropdown
         fire(items[1], 'keydown', { which: 38 });
         assert.equal(items[0], document.activeElement);
       });
@@ -92,7 +92,7 @@ describe('composites/menu/events/main', () => {
     describe('down', () => {
       it('should focus the next dropdown item', () => {
         const items = queryAll('[role="menuitem"]', elements.dropdown);
-        fire(elements.topBar.querySelector('.dd-trig'), 'click'); // open the dropdown
+        fire(elements.topBar.querySelector('#drop-1'), 'click'); // open the dropdown
         fire(items[0], 'keydown', { which: 40 });
         assert.equal(items[1], document.activeElement);
       });
