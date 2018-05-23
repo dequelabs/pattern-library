@@ -5,12 +5,13 @@ const Classlist = require('classlist');
 const queryAll = require('../../../lib/commons/query-all');
 const Fixture = require('../../fixture');
 const snippet = require('./snippet.html');
+const fire = require('simulant').fire;
 const setSelected = require('../../../lib/components/radio-buttons/set-selected');
 
 describe('components/radio-buttons/set-selected', () => {
   let fixture, radios;
 
-  before(() => fixture = new Fixture());
+  before(() => (fixture = new Fixture()));
 
   beforeEach(() => {
     fixture.create(snippet);
@@ -33,7 +34,10 @@ describe('components/radio-buttons/set-selected', () => {
       const isChecked = i === 1;
       const inner = r.querySelector('.dqpl-inner-radio');
 
-      assert.equal(r.getAttribute('aria-checked'), isChecked ? 'true' : 'false');
+      assert.equal(
+        r.getAttribute('aria-checked'),
+        isChecked ? 'true' : 'false'
+      );
 
       if (isChecked) {
         assert.isTrue(Classlist(r).contains('dqpl-selected'));
@@ -45,5 +49,17 @@ describe('components/radio-buttons/set-selected', () => {
     });
 
     assert.equal(radios[1], document.activeElement);
+  });
+
+  it('should compare ids not element references', () => {
+    const radioWraps = queryAll('.dqpl-radio-wrap', fixture.element);
+    const radioWrap = radioWraps[2];
+    const cloneWrap = radioWrap.cloneNode(true);
+    radioWrap.parentElement.replaceChild(cloneWrap, radioWrap);
+    const clone = cloneWrap.firstElementChild;
+    setSelected(radios, clone, true);
+    // refresh the collection
+    radios = queryAll('.dqpl-radio', fixture.element);
+    assert.equal(clone, document.activeElement);
   });
 });
