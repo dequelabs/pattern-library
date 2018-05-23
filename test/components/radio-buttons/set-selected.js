@@ -46,4 +46,15 @@ describe('components/radio-buttons/set-selected', () => {
 
     assert.equal(radios[1], document.activeElement);
   });
+
+  it('should compare a live collection of element references', () => {
+    const radioWraps = queryAll('.dqpl-radio-wrap', fixture.element);
+    const radioWrap = radioWraps[2];
+    const cloneWrap = radioWrap.cloneNode(true);
+    radioWrap.parentElement.replaceChild(cloneWrap, radioWrap);
+    const clone = cloneWrap.querySelector('[role="radio"]');
+    assert.notEqual(clone, document.activeElement);
+    setSelected(null, clone, true);
+    assert.equal(clone, document.activeElement);
+  });
 });
