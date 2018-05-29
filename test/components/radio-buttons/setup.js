@@ -132,6 +132,21 @@ describe('components/radio-buttons/setup', () => {
           assert.equal(radio.getAttribute('aria-checked'), 'false');
           assert.equal(radios[1].getAttribute('aria-checked'), 'true');
         });
+
+        it('should handle changes to element references', () => {
+          let radios = queryAll('.dqpl-radio', fixture.element);
+          assert.equal(radios[0].getAttribute('aria-checked'), 'true');
+          const radioWraps = queryAll('.dqpl-radio-wrap', fixture.element);
+          const radioWrap = radioWraps[1];
+          const cloneWrap = radioWrap.cloneNode(true);
+          radioWrap.parentElement.replaceChild(cloneWrap, radioWrap);
+          const clone = cloneWrap.querySelector('[role="radio"]');
+          radios = queryAll('.dqpl-radio', fixture.element);
+          simulant.fire(radios[1], 'keydown', { which: 37 });
+          assert.equal(radios[0].getAttribute('aria-checked'), 'true', 'prev');
+          simulant.fire(radios[0], 'keydown', { which: 39 });
+          assert.equal(radios[1].getAttribute('aria-checked'), 'true', 'next');
+        })
       });
     });
 
