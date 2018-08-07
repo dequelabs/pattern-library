@@ -60,7 +60,6 @@ describe('components/radio-buttons/setup', () => {
         const inner = r.querySelector('.dqpl-inner-radio');
         assert.isTrue(!!inner);
         let c = i === selectedIndex ? 'fa-dot-circle-o' : 'fa-circle-o';
-        c = i === disabledIndex ? 'fa-circle' : c;
         assert.isTrue(Classlist(inner).contains(c));
       });
     });
