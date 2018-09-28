@@ -72,7 +72,7 @@ gulp.task('variables', () => {
 gulp.task('bundle', () => {
   return browserify('./index.js')
     .transform('babelify', {
-      presets: ['es2015']
+      presets: ['env']
     })
     .bundle()
     .pipe(source('pattern-library.js'))
