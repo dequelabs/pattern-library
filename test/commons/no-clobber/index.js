@@ -1,5 +1,6 @@
 'use strict';
 
+require('babel-polyfill');
 const assert = require('chai').assert;
 const noClobber = require('../../../lib/commons/no-clobber');
 const element = (tag) => document.createElement(tag || 'div');

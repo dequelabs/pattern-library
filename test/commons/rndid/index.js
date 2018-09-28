@@ -1,5 +1,6 @@
 'use strict';
 
+require('babel-polyfill');
 const assert = require('chai').assert;
 const rndid = require('../../../lib/commons/rndid');
 
