@@ -1,4 +1,4 @@
-# Pattern Library
+# Pattern Library [![CircleCI](https://circleci.com/gh/dequelabs/pattern-library.svg?style=svg)](https://circleci.com/gh/dequelabs/pattern-library)
 
 ## Installation
 
