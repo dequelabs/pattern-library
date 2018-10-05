@@ -4,10 +4,11 @@
   "description": "Deque Pattern Library",
   "main": "dist/js/pattern-library.js",
   "scripts": {
-    "test": "mochify ./test/**/*.js --transform [ babelify --presets [ env ] ] --transform [ stringify --extensions [ .html .css ] ] --plugin [ proxyquire-universal ] --plugin [ mochify-istanbul --report text --exclude '**/+(test|node_modules|dist)/**/*' ]",
-    "test:dev": "mochify ./test/**/*.js --watch --transform [ babelify --presets [ env ] ] --transform [ stringify --extensions [ .html .css ] ] --plugin [ proxyquire-universal ]",
     "build": "gulp",
-    "dev": "gulp default watch"
+    "dev": "gulp default watch",
+    "release": "standard-version",
+    "test": "mochify ./test/**/*.js --transform [ babelify --presets [ env ] ] --transform [ stringify --extensions [ .html .css ] ] --plugin [ proxyquire-universal ] --plugin [ mochify-istanbul --report text --exclude '**/+(test|node_modules|dist)/**/*' ]",
+    "test:dev": "mochify ./test/**/*.js --watch --transform [ babelify --presets [ env ] ] --transform [ stringify --extensions [ .html .css ] ] --plugin [ proxyquire-universal ]"
   },
   "author": {
     "name": "Harris Schneiderman",
@@ -63,6 +64,7 @@
     "roboto-fontface": "^0.7.0",
     "scroll-into-view-if-needed": "^1.1.0",
     "simulant": "^0.2.2",
+    "standard-version": "^4.4.0",
     "stringify": "^5.1.0",
     "vinyl-source-stream": "^1.1.0"
   },
