@@ -4,6 +4,14 @@
 @{prefix}select {
   position: relative;
 
+  [role="textbox"] {
+    border: 0;
+
+    &:hover {
+      border: 0;
+    }
+  }
+
   @{prefix}combobox {
     padding: @space-half @space-smallest;
     .border-box();
