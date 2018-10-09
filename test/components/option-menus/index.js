@@ -85,6 +85,39 @@ describe('components/option-menus', () => {
   });
 
   describe('menu item keydowns', () => {
+    describe('shift + tab', () => {
+      it('should close menu if menu is open on shift + tab', () => {
+        const trigger = triggers[0];
+        const dropdown = getDropdown(trigger);
+        const options = queryAll('[role="menuitem"]', dropdown);
+
+        simulant.fire(trigger, 'click');
+        const menuOpen = trigger.getAttribute('aria-expanded');
+        assert.equal(menuOpen, 'true');
+
+        simulant.fire(options[0], 'keydown', { which: 16});
+        simulant.fire(options[0], 'keydown', { which: 9 });
+        const afterTab = trigger.getAttribute('aria-expanded');
+        assert.equal(afterTab, 'false');
+      });
+    });
+
+    describe('tab', () => {
+      it('should close menu if menu is open on tab', () => {
+        const trigger = triggers[0];
+        const dropdown = getDropdown(trigger);
+        const options = queryAll('[role="menuitem"]', dropdown);
+
+        simulant.fire(trigger, 'click');
+        const menuOpen = trigger.getAttribute('aria-expanded');
+        assert.equal(menuOpen, 'true');
+
+        simulant.fire(options[0], 'keydown', { which: 9 });
+        const afterTab = trigger.getAttribute('aria-expanded');
+        assert.equal(afterTab, 'false');
+      });
+    });
+
     describe('up', () => {
       it('should focus the previous menu item', () => {
         const trigger = triggers[0];
