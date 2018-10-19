@@ -19,7 +19,8 @@ gulp.task('default', [
   'variables',
   'minify-css',
   'minify-js',
-  'extras'
+  'extras',
+  'individual-css'
 ]);
 
 // Empties out dist/
@@ -40,6 +41,14 @@ gulp.task('css', () => {
   ])
     .pipe(less())
     .pipe(concat('pattern-library.css'))
+    .pipe(gulp.dest(path.join(DIST, 'css')));
+});
+
+gulp.task('individual-css', () => {
+  return gulp.src([
+    './lib/**/*.less'
+  ])
+    .pipe(less())
     .pipe(gulp.dest(path.join(DIST, 'css')));
 });
 
