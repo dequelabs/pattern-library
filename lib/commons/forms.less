@@ -89,6 +89,10 @@ textarea,
       margin-left: @space-large;
       font-style: italic;
       font-weight: @weight-normal;
+
+      &::before {
+        content: ' ';
+      }
     }
     &@{prefix}error {
       @{prefix}required-text {
