@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/dequelabs/pattern-library/compare/v3.0.0...v3.0.1) (2018-11-20)
+
+
+### Bug Fixes
+
+* adds a space in pseudo before for proper AT readout ([#79](https://github.com/dequelabs/pattern-library/issues/79)) ([54043b5](https://github.com/dequelabs/pattern-library/commit/54043b5)), closes [#48](https://github.com/dequelabs/pattern-library/issues/48)
+* ensures menu closes when user tabs away from menu ([#75](https://github.com/dequelabs/pattern-library/issues/75)) ([e3f48f3](https://github.com/dequelabs/pattern-library/commit/e3f48f3)), closes [#44](https://github.com/dequelabs/pattern-library/issues/44)
+* properly handles disabled option clicks and handles blur even after selection ([#81](https://github.com/dequelabs/pattern-library/issues/81)) ([2821687](https://github.com/dequelabs/pattern-library/commit/2821687)), closes [#80](https://github.com/dequelabs/pattern-library/issues/80) [#77](https://github.com/dequelabs/pattern-library/issues/77) [#58](https://github.com/dequelabs/pattern-library/issues/58)
+* removes border from role=textbox [#59](https://github.com/dequelabs/pattern-library/issues/59) ([#74](https://github.com/dequelabs/pattern-library/issues/74)) ([1c9f2e4](https://github.com/dequelabs/pattern-library/commit/1c9f2e4))
+
+
+
 <a name="3.0.0"></a>
 # 3.0.0 (2018-10-05)
 
