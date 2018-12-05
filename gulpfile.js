@@ -13,7 +13,6 @@ const del = require('del');
 const DIST = './dist/';
 
 gulp.task('default', [
-  'fonts',
   'css',
   'bundle',
   'variables',
@@ -34,7 +33,6 @@ gulp.task('clean', () => {
 
 gulp.task('css', () => {
   return gulp.src([
-    './node_modules/font-awesome/css/font-awesome.min.css', // ICONS
     './node_modules/prismjs/themes/prism-coy.css', // prismjs coy theme (syntax highlighting)
     './node_modules/flexboxgrid/dist/flexboxgrid.min.css', // flexbox grid system
     './lib/**/*.less'
@@ -107,22 +105,6 @@ gulp.task('minify-js', ['bundle', 'extras'], () => {
     .pipe(uglify())
     .pipe(rename('pattern-library.min.js'))
     .pipe(gulp.dest(path.join(DIST, 'js')));
-});
-
-/**
- * Fonts
- */
-
-gulp.task('fonts', ['icons', 'roboto']);
-
-gulp.task('icons', () => {
-  return gulp.src('./node_modules/font-awesome/fonts/**/*')
-    .pipe(gulp.dest(path.join(DIST, '/fonts/')));
-});
-
-gulp.task('roboto', () => {
-  return gulp.src('./node_modules/roboto-fontface/fonts/Roboto/**/*')
-    .pipe(gulp.dest(path.join(DIST, '/fonts/Roboto/')));
 });
 
 /**
