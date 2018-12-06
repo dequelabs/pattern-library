@@ -29,6 +29,47 @@ Thanks to [unpkg](https://unpkg.com), you can link directly to deque pattern lib
 <script src="https://unpkg.com/deque-pattern-library/dist/js/pattern-library.js"></script>
 ```
 
+## Fonts
+
+### Including font awesome (v4)
+
+The pattern library relies on font awesome meaning including it is **required**.
+
+### CDN
+
+You can include it using a CDN (see [font awesome getting started docs](https://fontawesome.com/v4.7.0/get-started/))
+
+### npm
+
+```sh
+$ npm install font-awesome --save
+```
+
+
+### Including Roboto
+
+The patterns look best when the roboto font is available.
+
+#### CDN
+
+You can include it using a CDN, like so:
+
+```html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700">
+```
+
+#### npm
+
+install it:
+```sh
+$ npm install typeface-roboto --save
+```
+
+include it (in your entry-point):
+```
+import 'typeface-roboto';
+```
+
 ## Usage
 
 Just drop the css and js into your page:
@@ -51,9 +92,6 @@ Just drop the css and js into your page:
 * css
   * `pattern-library.css`
   * `pattern-library.min.css`
-* fonts
-  * Roboto
-  * FontAwesome
 * js
   * `pattern-library.js`
   * `pattern-library.min.js`
