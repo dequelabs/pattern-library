@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.0.0"></a>
+# [4.0.0](https://github.com/dequelabs/pattern-library/compare/v3.0.1...v4.0.0) (2018-12-06)
+
+
+### Bug Fixes
+
+* prevents top bar dropdown triggers from being double-clicked ([#89](https://github.com/dequelabs/pattern-library/issues/89)) ([05747b2](https://github.com/dequelabs/pattern-library/commit/05747b2))
+
+
+### Features
+
+* no longer include roboto / fontawesome ([#88](https://github.com/dequelabs/pattern-library/issues/88)) ([bb948fe](https://github.com/dequelabs/pattern-library/commit/bb948fe)), closes [#85](https://github.com/dequelabs/pattern-library/issues/85) [#86](https://github.com/dequelabs/pattern-library/issues/86)
+
+
+### BREAKING CHANGES
+
+* bundle no longer includes fontawesome and roboto
+
+
+
 <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/dequelabs/pattern-library/compare/v3.0.0...v3.0.1) (2018-11-20)
 
