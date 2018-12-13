@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.1.0"></a>
+# [4.1.0](https://github.com/dequelabs/pattern-library/compare/v4.0.0...v4.1.0) (2018-12-13)
+
+
+### Features
+
+* uses not selectors for radios/checkboxes to not conflict with cauldron-react (for projects using dqpl that are slowly adopting cauldron-react) ([#91](https://github.com/dequelabs/pattern-library/issues/91)) ([a921d6f](https://github.com/dequelabs/pattern-library/commit/a921d6f))
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/dequelabs/pattern-library/compare/v3.0.1...v4.0.0) (2018-12-06)
 
