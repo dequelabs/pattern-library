@@ -97,4 +97,16 @@ describe('components/field-help/setup', () => {
     simulant.fire(button, 'mouseout');
     assert.isFalse(Classlist(tip).contains('dqpl-tip-active'));
   });
+
+  it('should update the text if the data-help-text gets updated', () => {
+    setup();
+    const button = helps[0];
+    const wrapper = closest(button, '.dqpl-help-button-wrap');
+    const tip = wrapper.querySelector('.dqpl-tooltip');
+    const tipText = tip.textContent;
+    assert.equal(tipText, 'Your first name is the name that comes before your middle and last names.');
+    button.setAttribute('data-help-text', 'food bar');
+    simulant.fire(button, 'mouseover');
+    assert.equal(tip.textContent, 'food bar');
+  });
 });
