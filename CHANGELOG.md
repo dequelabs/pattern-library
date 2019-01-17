@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.2.0"></a>
+# [4.2.0](https://github.com/dequelabs/pattern-library/compare/v4.1.0...v4.2.0) (2019-01-17)
+
+
+### Features
+
+* adds alternate arrow directions to ftpo ([#93](https://github.com/dequelabs/pattern-library/issues/93)) ([6b95629](https://github.com/dequelabs/pattern-library/commit/6b95629))
+* supports dynamic tip text ([#94](https://github.com/dequelabs/pattern-library/issues/94)) ([e212915](https://github.com/dequelabs/pattern-library/commit/e212915))
+
+
+
 <a name="4.1.0"></a>
 # [4.1.0](https://github.com/dequelabs/pattern-library/compare/v4.0.0...v4.1.0) (2018-12-13)
 
