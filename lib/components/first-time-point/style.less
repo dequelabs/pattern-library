@@ -5,6 +5,8 @@
 
   @{prefix}arrow {
     position: absolute;
+    left: -45px;
+    top: -62px;
 
     &.top,
     &.top-left {
@@ -27,6 +29,7 @@
 
       @{prefix}arrow-pointer,
       @{prefix}arrow-neck {
+        left: auto;
         margin-left: auto;
         margin-right: auto;
       }
@@ -35,6 +38,7 @@
     &.top-right {
       right: -32px;
       top: -62px;
+      left: auto;
 
       & + @{prefix}box {
         border-top-right-radius: 0;
@@ -50,6 +54,7 @@
       left: -32px;
       bottom: -62px;
       transform: rotate(180deg);
+      top: auto;
 
       & + @{prefix}box {
         border-bottom-left-radius: 0;
@@ -68,6 +73,7 @@
 
       @{prefix}arrow-pointer,
       @{prefix}arrow-neck {
+        left: auto;
         margin-left: auto;
         margin-right: auto;
       }
@@ -77,6 +83,8 @@
       right: -45px;
       bottom: -62px;
       transform: rotate(180deg);
+      left: auto;
+      top: auto;
 
       & + @{prefix}box {
         border-bottom-right-radius: 0;
@@ -110,6 +118,7 @@
 
       @{prefix}arrow-pointer,
       @{prefix}arrow-neck {
+        left: auto;
         margin-left: auto;
         margin-right: auto;
       }
@@ -119,6 +128,7 @@
       transform: rotate(-90deg);
       left: -76px;
       bottom: -32px;
+      top: auto;
 
       & + @{prefix}box {
         border-bottom-left-radius: 0;
@@ -134,6 +144,7 @@
       transform: rotate(90deg);
       right: -76px;
       top: -32px;
+      left: auto;
 
       & + @{prefix}box {
         border-top-right-radius: 0;
@@ -146,12 +157,14 @@
 
     &.right-middle {
       right: -49px;
+      left: auto;
       top: 0;
       bottom: 0;
       transform: rotate(90deg);
 
       @{prefix}arrow-pointer,
       @{prefix}arrow-neck {
+        left: auto;
         margin-left: auto;
         margin-right: auto;
       }
@@ -161,6 +174,8 @@
       transform: rotate(90deg);
       right: -76px;
       bottom: -19px;
+      left: auto;
+      top: auto;
 
       & + @{prefix}box {
         border-bottom-right-radius: 0;
@@ -172,6 +187,7 @@
     }
 
     @{prefix}arrow-pointer {
+      left: 6px;
       width: 89px;
       height: 38px;
       position: relative;
@@ -211,6 +227,7 @@
     padding: 12px;
     max-width: 300px;
     border-radius: 3px;
+    border-top-left-radius: 0;
     .box-shadow(0px 0px 0px 3px @focus-glow, 0px 0px 12px 4px @focus-glow;);
     z-index: 9;
 
@@ -262,6 +279,10 @@
   }
 
   &@{prefix}no-arrow {
+
+    @{prefix}arrow {
+      display: none;
+    }
 
     @{prefix}box {
       border-top-left-radius: 3px;
