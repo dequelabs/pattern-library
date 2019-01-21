@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.2.1"></a>
+## [4.2.1](https://github.com/dequelabs/pattern-library/compare/v4.2.0...v4.2.1) (2019-01-21)
+
+
+### Bug Fixes
+
+* adds in a default arrow when no position class is set ([#95](https://github.com/dequelabs/pattern-library/issues/95)) ([e8493cb](https://github.com/dequelabs/pattern-library/commit/e8493cb))
+
+
+
 <a name="4.2.0"></a>
 # [4.2.0](https://github.com/dequelabs/pattern-library/compare/v4.1.0...v4.2.0) (2019-01-17)
 
