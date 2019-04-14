@@ -81,12 +81,11 @@ describe('composites/menu/events/main', () => {
     it('clicking closed dropdown should open that dropdown and close any other open dropdowns', (done) => {
       const dropdown = elements.dropdown;
       const dropdown2 = elements.dropdown2;
-      // dropdown.setAttribute('aria-expanded', 'true');
       fire(dropdown, 'click');
       setTimeout(() => {
+        assert.equal(dropdown.getAttribute('aria-expanded'), 'true');
         fire(dropdown2, 'click');
         assert.equal(dropdown2.getAttribute('aria-expanded'), 'true');
-        assert.equal(dropdown.getAttribute('aria-expanded'), 'false');
         done();
       }, 400); // give animation/other timeouts a chance to do stuff
     });
