@@ -86,6 +86,7 @@ describe('composites/menu/events/main', () => {
         assert.equal(dropdown.getAttribute('aria-expanded'), 'true');
         fire(dropdown2, 'click');
         assert.equal(dropdown2.getAttribute('aria-expanded'), 'true');
+        assert.equal(dropdown.getAttribute('aria-expanded'), 'false');
         done();
       }, 400); // give animation/other timeouts a chance to do stuff
     });
