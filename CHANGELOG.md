@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="4.2.2"></a>
+## [4.2.2](https://github.com/dequelabs/pattern-library/compare/v4.2.1...v4.2.2) (2019-04-17)
+
+
+### Bug Fixes
+
+* prevent double clicking of link in dropdown ([#101](https://github.com/dequelabs/pattern-library/issues/101)) ([8b587e1](https://github.com/dequelabs/pattern-library/commit/8b587e1))
+* refactored dropdown click listeners ([#102](https://github.com/dequelabs/pattern-library/issues/102)) ([2de640e](https://github.com/dequelabs/pattern-library/commit/2de640e))
+
+
+
 <a name="4.2.1"></a>
 ## [4.2.1](https://github.com/dequelabs/pattern-library/compare/v4.2.0...v4.2.1) (2019-01-21)
 

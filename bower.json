@@ -2,7 +2,7 @@
   "name": "deque-pattern-library",
   "description": "Deque Pattern Library",
   "main": "dist/js/pattern-library.js",
-  "version": "4.2.1",
+  "version": "4.2.2",
   "authors": [
     "Harris Schneiderman <harris.schneiderman@deque.com>"
   ],
