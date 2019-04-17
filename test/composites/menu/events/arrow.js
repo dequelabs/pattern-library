@@ -29,7 +29,7 @@ describe('composites/menu/events/arrow', () => {
   it('should handle circularity', () => {
     const topBar = fixture.element.querySelector('.dqpl-top-bar');
     const target = topBar.querySelector('[role="menuitem"]');
-    const expected = topBar.querySelector('.dd-trig');
+    const expected = topBar.querySelector('.dd-trig-2');
 
     proxyquire('../../../../lib/composites/menu/events/arrow', {
       '../utils/activate': (t, adjacent) => {

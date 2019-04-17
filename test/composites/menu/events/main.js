@@ -22,7 +22,8 @@ describe('composites/menu/events/main', () => {
       topBarItems: getTopLevels(topBar.querySelector('[role="menubar"]'), true),
       trigger: topBar.querySelector('.dqpl-menu-trigger'),
       scrim: document.getElementById('dqpl-side-bar-scrim'),
-      dropdown: topBar.querySelector('.dqpl-dropdown')
+      dropdown: topBar.querySelector('#drop-1'),
+      dropdown2: topBar.querySelector('#drop-2')
     };
 
     main(elements); // attach the main events only once as they are delegated
@@ -72,9 +73,22 @@ describe('composites/menu/events/main', () => {
       assert.equal(dropdown.getAttribute('aria-expanded'), 'false');
       fire(elements.topBar.querySelector('#drop-1'), 'click');
       setTimeout(() => {
-      assert.equal(dropdown.getAttribute('aria-expanded'), 'true');
+        assert.equal(dropdown.getAttribute('aria-expanded'), 'true');
         done();
-      }, 400); // give animation/other timeouts a change to do stuff
+      }, 400); // give animation/other timeouts a chance to do stuff
+    });
+
+    it('clicking closed dropdown should open that dropdown and close any other open dropdowns', (done) => {
+      const dropdown = elements.dropdown;
+      const dropdown2 = elements.dropdown2;
+      fire(dropdown, 'click');
+      setTimeout(() => {
+        assert.equal(dropdown.getAttribute('aria-expanded'), 'true');
+        fire(dropdown2, 'click');
+        assert.equal(dropdown2.getAttribute('aria-expanded'), 'true');
+        assert.equal(dropdown.getAttribute('aria-expanded'), 'false');
+        done();
+      }, 400); // give animation/other timeouts a chance to do stuff
     });
   });
 
