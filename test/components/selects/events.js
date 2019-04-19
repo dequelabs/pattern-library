@@ -15,7 +15,7 @@ describe('components/selects/events', () => {
 
   beforeEach(() => {
     fixture.create(snippet);
-    select = fixture.element.querySelector('.dqpl-combobox');
+    select = fixture.element.querySelector('.dqpl-listbox-button');
     list = fixture.element.querySelector('.dqpl-listbox');
   });
 
@@ -31,7 +31,7 @@ describe('components/selects/events', () => {
     });
   });
 
-  describe('combobox clicks', () => {
+  describe('listbox button clicks', () => {
     it('should toggle the dqpl-listbox-show class on the list', () => {
       attachEvents(select, list);
       assert.isFalse(Classlist(list).contains('dqpl-listbox-show'));
@@ -39,7 +39,7 @@ describe('components/selects/events', () => {
       assert.isTrue(Classlist(list).contains('dqpl-listbox-show'));
     });
 
-    it('should toggle aria-expanded on the combobox', () => {
+    it('should toggle aria-expanded on the button', () => {
       attachEvents(select, list);
       assert.equal(select.getAttribute('aria-expanded'), 'false');
       fire(select, 'click');
@@ -47,7 +47,7 @@ describe('components/selects/events', () => {
     });
   });
 
-  describe('combobox keydowns', () => {
+  describe('listbox keydowns', () => {
     describe('up / down', () => {
       describe('given a visible listbox', () => {
         it('should call arrow', () => {
@@ -58,7 +58,7 @@ describe('components/selects/events', () => {
 
           fire(select, 'click'); // show the listbox
 
-          fire(select, 'keydown', { which: 40 });
+          fire(list, 'keydown', { which: 40 });
           assert.isTrue(called);
         });
       });
@@ -69,7 +69,7 @@ describe('components/selects/events', () => {
           proxyquire('../../../lib/components/selects/events', {
             './open': () => called = true
           })(select, list);
-          fire(select, 'keydown', { which: 40 });
+          fire(list, 'keydown', { which: 40 });
           assert.isTrue(called);
         });
       });
@@ -85,7 +85,7 @@ describe('components/selects/events', () => {
 
           fire(select, 'click'); // show the listbox
 
-          fire(select, 'keydown', { which: 13 });
+          fire(list, 'keydown', { which: 13 });
           assert.isTrue(called);
         });
       });
@@ -97,7 +97,7 @@ describe('components/selects/events', () => {
             './open': () => called = true
           })(select, list);
 
-          fire(select, 'keydown', { which: 32 });
+          fire(list, 'keydown', { which: 32 });
           assert.isTrue(called);
         });
       });
@@ -110,7 +110,7 @@ describe('components/selects/events', () => {
           fire(select, 'click'); // open the list
           assert.isTrue(Classlist(list).contains('dqpl-listbox-show'));
           assert.equal(select.getAttribute('aria-expanded'), 'true');
-          fire(select, 'keydown', { which: 27 });
+          fire(list, 'keydown', { which: 27 });
           assert.isFalse(Classlist(list).contains('dqpl-listbox-show'));
           assert.equal(select.getAttribute('aria-expanded'), 'false');
         });
@@ -118,29 +118,26 @@ describe('components/selects/events', () => {
     });
 
     describe('input characters', () => {
-      let opened = false;
       let searched = false;
-      it('should call open and search', () => {
+      it('should call search', () => {
         proxyquire('../../../lib/components/selects/events', {
-          './open': () => opened = true,
           './search': () => searched = true
         })(select, list);
+        fire(select, 'click');
+        fire(list, 'keydown', { which: 72 });
 
-        fire(select, 'keydown', { which: 72 });
-
-        assert.isTrue(opened);
         assert.isTrue(searched);
       });
     });
   });
 
-  describe('combobox blur', () => {
+  describe('listbox blur', () => {
     it('should close the list', () => {
       attachEvents(select, list);
       fire(select, 'click'); // open the list
       assert.isTrue(Classlist(list).contains('dqpl-listbox-show'));
       assert.equal(select.getAttribute('aria-expanded'), 'true');
-      fire(select, 'blur');
+      fire(list, 'blur');
       assert.isFalse(Classlist(list).contains('dqpl-listbox-show'));
       assert.equal(select.getAttribute('aria-expanded'), 'false');
     });
@@ -157,7 +154,7 @@ describe('components/selects/events', () => {
       })(select, list);
 
       fire(opt, 'mousedown');
-      assert.equal(opt.id, select.getAttribute('aria-activedescendant'));
+      assert.equal(opt.id, list.getAttribute('aria-activedescendant'));
       assert.isTrue(activated);
       assert.isTrue(selected);
     });
