@@ -6,7 +6,7 @@ const snippet = require('./snippet.html');
 const Fixture = require('../../fixture');
 
 describe('components/selects/arrow', () => {
-  let fixture, select, listbox, called = false;
+  let fixture, listbox, called = false;
   const arrow = proxyquire('../../../lib/components/selects/arrow', {
     './activate': () => called = true
   });
@@ -15,7 +15,6 @@ describe('components/selects/arrow', () => {
 
   beforeEach(() => {
     fixture.create(snippet);
-    select = fixture.element.querySelector('.dqpl-listbox-button');
     listbox = fixture.element.querySelector('.dqpl-listbox');
   });
 
@@ -35,7 +34,7 @@ describe('components/selects/arrow', () => {
 
   it('should do nothing if there is no selected option', () => {
     called = false;
-    select.removeAttribute('aria-activedescendant');
+    listbox.removeAttribute('aria-activedescendant');
     arrow({
       key: 40,
       listbox
@@ -46,7 +45,7 @@ describe('components/selects/arrow', () => {
 
   it('should do nothing if there is NOT an option in the provided direction', () => {
     called = false;
-    select.setAttribute('aria-activedescendant', 'default');
+    listbox.setAttribute('aria-activedescendant', 'default');
     arrow({
       key: 38,
       listbox

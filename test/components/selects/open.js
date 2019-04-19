@@ -15,7 +15,7 @@ describe('components/selects/open', () => {
 
   beforeEach(() => {
     fixture.create(snippet);
-    selects = queryAll('.dqpl-combobox', fixture.element);
+    selects = queryAll('.dqpl-listbox-button', fixture.element);
     lists = queryAll('.dqpl-listbox', fixture.element);
   });
 
@@ -25,7 +25,7 @@ describe('components/selects/open', () => {
   it('should default to the first option when no default selection exists', () => {
     const firstOpt = lists[1].querySelector('[role="option"]');
     open(selects[1], lists[1]);
-    assert.equal(firstOpt.id, selects[1].getAttribute('aria-activedescendant'));
+    assert.equal(firstOpt.id, lists[1].getAttribute('aria-activedescendant'));
   });
 
   it('should open the list and call activate', () => {

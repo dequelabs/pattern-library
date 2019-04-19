@@ -1,10 +1,19 @@
 <div class="dqpl-field-wrap">
   <div class="dqpl-label" id="age-label">Age group (with default value selected)</div>
   <div class="dqpl-select">
-    <div class="dqpl-combobox" role="combobox" tabindex="0" aria-autocomplete="none" aria-owns="age-list" aria-expanded="false" aria-labelledby="age-label" aria-required="true" aria-activedescendant="default">
-      <div class="dqpl-pseudo-value">18 - 25</div>
-    </div>
-    <ul class="dqpl-listbox" role="listbox" id="age-list">
+    <button
+      class="dqpl-listbox-button"
+      aria-haspopup="listbox"
+      aria-labelledby="age-label dqpl-listbox-button-value"
+    >
+      <div
+        class="dqpl-pseudo-value"
+        id="dqpl-listbox-button-value"
+      >
+        18 - 25
+      </div>
+    </button>
+    <ul class="dqpl-listbox" role="listbox" id="age-list" aria-activedescendant="default" tabindex="-1">
       <li class="dqpl-option" id="default" role="option">18 - 25</li>
       <li class="dqpl-option" role="option">26 - 39</li>
       <li class="dqpl-option" role="option">40 - 55</li>
@@ -15,8 +24,8 @@
 <div class="dqpl-field-wrap">
   <div class="dqpl-label" id="pizza-label">Do you like pizza?</div>
   <div class="dqpl-select">
-    <div class="dqpl-combobox" role="combobox" tabindex="0" aria-readonly="true" aria-autocomplete="none" aria-owns="pizza-list" aria-expanded="false" aria-labelledby="pizza-label"></div>
-    <ul class="dqpl-listbox" role="listbox" id="pizza-list">
+    <button class="dqpl-listbox-button" aria-haspopup="listbox" aria-labelledby="pizza-label"></button>
+    <ul class="dqpl-listbox" role="listbox" id="pizza-list" tabindex="-1">
       <li class="dqpl-option" role="option">Yes</li>
       <li class="dqpl-option" role="option">No</li>
     </ul>

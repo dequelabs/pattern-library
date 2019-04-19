@@ -41,9 +41,22 @@ describe('components/selects/events', () => {
 
     it('should toggle aria-expanded on the button', () => {
       attachEvents(select, list);
-      assert.equal(select.getAttribute('aria-expanded'), 'false');
+      assert.notEqual(select.getAttribute('aria-expanded'), 'true');
       fire(select, 'click');
       assert.equal(select.getAttribute('aria-expanded'), 'true');
+    });
+  });
+
+  describe('listbox button keydowns', () => {
+    describe('given hidden listbox', () => {
+      it('down arrow should call open', () => {
+        let called = false;
+        proxyquire('../../../lib/components/selects/events', {
+          './open': () => called = true
+        })(select, list);
+        fire(select, 'keydown', { which: 40 });
+        assert.isTrue(called);
+      });
     });
   });
 
@@ -62,17 +75,6 @@ describe('components/selects/events', () => {
           assert.isTrue(called);
         });
       });
-
-      describe('given a hidden listbox', () => {
-        it('should call open', () => {
-          let called = false;
-          proxyquire('../../../lib/components/selects/events', {
-            './open': () => called = true
-          })(select, list);
-          fire(list, 'keydown', { which: 40 });
-          assert.isTrue(called);
-        });
-      });
     });
 
     describe('enter / space', () => {
@@ -86,18 +88,6 @@ describe('components/selects/events', () => {
           fire(select, 'click'); // show the listbox
 
           fire(list, 'keydown', { which: 13 });
-          assert.isTrue(called);
-        });
-      });
-
-      describe('given a hidden listbox', () => {
-        it('should call open', () => {
-          let called = false;
-          proxyquire('../../../lib/components/selects/events', {
-            './open': () => called = true
-          })(select, list);
-
-          fire(list, 'keydown', { which: 32 });
           assert.isTrue(called);
         });
       });

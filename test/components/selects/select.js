@@ -14,7 +14,7 @@ describe('components/selects/select', () => {
 
   beforeEach(() => {
     fixture.create(snippet);
-    combo = fixture.element.querySelector('.dqpl-combobox');
+    combo = fixture.element.querySelector('.dqpl-listbox-button');
     list = fixture.element.querySelector('.dqpl-listbox');
     options = queryAll('.dqpl-option', list);
   });
@@ -27,6 +27,7 @@ describe('components/selects/select', () => {
     const newActive = options[1];
     // mock up some attrs/classes
     prevActive.setAttribute('aria-selected', 'true');
+    prevActive.classList.add('dqpl-option-selected');
     Classlist(newActive).add('dqpl-option-active');
 
     select(combo, list);
