@@ -1,6 +1,6 @@
 {
   "name": "deque-pattern-library",
-  "version": "4.2.3",
+  "version": "5.0.0",
   "description": "Deque Pattern Library",
   "main": "dist/js/pattern-library.js",
   "scripts": {

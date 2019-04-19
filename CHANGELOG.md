@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="5.0.0"></a>
+# [5.0.0](https://github.com/dequelabs/pattern-library/compare/v4.2.3...v5.0.0) (2019-04-19)
+
+
+### Features
+
+* **select:** updates select component to match modern listbox spec ([#105](https://github.com/dequelabs/pattern-library/issues/105)) ([66f5f03](https://github.com/dequelabs/pattern-library/commit/66f5f03)), closes [#21](https://github.com/dequelabs/pattern-library/issues/21) [#2](https://github.com/dequelabs/pattern-library/issues/2) [#97](https://github.com/dequelabs/pattern-library/issues/97)
+
+
+### BREAKING CHANGES
+
+* **select:** branch new required tabs/classes/attributes for select component
+
+
+
 <a name="4.2.3"></a>
 ## [4.2.3](https://github.com/dequelabs/pattern-library/compare/v4.2.2...v4.2.3) (2019-04-19)
 
