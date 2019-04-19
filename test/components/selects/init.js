@@ -9,21 +9,22 @@ const snippet = require('./snippet.html');
 const init = require('../../../lib/components/selects/init');
 
 describe('components/selects/init', () => {
-  let fixture, selects;
+  let fixture, selects, listboxes;
 
   before(() => fixture = new Fixture());
 
   beforeEach(() => {
     fixture.create(snippet);
-    selects = queryAll('.dqpl-combobox', fixture.element);
+    selects = queryAll('.dqpl-listbox-button', fixture.element);
+    listboxes = queryAll('[role="listbox"]', fixture.element);
   });
 
   afterEach(() => fixture.destroy());
   after(() => fixture.cleanUp());
 
-  it('should warn if a combobox\'s listbox cannot be found', () => {
+  it('should warn if a select\'s listbox cannot be found', () => {
     let called = false;
-    selects[0].removeAttribute('aria-owns'); // make it so the listbox can't be found
+    listboxes[0].parentNode.removeChild(listboxes[0]);
     proxyquire('../../../lib/components/selects/init', {
       'debug': () => {
         return function () { called = true; };
@@ -31,11 +32,6 @@ describe('components/selects/init', () => {
     })();
 
     assert.isTrue(called);
-  });
-
-  it('should set tabIndex=0 on the select', () => {
-    init();
-    selects.forEach((s) => assert.equal(0, s.tabIndex));
   });
 
   it('should add the dqpl-pseudo-value element if its not present', () => {
@@ -77,8 +73,7 @@ describe('components/selects/init', () => {
   });
 
   it('should set aria-selected=true and add the "dqpl-option-active" class to the intially selected option', () => {
-    const select = selects[0];
-    const defaultSelected = document.getElementById(select.getAttribute('aria-activedescendant'));
+    const defaultSelected = document.getElementById(listboxes[0].getAttribute('aria-activedescendant'));
     init();
 
     assert.isTrue(Classlist(defaultSelected).contains('dqpl-option-active'));

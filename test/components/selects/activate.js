@@ -8,13 +8,12 @@ const queryAll = require('../../../lib/commons/query-all');
 const Fixture = require('../../fixture');
 
 describe('components/selects/activate', () => {
-  let fixture, select, list;
+  let fixture, list;
 
   before(() => fixture = new Fixture());
 
   beforeEach(() => {
     fixture.create(snippet);
-    select = fixture.element.querySelector('.dqpl-combobox');
     list = fixture.element.querySelector('.dqpl-listbox');
   });
 
@@ -24,11 +23,13 @@ describe('components/selects/activate', () => {
   it('should activate the option', () => {
     const options = queryAll('[role="option"]', list);
     options[2].id = 'foo';
-    select.setAttribute('aria-activedescendant', options[2].id);
+    list.setAttribute('aria-activedescendant', options[2].id);
     proxyquire('../../../lib/components/selects/activate', {
       '../../commons/is-scrolled-in-view': () => false
-    })(select, list, false);
+    })(list, false);
     // ensure the active class is added
     assert.isTrue(Classlist(options[2]).contains('dqpl-option-active'));
+    assert.equal(queryAll('.dqpl-option-active', list).length, 1);
+    assert.equal(queryAll('[aria-selected="true"]', list).length, 1);
   });
 });
