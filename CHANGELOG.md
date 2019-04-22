@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="6.0.0"></a>
+# [6.0.0](https://github.com/dequelabs/pattern-library/compare/v5.0.0...v6.0.0) (2019-04-22)
+
+
+### Bug Fixes
+
+* **button:** makes buttons display: inline-block (like native implementation) ([#110](https://github.com/dequelabs/pattern-library/issues/110)) ([09e2c6c](https://github.com/dequelabs/pattern-library/commit/09e2c6c))
+* **select:** scroll option into view ([#106](https://github.com/dequelabs/pattern-library/issues/106)) ([ad3ca91](https://github.com/dequelabs/pattern-library/commit/ad3ca91))
+* **tooltip:** prevents flicker ([#108](https://github.com/dequelabs/pattern-library/issues/108)) ([9bd7f53](https://github.com/dequelabs/pattern-library/commit/9bd7f53))
+
+
+
 <a name="5.0.0"></a>
 # [5.0.0](https://github.com/dequelabs/pattern-library/compare/v4.2.3...v5.0.0) (2019-04-19)
 
