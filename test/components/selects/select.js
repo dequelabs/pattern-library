@@ -76,4 +76,15 @@ describe('components/selects/select', () => {
 
     assert.equal(combo.querySelector('.dqpl-pseudo-value').innerText, newActive.innerText);
   });
+
+  it('fires "dqpl:select:change" custom event', (done) => {
+    const opt = options[1];
+    combo.addEventListener('dqpl:select:change', ({ detail }) => {
+      assert.equal(detail.value, opt.innerHTML);
+      done();
+    });
+
+    Classlist(opt).add('dqpl-option-active');
+    select(combo, list);
+  });
 });
