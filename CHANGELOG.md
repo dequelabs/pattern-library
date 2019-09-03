@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="7.0.0"></a>
+# [7.0.0](https://github.com/dequelabs/pattern-library/compare/v6.1.0...v7.0.0) (2019-09-03)
+
+
+### Features
+
+* implement smaller FTPO arrow ([#125](https://github.com/dequelabs/pattern-library/issues/125)) ([2fe8c60](https://github.com/dequelabs/pattern-library/commit/2fe8c60))
+* position ftpos absolutely ([#126](https://github.com/dequelabs/pattern-library/issues/126)) ([d9a2191](https://github.com/dequelabs/pattern-library/commit/d9a2191))
+
+
+### BREAKING CHANGES
+
+* ftpos have been changed from relative to absolute position.
+* footprint of arrow has been changed to be smaller.
+
+
+
 <a name="6.1.0"></a>
 # [6.1.0](https://github.com/dequelabs/pattern-library/compare/v6.0.0...v6.1.0) (2019-05-06)
 
