@@ -1,3 +1,9 @@
+---
+# :warning: DEPRECATION NOTICE :warning:
+
+This repo is deprecated. Please go to https://github.com/cauldron
+---
+
 # Pattern Library [![CircleCI](https://circleci.com/gh/dequelabs/pattern-library.svg?style=svg)](https://circleci.com/gh/dequelabs/pattern-library)
 
 ## Installation
