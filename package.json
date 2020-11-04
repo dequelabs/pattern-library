@@ -62,7 +62,7 @@
     "rndm": "^1.2.0",
     "scroll-into-view-if-needed": "^1.1.0",
     "simulant": "^0.2.2",
-    "standard-version": "^4.4.0",
+    "standard-version": "^8.0.1",
     "stringify": "^5.1.0",
     "vinyl-source-stream": "^1.1.0"
   },
